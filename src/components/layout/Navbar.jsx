@@ -173,7 +173,7 @@ export default function Navbar() {
             {/* Boarding Pass CTA */}
             <Link
               to="/info"
-              className="flex items-center gap-2 px-4 py-2 rounded border border-train-gold bg-gradient-to-r from-train-burgundy to-[#2a1310] text-train-champagne text-xs font-serif tracking-widest uppercase hover:shadow-brass transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+              className="flex items-center gap-2 px-4 py-2 rounded border border-train-gold bg-[#5d1212] hover:bg-[#781818] text-train-champagne text-xs font-serif tracking-widest uppercase hover:shadow-brass transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
             >
               <Ticket className="w-3.5 h-3.5 text-train-gold" />
               <span>승차권 확인</span>

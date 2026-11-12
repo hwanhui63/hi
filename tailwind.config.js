@@ -8,17 +8,18 @@ export default {
     extend: {
       colors: {
         train: {
-          bg: '#140B0A',
-          secondary: '#241411',
-          burgundy: '#41201B',
+          bg: '#000000',
+          secondary: '#5d1212',
+          burgundy: '#5d1212',
+          box: '#5d1212',
           gold: '#B88B4A',
           champagne: '#EBD39A',
           midnight: '#111A28',
           ivory: '#F5E8D0',
-          darkwood: '#1B0E0D',
+          darkwood: '#450d0d',
           brass: '#C99753',
           brassLight: '#F3E5AB',
-          velvet: '#2E1513',
+          velvet: '#5d1212',
         }
       },
       fontFamily: {
@@ -32,11 +33,11 @@ export default {
         'brass': '0 0 15px rgba(184, 139, 74, 0.35), inset 0 0 15px rgba(184, 139, 74, 0.15)',
         'brass-lg': '0 0 30px rgba(184, 139, 74, 0.45), 0 0 60px rgba(184, 139, 74, 0.2)',
         'candle': '0 0 25px rgba(235, 211, 154, 0.4)',
-        'window-inner': 'inset 0 0 40px rgba(0, 0, 0, 0.8), inset 0 0 100px rgba(20, 11, 10, 0.9)',
+        'window-inner': 'inset 0 0 40px rgba(0, 0, 0, 0.8), inset 0 0 100px rgba(0, 0, 0, 0.9)',
       },
       backgroundImage: {
         'radial-gradient': 'radial-gradient(var(--tw-gradient-stops))',
-        'wood-grain': 'linear-gradient(90deg, #180D0C 0%, #201210 50%, #180D0C 100%)',
+        'wood-grain': 'linear-gradient(90deg, #5d1212 0%, #6e1515 50%, #5d1212 100%)',
       },
       animation: {
         'flicker': 'flicker 3s infinite ease-in-out',

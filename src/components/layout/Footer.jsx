@@ -13,7 +13,7 @@ export default function Footer() {
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Scripture Plaque - The Heart of the Concert */}
-        <div className="relative p-6 sm:p-8 rounded-lg border border-train-gold/50 bg-gradient-to-b from-train-burgundy/40 via-train-secondary/70 to-train-bg/90 shadow-brass text-center max-w-3xl mx-auto mb-16">
+        <div className="relative p-6 sm:p-8 rounded-lg border border-train-gold/50 bg-[#5d1212] shadow-brass text-center max-w-3xl mx-auto mb-16">
           <div className="flex items-center justify-center gap-2 mb-3">
             <Sparkles className="w-4 h-4 text-train-gold" />
             <span className="font-serif text-xs tracking-[0.25em] uppercase text-train-champagne">

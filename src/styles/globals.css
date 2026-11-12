@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --color-bg: #140B0A;
-  --color-secondary: #241411;
-  --color-burgundy: #41201B;
+  --color-bg: #000000;
+  --color-secondary: #5d1212;
+  --color-burgundy: #5d1212;
+  --color-box: #5d1212;
   --color-gold: #B88B4A;
   --color-champagne: #EBD39A;
   --color-midnight: #111A28;
@@ -17,10 +18,10 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #140B0A;
+  background: #000000;
 }
 ::-webkit-scrollbar-thumb {
-  background: #41201B;
+  background: #5d1212;
   border: 1px solid #B88B4A;
   border-radius: 4px;
 }
@@ -55,8 +56,8 @@
 }
 
 .wood-panel {
-  background: linear-gradient(180deg, #1f110f 0%, #170d0c 50%, #120908 100%);
-  border: 1px solid rgba(184, 139, 74, 0.3);
+  background: #5d1212;
+  border: 1px solid rgba(184, 139, 74, 0.35);
 }
 
 /* Ticket Cutout Notch */
@@ -71,7 +72,7 @@
   transform: translateY(-50%);
   width: 24px;
   height: 24px;
-  background-color: #140B0A;
+  background-color: #000000;
   border-radius: 50%;
   border-right: 1px solid #B88B4A;
 }

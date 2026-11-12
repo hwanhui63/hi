@@ -9,7 +9,7 @@ export function BrassBorder({ children, className = "", innerClassName = "" }) {
       <span className="absolute -bottom-1 -left-1 w-2.5 h-2.5 rounded-full bg-[#EBD39A] border border-[#6C4A1A] shadow-sm z-10" />
       <span className="absolute -bottom-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#EBD39A] border border-[#6C4A1A] shadow-sm z-10" />
 
-      <div className={`rounded-[6px] bg-train-secondary p-5 ${innerClassName}`}>
+      <div className={`rounded-[6px] bg-[#5d1212] p-5 ${innerClassName}`}>
         {children}
       </div>
     </div>

@@ -46,11 +46,11 @@ export default function Concert() {
       {/* 1. INTRO: The Story of Train 1225                                         */}
       {/* ========================================================================= */}
       <section className="mb-24">
-        <div className="p-6 sm:p-10 rounded-2xl bg-gradient-to-b from-train-secondary via-[#1c0e0c] to-train-bg border border-train-gold/50 shadow-brass">
+        <div className="p-6 sm:p-10 rounded-2xl bg-[#5d1212] border border-train-gold/50 shadow-brass">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
             {/* Story Text */}
             <div className="md:col-span-8 space-y-5">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-train-gold/40 bg-train-bg/60 text-train-champagne text-xs font-serif tracking-widest uppercase">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-train-gold/40 bg-black/60 text-train-champagne text-xs font-serif tracking-widest uppercase">
                 <Compass className="w-3.5 h-3.5 text-train-gold" />
                 <span>CONCERT STORY & VISION</span>
               </div>
@@ -134,8 +134,8 @@ export default function Concert() {
                   onClick={() => setSelectedStationId(station.id)}
                   className={`group relative text-center p-3 rounded-xl border transition-all duration-300 flex flex-col items-center justify-between min-h-[110px] ${
                     isSelected
-                      ? 'bg-train-burgundy border-train-champagne shadow-brass scale-105'
-                      : 'bg-train-secondary/80 border-train-gold/30 hover:border-train-gold/60 hover:bg-train-secondary'
+                      ? 'bg-[#781818] border-train-champagne shadow-brass scale-105'
+                      : 'bg-[#5d1212] border-train-gold/40 hover:border-train-gold hover:bg-[#6e1515]'
                   }`}
                 >
                   {/* Station Number Indicator */}
@@ -217,7 +217,7 @@ export default function Concert() {
               {/* Station Details Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm">
                 {/* Column 1: Performance Team & Members */}
-                <div className="space-y-4 p-4 rounded-lg bg-train-bg/50 border border-train-gold/20">
+                <div className="space-y-4 p-4 rounded-lg bg-[#450d0d] border border-train-gold/30">
                   <div className="flex items-center gap-2 text-train-champagne font-serif font-semibold">
                     <Users className="w-4 h-4 text-train-gold" />
                     <span>공연 팀 및 아티스트</span>
@@ -240,7 +240,7 @@ export default function Concert() {
                 </div>
 
                 {/* Column 2: Song Interpretation & Message */}
-                <div className="space-y-4 p-4 rounded-lg bg-train-bg/50 border border-train-gold/20">
+                <div className="space-y-4 p-4 rounded-lg bg-[#450d0d] border border-train-gold/30">
                   <div className="flex items-center gap-2 text-train-champagne font-serif font-semibold">
                     <Disc className="w-4 h-4 text-train-gold" />
                     <span>곡 해석 및 무대 메시지</span>
@@ -258,7 +258,7 @@ export default function Concert() {
                       {selectedStation.members.map((mem, idx) => (
                         <span
                           key={idx}
-                          className="px-2.5 py-1 rounded border border-train-gold/30 bg-train-secondary text-[11px] text-train-ivory/90"
+                          className="px-2.5 py-1 rounded border border-train-gold/30 bg-[#5d1212] text-[11px] text-train-ivory/90"
                         >
                           {mem}
                         </span>
@@ -296,8 +296,8 @@ export default function Concert() {
                 onClick={() => setActiveCastTab(group.id)}
                 className={`px-4 sm:px-6 py-2.5 rounded-lg border font-serif text-xs sm:text-sm tracking-wider uppercase transition-all duration-200 ${
                   isActive
-                    ? 'border-train-gold bg-train-burgundy text-train-champagne shadow-brass font-bold'
-                    : 'border-train-gold/30 bg-train-secondary/60 text-train-ivory/70 hover:border-train-gold/60 hover:text-train-champagne'
+                    ? 'border-train-gold bg-[#781818] text-train-champagne shadow-brass font-bold'
+                    : 'border-train-gold/40 bg-[#5d1212] text-train-ivory/80 hover:border-train-gold hover:text-train-champagne'
                 }`}
               >
                 <span>{group.label}</span>
@@ -330,7 +330,7 @@ export default function Concert() {
           {currentCastGroup.members.map((member) => (
             <div
               key={member.id}
-              className="relative p-5 rounded-xl border border-train-gold/40 bg-gradient-to-b from-train-secondary via-[#1f100e] to-train-bg shadow-md hover:border-train-gold transition-all duration-300 group flex flex-col justify-between"
+              className="relative p-5 rounded-xl border border-train-gold/40 bg-[#5d1212] shadow-md hover:border-train-gold transition-all duration-300 group flex flex-col justify-between"
             >
               {/* Header: Cohort badge & Role */}
               <div>

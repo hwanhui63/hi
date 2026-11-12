@@ -118,7 +118,7 @@ export default function Info() {
         </div>
 
         {/* Dynamic Personal Boarding Pass Generator */}
-        <div className="mt-12 max-w-2xl mx-auto p-6 rounded-2xl border border-train-gold/40 bg-gradient-to-b from-train-secondary via-[#1f100e] to-train-bg shadow-md">
+        <div className="mt-12 max-w-2xl mx-auto p-6 rounded-2xl border border-train-gold/40 bg-[#5d1212] shadow-md">
           <div className="flex items-center gap-2 pb-3 border-b border-train-gold/20 mb-4">
             <Ticket className="w-4 h-4 text-train-gold" />
             <h3 className="font-serif text-sm text-train-champagne font-bold tracking-wider uppercase">
@@ -133,7 +133,7 @@ export default function Info() {
               value={passengerName}
               onChange={(e) => setPassengerName(e.target.value)}
               placeholder="승객 성함을 입력하세요 (예: 김한동)"
-              className="flex-1 px-3 py-2 rounded-lg border border-train-gold/40 bg-train-bg text-xs sm:text-sm text-train-ivory placeholder:text-train-ivory/40 focus:outline-none focus:border-train-gold"
+              className="flex-1 px-3 py-2 rounded-lg border border-train-gold/40 bg-black text-xs sm:text-sm text-train-ivory placeholder:text-train-ivory/40 focus:outline-none focus:border-train-gold"
             />
             <div className="flex gap-2">
               {concertData.dates.map((d) => (
@@ -142,8 +142,8 @@ export default function Info() {
                   onClick={() => setSelectedDay(d.id)}
                   className={`px-3 py-2 rounded-lg border text-xs font-serif transition-colors ${
                     selectedDay === d.id
-                      ? 'border-train-gold bg-train-burgundy text-train-champagne font-bold shadow'
-                      : 'border-train-gold/30 bg-train-bg/60 text-train-ivory/70 hover:border-train-gold/60'
+                      ? 'border-train-gold bg-[#781818] text-train-champagne font-bold shadow'
+                      : 'border-train-gold/30 bg-black/60 text-train-ivory/70 hover:border-train-gold/60'
                   }`}
                 >
                   {d.day.split(' ')[0]}
@@ -153,7 +153,7 @@ export default function Info() {
           </div>
 
           {/* Generated Pass Preview */}
-          <div className="p-4 sm:p-5 rounded-xl border border-train-gold/50 bg-gradient-to-r from-[#2c1512] via-[#200f0d] to-[#160a08] shadow-inner relative overflow-hidden">
+          <div className="p-4 sm:p-5 rounded-xl border border-train-gold/50 bg-[#450d0d] shadow-inner relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 pb-3 border-b border-dashed border-train-gold/30 text-xs">
               <div>
                 <span className="block text-[10px] font-serif text-train-gold/70">PASSENGER NAME</span>
@@ -239,7 +239,7 @@ export default function Info() {
           titleEn="Arrival Station"
         />
 
-        <div className="mt-10 p-6 sm:p-8 rounded-2xl border border-train-gold/50 bg-train-secondary/80 shadow-brass">
+        <div className="mt-10 p-6 sm:p-8 rounded-2xl border border-train-gold/50 bg-[#5d1212] shadow-brass">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
             {/* Address Details */}
             <div className="md:col-span-7 space-y-4">
@@ -250,13 +250,13 @@ export default function Info() {
                 </h3>
               </div>
 
-              <div className="p-3.5 rounded-lg bg-train-bg border border-train-gold/30 flex items-center justify-between gap-3 text-xs sm:text-sm">
+              <div className="p-3.5 rounded-lg bg-[#450d0d] border border-train-gold/30 flex items-center justify-between gap-3 text-xs sm:text-sm">
                 <span className="text-train-ivory/90 font-mono">
                   {concertData.venue.address}
                 </span>
                 <button
                   onClick={handleCopyAddress}
-                  className="flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-train-gold/50 bg-train-burgundy/80 text-train-champagne text-xs font-serif hover:shadow transition-all"
+                  className="flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-train-gold/50 bg-[#5d1212] hover:bg-[#781818] text-train-champagne text-xs font-serif hover:shadow transition-all"
                   title="주소 복사"
                 >
                   {copiedAddress ? (
@@ -282,7 +282,7 @@ export default function Info() {
                   href={concertData.venue.mapUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-train-gold/60 bg-train-bg text-train-champagne text-xs font-serif hover:border-train-gold transition-colors"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-train-gold/60 bg-black text-train-champagne text-xs font-serif hover:border-train-gold transition-colors"
                 >
                   <span>네이버 지도 바로가기</span>
                   <ExternalLink className="w-3 h-3 text-train-gold/60" />
@@ -292,7 +292,7 @@ export default function Info() {
                   href={concertData.venue.kakaoMapUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-train-gold/60 bg-train-bg text-train-champagne text-xs font-serif hover:border-train-gold transition-colors"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-train-gold/60 bg-black text-train-champagne text-xs font-serif hover:border-train-gold transition-colors"
                 >
                   <span>카카오맵 바로가기</span>
                   <ExternalLink className="w-3 h-3 text-train-gold/60" />
@@ -301,7 +301,7 @@ export default function Info() {
             </div>
 
             {/* QR Code & Inquiries Box */}
-            <div className="md:col-span-5 flex flex-col items-center justify-center p-6 rounded-xl bg-train-bg border border-train-gold/40 text-center space-y-3">
+            <div className="md:col-span-5 flex flex-col items-center justify-center p-6 rounded-xl bg-[#450d0d] border border-train-gold/40 text-center space-y-3">
               <span className="font-serif text-[11px] tracking-widest text-train-gold uppercase">
                 OFFICIAL QR CODE
               </span>
@@ -319,7 +319,7 @@ export default function Info() {
                 href={concertData.contact.bookingUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded bg-train-burgundy border border-train-gold text-train-champagne text-xs font-serif tracking-wider shadow-brass hover:shadow-brass-lg transition-all"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded bg-[#5d1212] hover:bg-[#781818] border border-train-gold text-train-champagne text-xs font-serif tracking-wider shadow-brass hover:shadow-brass-lg transition-all"
               >
                 <span>카카오 오픈채팅 입장하기</span>
                 <ExternalLink className="w-3 h-3" />
@@ -343,7 +343,7 @@ export default function Info() {
           {concertData.guidelines.map((rule, idx) => (
             <div
               key={idx}
-              className="p-5 rounded-xl border border-train-gold/30 bg-train-secondary/60 space-y-2 hover:border-train-gold/60 transition-colors"
+              className="p-5 rounded-xl border border-train-gold/40 bg-[#5d1212] space-y-2 hover:border-train-gold transition-colors shadow-sm"
             >
               <div className="flex items-center gap-2">
                 <span className="font-serif text-xs font-bold text-train-gold">

@@ -88,7 +88,7 @@ export default function Reviews() {
       </div>
 
       {/* Test Mode / Preview Notice Pill */}
-      <div className="flex items-center justify-between p-3.5 rounded-xl border border-train-gold/30 bg-train-secondary/60 mb-10 text-xs">
+      <div className="flex items-center justify-between p-3.5 rounded-xl border border-train-gold/40 bg-[#5d1212] mb-10 text-xs">
         <div className="flex items-center gap-2 text-train-ivory/80">
           <Clock className="w-4 h-4 text-train-gold" />
           <span>
@@ -124,7 +124,7 @@ export default function Reviews() {
       {/* ========================================================================= */}
       {!isConcertFinished ? (
         /* Pre-Concert State */
-        <div className="mb-20 p-8 sm:p-12 rounded-2xl border-2 border-train-gold/50 bg-gradient-to-b from-train-secondary via-[#241310] to-train-bg shadow-brass text-center space-y-4">
+        <div className="mb-20 p-8 sm:p-12 rounded-2xl border-2 border-train-gold/50 bg-[#5d1212] shadow-brass text-center space-y-4">
           <div className="w-16 h-16 mx-auto rounded-full border border-train-gold/60 bg-train-burgundy/60 flex items-center justify-center shadow-brass">
             <BookOpen className="w-8 h-8 text-train-champagne" />
           </div>
@@ -268,14 +268,14 @@ export default function Reviews() {
 
         <div className="mt-10 space-y-5">
           {reviews.length === 0 ? (
-            <div className="p-8 text-center text-xs text-train-ivory/60 font-korean rounded-xl border border-train-gold/20 bg-train-secondary/40">
+            <div className="p-8 text-center text-xs text-train-ivory/60 font-korean rounded-xl border border-train-gold/20 bg-[#5d1212]/50">
               아직 작성된 여행일지가 없습니다. 첫 번째 추억을 남겨주세요.
             </div>
           ) : (
             reviews.map((rev) => (
               <div
                 key={rev.id}
-                className="p-6 rounded-2xl border border-train-gold/30 bg-gradient-to-b from-train-secondary/90 via-[#21110f] to-train-bg shadow-md hover:border-train-gold/60 transition-colors space-y-3"
+                className="p-6 rounded-2xl border border-train-gold/40 bg-[#5d1212] shadow-md hover:border-train-gold transition-colors space-y-3"
               >
                 {/* Header: Nickname, Rating, Date */}
                 <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-train-gold/20">

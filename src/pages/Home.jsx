@@ -35,7 +35,7 @@ export default function Home() {
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: 'easeOut' }}
-          className="relative z-20 w-full max-w-4xl mx-auto rounded-3xl p-3 sm:p-5 md:p-6 bg-gradient-to-b from-[#2e1914] via-[#1c0f0d] to-[#140b0a] border-2 border-train-gold/70 shadow-brass-lg"
+          className="relative z-20 w-full max-w-4xl mx-auto rounded-3xl p-3 sm:p-5 md:p-6 bg-[#5d1212] border-2 border-train-gold/70 shadow-brass-lg"
         >
           {/* Brass Rivets on Outer Frame */}
           <div className="absolute top-3 left-4 w-2 h-2 rounded-full bg-train-champagne shadow" />
@@ -108,7 +108,7 @@ export default function Home() {
               className="relative z-10 w-full max-w-lg text-center space-y-4"
             >
               {/* Departure Info Plaque */}
-              <div className="px-4 py-2.5 rounded-lg border border-train-gold/30 bg-train-bg/85 backdrop-blur-md shadow-sm">
+              <div className="px-4 py-2.5 rounded-lg border border-train-gold/40 bg-[#5d1212] shadow-sm">
                 <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs sm:text-sm text-train-ivory/90">
                   <span className="flex items-center gap-1.5 font-serif text-train-champagne font-semibold">
                     <Calendar className="w-3.5 h-3.5 text-train-gold" />
@@ -129,7 +129,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                 <Link
                   to="/concert"
-                  className="group relative inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-3.5 rounded-md border border-train-champagne bg-gradient-to-r from-[#591C14] via-[#7B2418] to-[#40120B] text-train-champagne font-serif text-sm tracking-[0.2em] uppercase font-bold shadow-brass hover:shadow-brass-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                  className="group relative inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-3.5 rounded-md border border-train-champagne bg-[#5d1212] hover:bg-[#781818] text-train-champagne font-serif text-sm tracking-[0.2em] uppercase font-bold shadow-brass hover:shadow-brass-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <Sparkles className="w-4 h-4 text-train-champagne group-hover:rotate-45 transition-transform" />
                   <span>BOARD THE TRAIN</span>
@@ -138,7 +138,7 @@ export default function Home() {
 
                 <Link
                   to="/info"
-                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 rounded-md border border-train-gold/50 bg-train-bg/80 text-train-ivory/90 font-serif text-xs tracking-wider uppercase hover:text-train-champagne hover:border-train-gold transition-colors"
+                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 rounded-md border border-train-gold/50 bg-[#5d1212]/80 hover:bg-[#5d1212] text-train-ivory/90 font-serif text-xs tracking-wider uppercase hover:text-train-champagne hover:border-train-gold transition-colors"
                 >
                   승차권 확인
                 </Link>
@@ -206,7 +206,7 @@ export default function Home() {
 
           {/* Right: Key Stats / Vintage Badge */}
           <div className="md:col-span-5 space-y-4">
-            <div className="p-6 rounded-lg border border-train-gold/40 bg-gradient-to-b from-train-secondary to-train-darkwood shadow-md space-y-4 text-center">
+            <div className="p-6 rounded-lg border border-train-gold/40 bg-[#5d1212] shadow-md space-y-4 text-center">
               <div className="w-20 h-20 mx-auto rounded-full border-2 border-train-gold bg-black flex items-center justify-center shadow-brass overflow-hidden p-1">
                 <img
                   src="/assets/liquid-logo-circle.png"
@@ -222,11 +222,11 @@ export default function Home() {
               </p>
 
               <div className="grid grid-cols-2 gap-3 pt-2 text-left">
-                <div className="p-3 rounded bg-train-bg/60 border border-train-gold/20">
+                <div className="p-3 rounded bg-[#450d0d] border border-train-gold/30">
                   <span className="block text-[10px] font-serif text-train-gold/70">DEPARTURE</span>
                   <span className="font-serif text-xs text-train-champagne font-semibold">2026. 12. 04</span>
                 </div>
-                <div className="p-3 rounded bg-train-bg/60 border border-train-gold/20">
+                <div className="p-3 rounded bg-[#450d0d] border border-train-gold/30">
                   <span className="block text-[10px] font-serif text-train-gold/70">TERMINUS</span>
                   <span className="font-serif text-xs text-train-champagne font-semibold">SU 104</span>
                 </div>
@@ -239,7 +239,7 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 3. CONCERT PREVIEW: Official Poster & Invitation                          */}
       {/* ========================================================================= */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-train-secondary/60 border-t border-b border-train-gold/30">
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-black border-t border-b border-train-gold/30">
         <div className="max-w-5xl mx-auto">
           <ScriptHeading
             subtitle="OFFICIAL CONCERT POSTER"
@@ -250,8 +250,8 @@ export default function Home() {
           <div className="mt-12 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
             {/* Poster Card */}
             <div className="md:col-span-5 flex justify-center">
-              <div className="relative group max-w-sm w-full rounded-xl p-2 bg-gradient-to-b from-[#4A261F] via-[#2A1410] to-[#140B0A] border border-train-gold/60 shadow-brass-lg">
-                <div className="relative rounded-lg overflow-hidden bg-train-bg aspect-[1414/2000]">
+              <div className="relative group max-w-sm w-full rounded-xl p-2 bg-[#5d1212] border border-train-gold/60 shadow-brass-lg">
+                <div className="relative rounded-lg overflow-hidden bg-black aspect-[1414/2000]">
                   <img
                     src={concertData.assets.poster}
                     alt="Train 1225 Official Concert Poster"
@@ -260,7 +260,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
                     <button
                       onClick={() => setIsPosterModalOpen(true)}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-train-bg/90 border border-train-gold text-train-champagne text-xs font-serif tracking-wider shadow"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-black/90 border border-train-gold text-train-champagne text-xs font-serif tracking-wider shadow"
                     >
                       <Maximize2 className="w-3.5 h-3.5" />
                       <span>포스터 크게 보기</span>
@@ -287,7 +287,7 @@ export default function Home() {
 
               {/* Poster Highlight Points */}
               <div className="space-y-3 pt-2">
-                <div className="flex items-start gap-3 p-3 rounded bg-train-bg/60 border border-train-gold/30">
+                <div className="flex items-start gap-3 p-3 rounded bg-[#5d1212] border border-train-gold/40">
                   <Sparkles className="w-4 h-4 text-train-gold flex-shrink-0 mt-0.5" />
                   <div>
                     <h5 className="font-serif text-xs text-train-champagne font-semibold tracking-wide">
@@ -299,7 +299,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 p-3 rounded bg-train-bg/60 border border-train-gold/30">
+                <div className="flex items-start gap-3 p-3 rounded bg-[#5d1212] border border-train-gold/40">
                   <Clock className="w-4 h-4 text-train-gold flex-shrink-0 mt-0.5" />
                   <div>
                     <h5 className="font-serif text-xs text-train-champagne font-semibold tracking-wide">
@@ -315,7 +315,7 @@ export default function Home() {
               <div className="pt-2 flex flex-wrap items-center gap-4">
                 <Link
                   to="/concert"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded border border-train-gold bg-gradient-to-r from-train-burgundy to-[#2d1410] text-train-champagne font-serif text-xs tracking-widest uppercase font-semibold hover:shadow-brass transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded border border-train-gold bg-[#5d1212] hover:bg-[#781818] text-train-champagne font-serif text-xs tracking-widest uppercase font-semibold hover:shadow-brass transition-all"
                 >
                   <span>노선도 및 곡 정보 보기</span>
                   <ArrowRight className="w-3.5 h-3.5" />

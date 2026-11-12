@@ -144,11 +144,11 @@ export default function Guestbook() {
       </div>
 
       {/* Control Bar: Hang Button, View Mode Toggle, Storage Status */}
-      <div className="flex flex-wrap items-center justify-between gap-4 mb-8 p-4 rounded-xl border border-train-gold/40 bg-train-secondary/80 backdrop-blur-md shadow-sm">
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-8 p-4 rounded-xl border border-train-gold/40 bg-[#5d1212] backdrop-blur-md shadow-sm">
         {/* Left: Hang Button */}
         <button
           onClick={handleOpenModal}
-          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border border-train-champagne bg-gradient-to-r from-train-burgundy via-[#682017] to-train-burgundy text-train-champagne font-serif text-xs sm:text-sm tracking-wider uppercase font-bold shadow-brass hover:shadow-brass-lg hover:scale-[1.02] active:scale-[0.98] transition-all"
+          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border border-train-champagne bg-[#781818] hover:bg-[#8e1c1c] text-train-champagne font-serif text-xs sm:text-sm tracking-wider uppercase font-bold shadow-brass hover:shadow-brass-lg hover:scale-[1.02] active:scale-[0.98] transition-all"
         >
           <PlusCircle className="w-4 h-4 text-train-champagne" />
           <span>오너먼트 달기 (HANG A WISH)</span>
@@ -206,7 +206,7 @@ export default function Guestbook() {
       {/* VIEW 1: Interactive Tree View through the Window                          */}
       {/* ========================================================================= */}
       {viewMode === 'tree' ? (
-        <div className="relative rounded-3xl p-3 sm:p-6 bg-gradient-to-b from-[#2a1612] via-[#1a0e0c] to-[#120807] border-2 border-train-gold/70 shadow-brass-lg overflow-hidden">
+        <div className="relative rounded-3xl p-3 sm:p-6 bg-[#5d1212] border-2 border-train-gold/70 shadow-brass-lg overflow-hidden">
           {/* Rivets */}
           <div className="absolute top-3 left-4 w-2 h-2 rounded-full bg-train-champagne" />
           <div className="absolute top-3 right-4 w-2 h-2 rounded-full bg-train-champagne" />
@@ -320,7 +320,7 @@ export default function Guestbook() {
             <div
               key={wish.id}
               onClick={() => setSelectedWish(wish)}
-              className="p-5 rounded-xl border border-train-gold/30 bg-train-secondary/80 hover:border-train-gold cursor-pointer transition-all hover:-translate-y-1 shadow-md space-y-3"
+              className="p-5 rounded-xl border border-train-gold/40 bg-[#5d1212] hover:border-train-gold cursor-pointer transition-all hover:-translate-y-1 shadow-md space-y-3"
             >
               <div className="flex items-center justify-between pb-2 border-b border-train-gold/20">
                 <div className="flex items-center gap-2">
@@ -357,7 +357,7 @@ export default function Guestbook() {
               initial={{ scale: 0.95, y: 15 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.95, y: 15 }}
-              className="relative max-w-lg w-full rounded-2xl bg-gradient-to-b from-train-secondary to-train-darkwood border-2 border-train-gold/70 p-6 sm:p-8 shadow-brass-lg text-train-ivory"
+              className="relative max-w-lg w-full rounded-2xl bg-[#5d1212] border-2 border-train-gold/70 p-6 sm:p-8 shadow-brass-lg text-train-ivory"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -499,7 +499,7 @@ export default function Guestbook() {
               initial={{ scale: 0.9, y: 15 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 15 }}
-              className="relative max-w-md w-full rounded-2xl bg-gradient-to-b from-[#2a1410] to-[#180907] border-2 border-train-gold/80 p-6 sm:p-8 shadow-brass-lg text-center"
+              className="relative max-w-md w-full rounded-2xl bg-[#5d1212] border-2 border-train-gold/80 p-6 sm:p-8 shadow-brass-lg text-center"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -522,7 +522,7 @@ export default function Guestbook() {
                 {selectedWish.nickname}
               </h4>
 
-              <div className="my-6 p-5 rounded-xl border border-train-gold/30 bg-train-bg/70 shadow-inner">
+              <div className="my-6 p-5 rounded-xl border border-train-gold/30 bg-[#450d0d] shadow-inner">
                 <p className="font-korean text-sm sm:text-base text-train-ivory leading-relaxed">
                   "{selectedWish.message}"
                 </p>
