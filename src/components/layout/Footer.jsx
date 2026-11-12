@@ -44,8 +44,8 @@ export default function Footer() {
             <h3 className="font-serif text-xs text-train-champagne tracking-[0.2em] uppercase font-bold">
               CONTACT
             </h3>
-            <div className="space-y-1.5 text-xs">
-              <div className="flex items-center gap-2 text-train-ivory/80">
+            <div className="space-y-2 text-xs font-korean text-train-ivory/85">
+              <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-train-gold flex-shrink-0" />
                 <span>전영효 (010-4537-2654)</span>
               </div>
@@ -55,7 +55,7 @@ export default function Footer() {
                   href={concertData.contact.instagramUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-train-champagne underline underline-offset-4 decoration-train-gold/40 text-train-ivory/80"
+                  className="hover:text-train-champagne underline underline-offset-4 decoration-train-gold/40"
                 >
                   {concertData.contact.instagram}
                 </a>
@@ -66,7 +66,7 @@ export default function Footer() {
                   href={concertData.contact.bookingUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-train-champagne underline underline-offset-4 decoration-train-gold/40 text-train-ivory/80 font-korean"
+                  className="hover:text-train-champagne underline underline-offset-4 decoration-train-gold/40"
                 >
                   카카오 오픈채팅 예매 / 문의
                 </a>
