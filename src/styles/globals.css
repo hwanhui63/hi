@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #140B0A;
+  --color-secondary: #241411;
+  --color-burgundy: #41201B;
+  --color-gold: #B88B4A;
+  --color-champagne: #EBD39A;
+  --color-midnight: #111A28;
+  --color-ivory: #F5E8D0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #140B0A;
+}
+::-webkit-scrollbar-thumb {
+  background: #41201B;
+  border: 1px solid #B88B4A;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B88B4A;
+}
+
+/* Vintage Grain Overlay */
+.vintage-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* Brass Metallic Borders */
+.brass-border {
+  border: 1px solid #B88B4A;
+  box-shadow: 0 0 10px rgba(184, 139, 74, 0.25), inset 0 0 8px rgba(184, 139, 74, 0.15);
+}
+
+.brass-border-double {
+  border: 3px double #B88B4A;
+  box-shadow: 0 0 15px rgba(184, 139, 74, 0.3), inset 0 0 10px rgba(184, 139, 74, 0.2);
+}
+
+.brass-gradient-text {
+  background: linear-gradient(135deg, #F3E5AB 0%, #B88B4A 50%, #8D672E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brass-gradient-bg {
+  background: linear-gradient(135deg, #B88B4A 0%, #D4AF37 50%, #8D672E 100%);
+}
+
+.wood-panel {
+  background: linear-gradient(180deg, #1f110f 0%, #170d0c 50%, #120908 100%);
+  border: 1px solid rgba(184, 139, 74, 0.3);
+}
+
+/* Ticket Cutout Notch */
+.ticket-notch-left {
+  position: relative;
+}
+.ticket-notch-left::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-color: #140B0A;
+  border-radius: 50%;
+  border-right: 1px solid #B88B4A;
+}
+
+/* Corner Ornaments */
+.vintage-corner {
+  position: relative;
+}
+.vintage-corner::before,
+.vintage-corner::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: #B88B4A;
+  pointer-events: none;
+}
+.vintage-corner::before {
+  top: 4px;
+  left: 4px;
+  border-top: 1px solid #B88B4A;
+  border-left: 1px solid #B88B4A;
+}
+.vintage-corner::after {
+  bottom: 4px;
+  right: 4px;
+  border-bottom: 1px solid #B88B4A;
+  border-right: 1px solid #B88B4A;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
