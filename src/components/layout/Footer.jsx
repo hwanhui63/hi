@@ -1,6 +1,6 @@
 import React from 'react';
 import { concertData } from '../../data/concert';
-import { Instagram, Phone } from 'lucide-react';
+import { Instagram, Phone, MessageCircle } from 'lucide-react';
 import { VintageDivider } from '../common/BrassBorder';
 
 export default function Footer() {
@@ -26,17 +26,19 @@ export default function Footer() {
             <h3 className="font-serif text-xs text-train-champagne tracking-[0.2em] uppercase font-bold">
               BOARDING INFORMATION
             </h3>
-            <ul className="space-y-1 text-xs text-train-ivory/80 font-serif">
-              <li>
-                <span className="text-train-gold font-semibold">Day 1:</span> 2026. 12. 04 (FRI) 20:30
-              </li>
-              <li>
-                <span className="text-train-gold font-semibold">Day 2:</span> 2026. 12. 05 (SAT) 14:00
-              </li>
-              <li className="pl-12 sm:pl-12">
-                2026. 12. 05 (SAT) 16:00
-              </li>
-            </ul>
+            <div className="space-y-1.5 text-xs text-train-ivory/80 font-serif">
+              <div className="flex items-start gap-2">
+                <span className="text-train-gold font-semibold w-12 flex-shrink-0">Day 1:</span>
+                <span>2026. 12. 04 (FRI) 20:30</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-train-gold font-semibold w-12 flex-shrink-0">Day 2:</span>
+                <div className="space-y-1">
+                  <div>2026. 12. 05 (SAT) 14:00</div>
+                  <div>2026. 12. 05 (SAT) 16:00</div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Column 3: Contact */}
@@ -46,11 +48,11 @@ export default function Footer() {
             </h3>
             <div className="space-y-1.5 text-xs">
               <div className="flex items-center gap-2 text-train-ivory/80">
-                <Phone className="w-3.5 h-3.5 text-train-gold" />
+                <Phone className="w-3.5 h-3.5 text-train-gold flex-shrink-0" />
                 <span>전영효 (010-4537-2654)</span>
               </div>
               <div className="flex items-center gap-2">
-                <Instagram className="w-3.5 h-3.5 text-train-gold" />
+                <Instagram className="w-3.5 h-3.5 text-train-gold flex-shrink-0" />
                 <a
                   href={concertData.contact.instagramUrl}
                   target="_blank"
@@ -60,12 +62,13 @@ export default function Footer() {
                   {concertData.contact.instagram}
                 </a>
               </div>
-              <div className="pt-1">
+              <div className="flex items-center gap-2">
+                <MessageCircle className="w-3.5 h-3.5 text-train-gold flex-shrink-0" />
                 <a
                   href={concertData.contact.bookingUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-train-gold/60 bg-[#5d1212] hover:bg-[#781818] text-train-champagne text-[11px] font-serif tracking-wider hover:shadow-brass transition-all"
+                  className="hover:text-train-champagne underline underline-offset-4 decoration-train-gold/40 text-train-ivory/80 font-korean"
                 >
                   카카오 오픈채팅 예매 / 문의
                 </a>
