@@ -12,6 +12,7 @@ import {
   Music,
   Maximize2,
   X,
+  Heart,
   Volume2,
 } from 'lucide-react';
 import { concertData } from '../data/concert';
@@ -22,217 +23,225 @@ export default function Home() {
   const [isPosterModalOpen, setIsPosterModalOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen bg-train-bg text-train-ivory overflow-hidden pt-16">
+    <div className="relative min-h-screen bg-black text-train-ivory overflow-hidden">
       {/* ========================================================================= */}
-      {/* 1. HERO SECTION: Welcome Aboard                                          */}
+      {/* 1. HERO SECTION: Fullscreen Passing Train Video                           */}
       {/* ========================================================================= */}
-      <section className="relative min-h-[92vh] flex items-center justify-center px-4 sm:px-6 py-12 overflow-hidden">
-        {/* Train Carriage Interior Styling (Wood Vignette + Sconces) */}
-        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-[#140b0a]/70 to-[#0c0606] z-10" />
+      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 py-24 sm:py-28 overflow-hidden">
+        {/* Fullscreen Background Video (빨간 네모 없이 지나가는 영상 풀 화면) */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover scale-105 filter brightness-75 contrast-115"
+          >
+            <source src={concertData.assets.journeyVideo} type="video/mp4" />
+          </video>
+          {/* Cinematic Vignette & Atmospheric Gradients */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/35 to-black/90 pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_30%,_rgba(0,0,0,0.85)_100%)] pointer-events-none" />
+          {/* Subtle Warm Center Glow */}
+          <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-amber-500/15 blur-3xl pointer-events-none" />
+        </div>
 
-        {/* Train Window Frame Container */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: 'easeOut' }}
-          className="relative z-20 w-full max-w-4xl mx-auto rounded-3xl p-3 sm:p-5 md:p-6 bg-[#5d1212] border-2 border-train-gold/70 shadow-brass-lg"
-        >
-          {/* Brass Rivets on Outer Frame */}
-          <div className="absolute top-3 left-4 w-2 h-2 rounded-full bg-train-champagne shadow" />
-          <div className="absolute top-3 right-4 w-2 h-2 rounded-full bg-train-champagne shadow" />
-          <div className="absolute bottom-3 left-4 w-2 h-2 rounded-full bg-train-champagne shadow" />
-          <div className="absolute bottom-3 right-4 w-2 h-2 rounded-full bg-train-champagne shadow" />
-          <div className="absolute top-1/2 left-2 -translate-y-1/2 w-2 h-2 rounded-full bg-train-champagne shadow" />
-          <div className="absolute top-1/2 right-2 -translate-y-1/2 w-2 h-2 rounded-full bg-train-champagne shadow" />
+        {/* Central Content (Floating seamlessly over the fullscreen passing train) */}
+        <div className="relative z-20 w-full max-w-4xl mx-auto flex flex-col items-center justify-center text-center space-y-6 sm:space-y-7">
+          {/* Top Pill: "26-2 Liquid Concert" */}
+          <motion.div
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-train-gold/60 bg-black/80 backdrop-blur-md shadow-sm"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-train-gold animate-pulse" />
+            <span className="font-serif text-xs sm:text-sm tracking-[0.25em] uppercase text-train-champagne font-semibold">
+              26-2 Liquid Concert
+            </span>
+            <Sparkles className="w-3.5 h-3.5 text-train-gold animate-pulse" />
+          </motion.div>
 
-          {/* Window Glass Pane Interior */}
-          <div className="relative rounded-2xl overflow-hidden min-h-[520px] sm:min-h-[580px] md:min-h-[620px] flex flex-col items-center justify-between p-6 sm:p-10 border border-train-gold/40 shadow-window-inner">
-            {/* Background: Video / Atmospheric Night Canvas */}
-            <div className="absolute inset-0 z-0 overflow-hidden">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover opacity-60 scale-105 filter brightness-90 contrast-110"
-              >
-                <source src={concertData.assets.journeyVideo} type="video/mp4" />
-              </video>
-              {/* Cold Dark Night Overlay with Warm Center Tree Glow */}
-              <div className="absolute inset-0 bg-gradient-to-b from-[#0d1624]/60 via-[#180d0c]/40 to-[#140b0a]/90" />
-              <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-72 h-72 rounded-full bg-amber-500/15 blur-3xl pointer-events-none" />
-            </div>
+          {/* Main Title: "Train 1225" (1225 폰트로 통일) & Subtitle */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 1 }}
+            className="space-y-3 sm:space-y-4"
+          >
+            <h1 className="font-script text-7xl sm:text-9xl md:text-[10.5rem] text-transparent bg-clip-text bg-gradient-to-b from-[#FFF5D6] via-[#EBD39A] to-[#B88B4A] drop-shadow-[0_12px_28px_rgba(0,0,0,0.95)] leading-tight select-none px-2">
+              Train 1225
+            </h1>
+            <p className="font-korean text-base sm:text-xl md:text-2xl text-train-ivory drop-shadow-md font-medium tracking-wide">
+              다음 역은, 당신이 가장 사랑할 크리스마스
+            </p>
+          </motion.div>
 
-            {/* Top Bar of Window: "Liquid on Board" */}
-            <div className="relative z-10 text-center space-y-1">
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.8 }}
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-train-gold/50 bg-train-bg/80 backdrop-blur-sm"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-train-gold animate-pulse" />
-                <span className="font-serif text-[11px] sm:text-xs tracking-[0.3em] uppercase text-train-champagne font-semibold">
-                  {concertData.subtitle}
-                </span>
-                <Sparkles className="w-3.5 h-3.5 text-train-gold animate-pulse" />
-              </motion.div>
-              <p className="font-serif text-[10px] tracking-[0.2em] text-train-ivory/60 uppercase">
-                {concertData.season}
-              </p>
-            </div>
-
-            {/* Center: "Train 1225" Title & Theme */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 1 }}
-              className="relative z-10 text-center py-6 sm:py-8"
-            >
-              <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl font-bold tracking-wider text-train-ivory drop-shadow-md">
-                TRAIN
-              </h1>
-              <div className="font-script text-6xl sm:text-8xl md:text-9xl text-transparent bg-clip-text bg-gradient-to-b from-[#FFF2BF] via-[#EBD39A] to-[#B88B4A] drop-shadow-lg -mt-3 sm:-mt-6">
-                1225
-              </div>
-              <p className="font-korean text-sm sm:text-base text-train-ivory/90 mt-2 max-w-md mx-auto drop-shadow">
-                어둠을 가르고 빛으로 달리는 2026 겨울 야간열차
-              </p>
-            </motion.div>
-
-            {/* Bottom: Dates, Venue & CTA Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-              className="relative z-10 w-full max-w-lg text-center space-y-4"
-            >
-              {/* Departure Info Plaque */}
-              <div className="px-4 py-2.5 rounded-lg border border-train-gold/40 bg-[#5d1212] shadow-sm">
-                <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs sm:text-sm text-train-ivory/90">
-                  <span className="flex items-center gap-1.5 font-serif text-train-champagne font-semibold">
-                    <Calendar className="w-3.5 h-3.5 text-train-gold" />
-                    12/04 (FRI) 20:30
-                  </span>
-                  <span className="text-train-gold/40">|</span>
-                  <span className="flex items-center gap-1.5 font-serif text-train-champagne font-semibold">
-                    12/05 (SAT) 14:00, 16:00
-                  </span>
+          {/* Schedule Plaque: 14:00 and 16:00 separated as distinct schedules */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.65, duration: 0.8 }}
+            className="w-full max-w-2xl space-y-4 pt-1"
+          >
+            <div className="p-4 sm:p-5 rounded-2xl border border-train-gold/50 bg-[#5d1212]/90 backdrop-blur-md shadow-brass">
+              {/* Separate Time Slots */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs sm:text-sm">
+                <div className="flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg bg-black/60 border border-train-gold/40 text-train-champagne font-serif font-semibold shadow-sm">
+                  <Calendar className="w-3.5 h-3.5 text-train-gold flex-shrink-0" />
+                  <span>12/04 (FRI) 20:30</span>
                 </div>
-                <div className="flex items-center justify-center gap-1.5 mt-1 text-[11px] sm:text-xs text-train-ivory/70">
-                  <MapPin className="w-3 h-3 text-train-gold" />
-                  <span>한동대학교 학생회관(학관) 104호</span>
+                <div className="flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg bg-black/60 border border-train-gold/40 text-train-champagne font-serif font-semibold shadow-sm">
+                  <Calendar className="w-3.5 h-3.5 text-train-gold flex-shrink-0" />
+                  <span>12/05 (SAT) 14:00</span>
+                </div>
+                <div className="flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg bg-black/60 border border-train-gold/40 text-train-champagne font-serif font-semibold shadow-sm">
+                  <Calendar className="w-3.5 h-3.5 text-train-gold flex-shrink-0" />
+                  <span>12/05 (SAT) 16:00</span>
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                <Link
-                  to="/concert"
-                  className="group relative inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-3.5 rounded-md border border-train-champagne bg-[#5d1212] hover:bg-[#781818] text-train-champagne font-serif text-sm tracking-[0.2em] uppercase font-bold shadow-brass hover:shadow-brass-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
-                >
-                  <Sparkles className="w-4 h-4 text-train-champagne group-hover:rotate-45 transition-transform" />
-                  <span>BOARD THE TRAIN</span>
-                  <ArrowRight className="w-4 h-4 text-train-champagne group-hover:translate-x-1 transition-transform" />
-                </Link>
-
-                <Link
-                  to="/info"
-                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 rounded-md border border-train-gold/50 bg-[#5d1212]/80 hover:bg-[#5d1212] text-train-ivory/90 font-serif text-xs tracking-wider uppercase hover:text-train-champagne hover:border-train-gold transition-colors"
-                >
-                  승차권 확인
-                </Link>
+              {/* Venue */}
+              <div className="flex items-center justify-center gap-1.5 mt-3 pt-2.5 border-t border-train-gold/25 text-xs sm:text-sm text-train-ivory/85">
+                <MapPin className="w-3.5 h-3.5 text-train-gold flex-shrink-0" />
+                <span>한동대학교 학생회관(학관) 104호 (SU 104)</span>
               </div>
-            </motion.div>
-          </div>
-        </motion.div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-1">
+              <Link
+                to="/concert"
+                className="group relative inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-3.5 rounded-md border border-train-champagne bg-[#5d1212] hover:bg-[#781818] text-train-champagne font-serif text-sm tracking-[0.2em] uppercase font-bold shadow-brass hover:shadow-brass-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <Sparkles className="w-4 h-4 text-train-champagne group-hover:rotate-45 transition-transform" />
+                <span>BOARD THE TRAIN</span>
+                <ArrowRight className="w-4 h-4 text-train-champagne group-hover:translate-x-1 transition-transform" />
+              </Link>
+
+              <Link
+                to="/info"
+                className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 rounded-md border border-train-gold/60 bg-black/80 hover:bg-[#5d1212] text-train-ivory/90 font-serif text-xs tracking-wider uppercase hover:text-train-champagne hover:border-train-gold transition-colors backdrop-blur-sm"
+              >
+                승차권 확인
+              </Link>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. ABOUT LIQUID: The Band & The Vision                                    */}
+      {/* 2. ABOUT LIQUID: The Blood of Christ                                      */}
       {/* ========================================================================= */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
         <ScriptHeading
-          subtitle="ABOUT THE ORCHESTRA"
-          title="한동대학교 크리스천 공연 동아리 LIQUID"
-          titleEn="Liquid Fellowship on Board"
+          subtitle="The Blood of Christ"
+          title="LIQUID"
+          titleEn="Liquid on Board"
         />
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-          {/* Left: Vintage Plaque & Story */}
-          <div className="md:col-span-7 space-y-6">
-            <BrassBorder innerClassName="space-y-4">
-              <div className="flex items-center justify-between pb-3 border-b border-train-gold/30">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          {/* Left Card: 예수님의 보혈을 가슴에 품고 음악하는 동아리 */}
+          <BrassBorder innerClassName="space-y-4 h-full flex flex-col justify-between">
+            <div className="space-y-4">
+              <div className="pb-3 border-b border-train-gold/30">
                 <span className="font-serif text-xs tracking-widest text-train-gold uppercase">
-                  COMMUNITY RECORD
-                </span>
-                <span className="font-serif text-xs text-train-ivory/60">
-                  HANDONG GLOBAL UNIV.
+                  리퀴드 소개
                 </span>
               </div>
 
-              <h3 className="font-serif text-xl text-train-champagne font-bold">
-                "찬양과 삶으로 하나님을 노래하는 공동체"
+              <h3 className="font-serif text-lg sm:text-xl text-train-champagne font-bold leading-snug">
+                “예수님의 보혈을 가슴에 품고 음악하는 동아리”
               </h3>
 
-              {clubData.description.map((paragraph, idx) => (
-                <p key={idx} className="text-xs sm:text-sm text-train-ivory/80 leading-relaxed font-korean">
-                  {paragraph}
+              <div className="space-y-3 font-korean text-xs sm:text-sm text-train-ivory/85 leading-relaxed">
+                <p>
+                  Liquid는 한동대학교 창립 비전에 부합하는 한동 유일 크리스천 밴드로서 십자가에서 피 흘리신 예수님을 기억하며, 다양한 장르의 밴드 공연을 통한 하나님 나라의 확장을 목적으로 합니다.
                 </p>
-              ))}
-
-              <div className="pt-4 flex flex-wrap items-center gap-4">
-                <a
-                  href={clubData.instagramUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded border border-train-gold/50 bg-train-bg/60 text-train-champagne text-xs font-serif tracking-wider hover:shadow-brass transition-all"
-                >
-                  <Instagram className="w-4 h-4 text-train-gold" />
-                  <span>공식 인스타그램 ({clubData.instagram})</span>
-                  <ExternalLink className="w-3 h-3 text-train-gold/60" />
-                </a>
-
-                <Link
-                  to="/concert"
-                  className="inline-flex items-center gap-1.5 text-xs text-train-gold hover:text-train-champagne font-serif tracking-wider underline underline-offset-4"
-                >
-                  <span>탑승 단원 명부 보기</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </BrassBorder>
-          </div>
-
-          {/* Right: Key Stats / Vintage Badge */}
-          <div className="md:col-span-5 space-y-4">
-            <div className="p-6 rounded-lg border border-train-gold/40 bg-[#5d1212] shadow-md space-y-4 text-center">
-              <div className="w-20 h-20 mx-auto rounded-full border-2 border-train-gold bg-black flex items-center justify-center shadow-brass overflow-hidden p-1">
-                <img
-                  src="/assets/liquid-logo-circle.png"
-                  alt="LIQUID — The Blood of Christ"
-                  className="w-full h-full object-contain rounded-full"
-                />
-              </div>
-              <h4 className="font-serif text-lg text-train-ivory font-bold tracking-wider">
-                LIQUID EXPRESS
-              </h4>
-              <p className="text-xs text-train-ivory/70 leading-relaxed">
-                매 학기 자체공연과 캠퍼스 사역을 통해 하나님의 은혜를 노래합니다.
-              </p>
-
-              <div className="grid grid-cols-2 gap-3 pt-2 text-left">
-                <div className="p-3 rounded bg-[#450d0d] border border-train-gold/30">
-                  <span className="block text-[10px] font-serif text-train-gold/70">DEPARTURE</span>
-                  <span className="font-serif text-xs text-train-champagne font-semibold">2026. 12. 04</span>
-                </div>
-                <div className="p-3 rounded bg-[#450d0d] border border-train-gold/30">
-                  <span className="block text-[10px] font-serif text-train-gold/70">TERMINUS</span>
-                  <span className="font-serif text-xs text-train-champagne font-semibold">SU 104</span>
-                </div>
+                <p>
+                  정모의 시작을 예배로 드리고 있으며, 1학기는 길거리 공연, 2학기 자체공연, 그리고 매주 과제곡을 통해 연습하고 있습니다.
+                </p>
+                <p>
+                  국내 문화공연사역단체인 MNT에 속해 있어, 매주 정기예배와 셀 모임,기도회, 그리고 여름사역과 겨울 태국 선교에 참여하고 있습니다
+                </p>
               </div>
             </div>
-          </div>
+
+            <div className="pt-4 border-t border-train-gold/20 flex flex-wrap items-center gap-4">
+              <Link
+                to="/concert"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded border border-train-gold/60 bg-black/60 text-train-champagne text-xs font-serif tracking-wider hover:bg-[#781818] hover:border-train-champagne transition-all"
+              >
+                <span>Train 1225 승무원 명부</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+
+              <a
+                href={clubData.instagramUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 text-xs text-train-gold hover:text-train-champagne font-serif tracking-wider underline underline-offset-4"
+              >
+                <Instagram className="w-4 h-4 text-train-gold" />
+                <span>공식 인스타그램 ({clubData.instagram})</span>
+                <ExternalLink className="w-3 h-3 text-train-gold/60" />
+              </a>
+            </div>
+          </BrassBorder>
+
+          {/* Right Card: 시편 33:3 찬양과 사역 비전 (좌측 카드와 완벽히 통일된 BrassBorder 구조) */}
+          <BrassBorder innerClassName="space-y-4 h-full flex flex-col justify-between">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between pb-3 border-b border-train-gold/30">
+                <span className="font-serif text-xs tracking-widest text-train-gold uppercase">
+                  찬양과 고백
+                </span>
+                <span className="font-serif text-xs text-train-champagne/80 font-semibold">
+                  PSALM 33:3
+                </span>
+              </div>
+
+              {/* Official LIQUID Logo Centerpiece */}
+              <div className="flex items-center justify-center py-2">
+                <div className="w-20 h-20 rounded-full border-2 border-train-gold bg-black flex items-center justify-center shadow-brass overflow-hidden p-1">
+                  <img
+                    src="/assets/liquid-logo-circle.png"
+                    alt="LIQUID — The Blood of Christ"
+                    className="w-full h-full object-contain rounded-full"
+                  />
+                </div>
+              </div>
+
+              <h3 className="font-serif text-lg sm:text-xl text-train-champagne font-bold text-center leading-snug">
+                “새 노래로 그를 노래하며 즐거운 소리로 아름답게 연주할지어다”
+              </h3>
+
+              <p className="text-center font-serif text-xs text-train-gold/80 tracking-widest uppercase">
+                — 시편 33:3 —
+              </p>
+
+              <p className="font-korean text-xs sm:text-sm text-train-ivory/85 leading-relaxed text-center">
+                십자가의 보혈과 한결같은 그리스도의 은혜를 기억하며,
+                우리의 손과 목소리에 담긴 선율로 하나님 나라를 아름답게 선포합니다.
+              </p>
+            </div>
+
+            {/* Ministry Highlights Badges */}
+            <div className="pt-4 border-t border-train-gold/20 grid grid-cols-2 gap-2 text-center text-[11px] font-korean">
+              <div className="p-2.5 rounded bg-black/60 border border-train-gold/30 text-train-ivory/90">
+                한동 유일 크리스천 밴드
+              </div>
+              <div className="p-2.5 rounded bg-black/60 border border-train-gold/30 text-train-ivory/90">
+                MNT 문화공연사역 연합
+              </div>
+              <div className="p-2.5 rounded bg-black/60 border border-train-gold/30 text-train-ivory/90">
+                1학기 버스킹 · 2학기 자공
+              </div>
+              <div className="p-2.5 rounded bg-black/60 border border-train-gold/30 text-train-ivory/90">
+                여름 국내사역 & 겨울 태국선교
+              </div>
+            </div>
+          </BrassBorder>
         </div>
       </section>
 
