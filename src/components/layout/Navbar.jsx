@@ -107,10 +107,12 @@ export default function Navbar() {
             className="group flex items-center gap-3 focus:outline-none"
             aria-label="Liquid Train 1225 Home"
           >
-            <div className="w-10 h-10 rounded-full border border-train-gold bg-gradient-to-b from-[#3a1d18] to-[#1a0a09] flex items-center justify-center shadow-brass group-hover:scale-105 transition-transform">
-              <span className="font-serif font-black text-train-champagne text-sm tracking-tighter">
-                1225
-              </span>
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-train-gold bg-black flex items-center justify-center shadow-brass group-hover:scale-105 transition-transform overflow-hidden p-0.5">
+              <img
+                src="/assets/liquid-logo-circle.png"
+                alt="LIQUID — The Blood of Christ"
+                className="w-full h-full object-contain rounded-full"
+              />
             </div>
             <div className="text-left">
               <span className="block font-serif text-[10px] tracking-[0.3em] uppercase text-train-gold/80">

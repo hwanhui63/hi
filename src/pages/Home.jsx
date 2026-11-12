@@ -207,8 +207,12 @@ export default function Home() {
           {/* Right: Key Stats / Vintage Badge */}
           <div className="md:col-span-5 space-y-4">
             <div className="p-6 rounded-lg border border-train-gold/40 bg-gradient-to-b from-train-secondary to-train-darkwood shadow-md space-y-4 text-center">
-              <div className="w-16 h-16 mx-auto rounded-full border border-train-gold bg-train-burgundy/60 flex items-center justify-center shadow-brass">
-                <Music className="w-8 h-8 text-train-champagne" />
+              <div className="w-20 h-20 mx-auto rounded-full border-2 border-train-gold bg-black flex items-center justify-center shadow-brass overflow-hidden p-1">
+                <img
+                  src="/assets/liquid-logo-circle.png"
+                  alt="LIQUID — The Blood of Christ"
+                  className="w-full h-full object-contain rounded-full"
+                />
               </div>
               <h4 className="font-serif text-lg text-train-ivory font-bold tracking-wider">
                 LIQUID EXPRESS
