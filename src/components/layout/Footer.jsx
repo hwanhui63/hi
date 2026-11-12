@@ -5,10 +5,8 @@ import { VintageDivider } from '../common/BrassBorder';
 
 export default function Footer() {
   return (
-    <footer className="relative bg-black border-t border-train-gold/30 pt-12 pb-10 overflow-hidden text-train-ivory/80">
+    <footer className="relative bg-black border-t border-train-gold/30 pt-10 pb-10 overflow-hidden text-train-ivory/80">
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <VintageDivider text="LIQUID EXPRESS 1225" className="my-4 mb-8" />
-
         {/* 3-Column Footer Information */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-4 text-sm">
           {/* Column 1: LIQUID Story */}
@@ -80,9 +78,6 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-10 pt-6 border-t border-train-gold/20 flex flex-col sm:flex-row items-center justify-between text-[11px] text-train-ivory/50">
           <p>© 2026 LIQUID. All Rights Reserved.</p>
-          <p className="mt-2 sm:mt-0 font-serif tracking-widest uppercase text-train-gold/60">
-            LIQUID ON BOARD — TRAIN 1225
-          </p>
         </div>
       </div>
     </footer>

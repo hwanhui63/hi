@@ -3,13 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Train,
   Clock,
-  Music,
-  Users,
   Compass,
-  ChevronRight,
   Sparkles,
-  Info,
-  UserCheck,
+  Calendar,
+  User,
   Disc,
   Maximize2,
   X,
@@ -17,7 +14,7 @@ import {
 import { concertData } from '../data/concert';
 import { setlistData } from '../data/setlist';
 import { castGroups } from '../data/cast';
-import { BrassBorder, VintageDivider, ScriptHeading } from '../components/common/BrassBorder';
+import { BrassBorder, ScriptHeading } from '../components/common/BrassBorder';
 
 export default function Concert() {
   const [selectedStationId, setSelectedStationId] = useState(setlistData.stations[0].id);
@@ -31,419 +28,494 @@ export default function Concert() {
     castGroups.find((g) => g.id === activeCastTab) || castGroups[0];
 
   return (
-    <div className="relative min-h-screen bg-train-bg text-train-ivory pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto overflow-hidden">
-      {/* Page Header */}
-      <div className="text-center space-y-3 mb-12">
-        <span className="font-serif text-xs tracking-[0.3em] uppercase text-train-gold">
-          THE JOURNEY ON BOARD
-        </span>
-        <h1 className="font-serif text-3xl sm:text-5xl text-train-ivory font-bold tracking-wide">
-          이번 자체공연: TRAIN 1225
-        </h1>
-        <p className="font-script text-3xl sm:text-4xl text-train-champagne">
-          Stations of Grace & Fellowship
-        </p>
-      </div>
-
+    <div className="relative min-h-screen bg-black text-train-ivory pb-24 overflow-hidden">
       {/* ========================================================================= */}
-      {/* 0. ROMANS 8:38-39 SCRIPTURE PLAQUE (로마서 말씀 칸)                         */}
+      {/* 1. HERO SECTION: Poster as Full Background (첫 화면 아예 포스터를 배경으로 하기) */}
       {/* ========================================================================= */}
-      <div className="mb-16 p-6 sm:p-8 rounded-2xl border border-train-gold/50 bg-[#5d1212] text-center shadow-brass max-w-4xl mx-auto">
-        <p className="font-serif text-xs text-train-champagne tracking-[0.25em] uppercase font-semibold mb-3">
-          ROMANS 8:38-39
-        </p>
-        <blockquote className="font-korean text-sm sm:text-base text-train-ivory/95 leading-relaxed italic max-w-2xl mx-auto">
-          “내가 확신하노니 사망이나 생명이나 천사들이나 권세자들이나 현재 일이나 장래 일이나 능력이나 
-          높음이나 깊음이나 다른 어떤 피조물이라도 우리를 우리 주 그리스도 예수 안에 있는 하나님의 사랑에서 끊을 수 없으리라”
-        </blockquote>
-        <p className="font-serif text-xs text-train-gold tracking-widest mt-3">
-          — 로마서 8:38-39 —
-        </p>
-      </div>
+      <section className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden px-4 sm:px-6 pt-24 pb-16">
+        {/* Full Background Poster with Cinematic Lighting */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img
+            src={concertData.assets.poster}
+            alt="Train 1225 Official Concert Poster Background"
+            className="w-full h-full object-cover object-center filter brightness-[0.42] contrast-115 scale-105"
+          />
+          {/* Atmospheric Gradients & Vignette for Perfect Legibility */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-black/75" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_15%,_rgba(0,0,0,0.85)_85%)]" />
+        </div>
 
-      {/* ========================================================================= */}
-      {/* 1. OFFICIAL POSTER & STORY (자체공연 Train 1225 포스터 안내 블록 전체)        */}
-      {/* ========================================================================= */}
-      <section className="mb-24">
-        <ScriptHeading
-          subtitle="OFFICIAL CONCERT POSTER"
-          title="자체공연 「Train 1225」 포스터 안내"
-          titleEn="The Journey Unfolds"
-        />
+        {/* Hero Title & Actions Floating on Poster */}
+        <div className="relative z-10 w-full max-w-4xl mx-auto text-center space-y-6 sm:space-y-8 px-4">
+          <motion.div
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-train-gold/60 bg-black/80 backdrop-blur-md shadow-brass"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-train-gold animate-pulse" />
+            <span className="font-serif text-xs sm:text-sm tracking-[0.3em] uppercase text-train-champagne font-semibold">
+              THE JOURNEY ON BOARD
+            </span>
+            <Sparkles className="w-3.5 h-3.5 text-train-gold animate-pulse" />
+          </motion.div>
 
-        <div className="mt-12 p-6 sm:p-10 rounded-2xl bg-[#5d1212] border border-train-gold/50 shadow-brass">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-            {/* Poster Card */}
-            <div className="md:col-span-5 flex justify-center">
-              <div className="relative group max-w-sm w-full rounded-xl p-2 bg-black/60 border border-train-gold/60 shadow-brass-lg">
-                <div className="relative rounded-lg overflow-hidden bg-black aspect-[1414/2000]">
-                  <img
-                    src={concertData.assets.poster}
-                    alt="Train 1225 Official Concert Poster"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
-                    <button
-                      onClick={() => setIsPosterModalOpen(true)}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-black/90 border border-train-gold text-train-champagne text-xs font-serif tracking-wider shadow"
-                    >
-                      <Maximize2 className="w-3.5 h-3.5" />
-                      <span>포스터 크게 보기</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 1 }}
+            className="space-y-3 sm:space-y-4"
+          >
+            <h1 className="font-script text-7xl sm:text-9xl md:text-[10rem] text-transparent bg-clip-text bg-gradient-to-b from-[#FFF5D6] via-[#EBD39A] to-[#B88B4A] drop-shadow-[0_12px_28px_rgba(0,0,0,0.95)] leading-tight select-none">
+              Train 1225
+            </h1>
+            <p className="font-serif text-sm sm:text-base md:text-xl text-train-champagne tracking-[0.2em] uppercase font-semibold drop-shadow-md">
+              이번 자체공연: Stations of Grace & Fellowship
+            </p>
+          </motion.div>
 
-            {/* Poster Info & Introduction */}
-            <div className="md:col-span-7 space-y-6">
-              <div className="space-y-3">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-train-gold/40 bg-black/60 text-train-champagne text-xs font-serif tracking-widest uppercase">
-                  <Compass className="w-3.5 h-3.5 text-train-gold" />
-                  <span>CONCERT STORY & VISION</span>
-                </div>
-                <h3 className="font-serif text-2xl sm:text-3xl text-train-champagne font-bold">
-                  “기차 창가에서 만나는 하나님의 사랑”
-                </h3>
-                <div className="space-y-3 font-korean text-xs sm:text-sm text-train-ivory/85 leading-relaxed">
-                  <p>
-                    2026년 12월, 한동대학교 학생회관 104호가 유럽의 빈티지 야간열차 객실로 탈바꿈합니다. 
-                    창밖으로 쏟아지는 하얀 눈과 차가운 겨울바람 속에서, 우리를 구원하신 그리스도의 탄생과 그분의 변함없는 사랑을 노래합니다.
-                  </p>
-                  <p>
-                    한 해의 끝자락, 차가운 바람이 부는 2026년 겨울. 
-                    우리는 각자의 짐과 피로를 안고 또 다른 계절을 맞이합니다. 
-                    그러나 12월 25일의 성탄은 우리에게 어둠을 밝히는 영원한 빛이 이 땅에 오셨음을 선포합니다.
-                  </p>
-                  <p className="text-train-gold/90 italic">
-                    * 상세한 기획 의도 및 곡별 나눔은 공연 현장 프로그램 북과 무대를 통해 더욱 깊이 공개될 예정입니다.
-                  </p>
-                </div>
-              </div>
-
-              {/* Poster Highlight Points */}
-              <div className="space-y-3 pt-2">
-                <div className="flex items-start gap-3 p-3 rounded bg-black/60 border border-train-gold/40">
-                  <Sparkles className="w-4 h-4 text-train-gold flex-shrink-0 mt-0.5" />
-                  <div>
-                    <h5 className="font-serif text-xs text-train-champagne font-semibold tracking-wide">
-                      로마서 8장 38-39절의 고백
-                    </h5>
-                    <p className="text-xs text-train-ivory/70 mt-0.5 font-korean">
-                      사망이나 생명이나 천사들이나 어떤 피조물이라도 끊을 수 없는 하나님의 사랑.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 p-3 rounded bg-black/60 border border-train-gold/40">
-                  <Clock className="w-4 h-4 text-train-gold flex-shrink-0 mt-0.5" />
-                  <div>
-                    <h5 className="font-serif text-xs text-train-champagne font-semibold tracking-wide">
-                      총 3회차의 정규 운행
-                    </h5>
-                    <p className="text-xs text-train-ivory/70 mt-0.5 font-korean">
-                      12월 4일(금) 저녁 20:30, 12월 5일(토) 14:00 & 16:00 (한동대학교 학생회관 104호)
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 p-3 rounded bg-black/60 border border-train-gold/40">
-                  <Train className="w-4 h-4 text-train-gold flex-shrink-0 mt-0.5" />
-                  <div>
-                    <h5 className="font-serif text-xs text-train-champagne font-semibold tracking-wide">
-                      운행 노선 및 소요 시간
-                    </h5>
-                    <p className="text-xs text-train-ivory/70 mt-0.5 font-korean">
-                      총 6개의 음악 정거장 (러닝타임 약 80분)
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-2 flex flex-wrap items-center gap-4">
-                <button
-                  onClick={() => setIsPosterModalOpen(true)}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded border border-train-gold bg-black/70 hover:bg-[#781818] text-train-champagne text-xs font-serif tracking-wider shadow hover:shadow-brass transition-all"
-                >
-                  <Maximize2 className="w-4 h-4 text-train-gold" />
-                  <span>원본 포스터 확대</span>
-                </button>
-              </div>
-            </div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="pt-2 flex flex-wrap items-center justify-center gap-3"
+          >
+            <button
+              onClick={() => setIsPosterModalOpen(true)}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-train-champagne bg-[#5d1212]/90 hover:bg-[#781818] text-train-champagne font-serif text-xs sm:text-sm tracking-widest uppercase font-semibold shadow-brass hover:shadow-brass-lg transition-all backdrop-blur-sm hover:scale-[1.02]"
+            >
+              <Maximize2 className="w-4 h-4 text-train-gold" />
+              <span>포스터 원본 크게 보기</span>
+            </button>
+          </motion.div>
         </div>
       </section>
 
-      {/* ========================================================================= */}
-      {/* 2. SETLIST: Stations of Music (Route Map)                                 */}
-      {/* ========================================================================= */}
-      <section className="mb-24">
-        <ScriptHeading
-          subtitle="RAILWAY ROUTE MAP"
-          title="음악의 정거장들 (SETLIST)"
-          titleEn="Stations of Melody"
-        />
+      {/* Main Content Container */}
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+        {/* ========================================================================= */}
+        {/* 2. CONCERT STORY: “당신은 지금 어디로 가고 계십니까 ?”                      */}
+        {/* ========================================================================= */}
+        <section>
+          <div className="p-6 sm:p-10 rounded-2xl bg-[#5d1212] border border-train-gold/50 shadow-brass">
+            <div className="space-y-6">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-train-gold/40 bg-black/60 text-train-champagne text-xs font-serif tracking-widest uppercase">
+                <Compass className="w-3.5 h-3.5 text-train-gold" />
+                <span>CONCERT STORY</span>
+              </div>
 
-        <p className="text-center text-xs sm:text-sm text-train-ivory/70 max-w-xl mx-auto mt-3 font-korean">
-          열차는 6개의 정거장을 거치며 달립니다. 각 정거장을 클릭하여 머무르는 선율과 팀의 이야기를 확인하세요.
-        </p>
+              {/* Main Question Heading */}
+              <h2 className="font-serif text-2xl sm:text-4xl text-train-champagne font-bold leading-snug">
+                “당신은 지금 어디로 가고 계십니까 ?”
+              </h2>
 
-        {/* Train Route Map Timeline (Interactive Stations) */}
-        <div className="mt-12 relative">
-          {/* Track Line */}
-          <div className="hidden md:block absolute top-1/2 left-4 right-4 h-1 -translate-y-1/2 bg-gradient-to-r from-train-gold/30 via-train-gold to-train-gold/30 z-0" />
+              {/* Story Narrative */}
+              <div className="space-y-4 font-korean text-xs sm:text-sm text-train-ivory/90 leading-relaxed max-w-3xl">
+                <p>
+                  한 해의 분주한 여정 끝에서, 우리는 때로 목적지를 잊은 채 앞만 보고 달리고 있지는 않나요? 
+                  차가운 겨울바람 속에서 각자의 짐과 피로를 안고 걸어가는 우리에게, 12월 25일의 성탄은 가장 따뜻한 소망의 빛이 이 땅에 오셨음을 선포합니다.
+                </p>
+                <p>
+                  「Train 1225」는 한동대학교 학생회관 104호에서 출발하여 크리스마스의 참된 안식과 회복을 향해 달리는 빈티지 야간열차입니다. 
+                  어두운 밤하늘을 가르고 빛을 향해 달리는 열차의 창가에서, 십자가의 보혈과 변함없는 그리스도의 사랑을 라이브 밴드 연주로 노래합니다.
+                </p>
+              </div>
 
-          {/* Station Nodes Grid */}
-          <div className="relative z-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-            {setlistData.stations.map((station) => {
-              const isSelected = selectedStationId === station.id;
-              return (
-                <button
-                  key={station.id}
-                  onClick={() => setSelectedStationId(station.id)}
-                  className={`group relative text-center p-3 rounded-xl border transition-all duration-300 flex flex-col items-center justify-between min-h-[110px] ${
-                    isSelected
-                      ? 'bg-[#781818] border-train-champagne shadow-brass scale-105'
-                      : 'bg-[#5d1212] border-train-gold/40 hover:border-train-gold hover:bg-[#6e1515]'
-                  }`}
-                >
-                  {/* Station Number Indicator */}
-                  <span
-                    className={`w-7 h-7 rounded-full flex items-center justify-center font-serif text-xs font-bold mb-2 transition-all ${
+              {/* Romans 8:38-39 Scripture Quote Box */}
+              <div className="p-4 sm:p-6 rounded-xl border border-train-gold/40 bg-black/60 text-center space-y-2">
+                <p className="font-serif text-[11px] text-train-champagne tracking-[0.25em] uppercase font-semibold">
+                  ROMANS 8:38-39
+                </p>
+                <blockquote className="font-korean text-xs sm:text-sm text-train-ivory/95 leading-relaxed italic max-w-2xl mx-auto">
+                  “내가 확신하노니 사망이나 생명이나 천사들이나 권세자들이나 현재 일이나 장래 일이나 능력이나 
+                  높음이나 깊음이나 다른 어떤 피조물이라도 우리를 우리 주 그리스도 예수 안에 있는 하나님의 사랑에서 끊을 수 없으리라”
+                </blockquote>
+                <p className="font-serif text-[10px] text-train-gold tracking-widest">
+                  — 로마서 8:38-39 —
+                </p>
+              </div>
+
+              {/* Schedule & Duration Information 3-Column Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                {/* Schedule Box */}
+                <div className="p-4 rounded-xl border border-train-gold/30 bg-black/60 space-y-2">
+                  <div className="flex items-center gap-2 text-train-champagne font-serif text-xs font-semibold">
+                    <Calendar className="w-3.5 h-3.5 text-train-gold flex-shrink-0" />
+                    <span>총 3회차 운행</span>
+                  </div>
+                  <div className="space-y-1 text-xs text-train-ivory/80 font-serif">
+                    <div>12월 4일 (금) 20:30</div>
+                    <div>12월 5일 (토) 14:00</div>
+                    <div>12월 5일 (토) 16:00</div>
+                  </div>
+                </div>
+
+                {/* Duration Box */}
+                <div className="p-4 rounded-xl border border-train-gold/30 bg-black/60 space-y-2">
+                  <div className="flex items-center gap-2 text-train-champagne font-serif text-xs font-semibold">
+                    <Clock className="w-3.5 h-3.5 text-train-gold flex-shrink-0" />
+                    <span>예상 소요 시간</span>
+                  </div>
+                  <div className="text-xs text-train-ivory/80 space-y-1">
+                    <p className="font-serif text-sm font-semibold text-train-champagne">약 1시간 30분</p>
+                    <p className="text-[11px] text-train-ivory/60 font-korean">인터미션 없이 연속 운행</p>
+                  </div>
+                </div>
+
+                {/* Venue Box */}
+                <div className="p-4 rounded-xl border border-train-gold/30 bg-black/60 space-y-2">
+                  <div className="flex items-center gap-2 text-train-champagne font-serif text-xs font-semibold">
+                    <Train className="w-3.5 h-3.5 text-train-gold flex-shrink-0" />
+                    <span>탑승 장소</span>
+                  </div>
+                  <div className="text-xs text-train-ivory/80 space-y-1 font-korean">
+                    <p className="font-medium text-train-champagne">한동대학교 학생회관 104호</p>
+                    <p className="text-[11px] text-train-ivory/60 font-serif">HGU Student Union 104</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================================= */}
+        {/* 3. SETLIST: Railway Route Map / 운행 노선 (Setlist)                         */}
+        {/* ========================================================================= */}
+        <section>
+          <ScriptHeading
+            subtitle="RAILWAY ROUTE MAP"
+            title="운행 노선 (Setlist)"
+            titleEn="Stations of Melody"
+          />
+
+          <p className="text-center text-xs sm:text-sm text-train-ivory/70 max-w-xl mx-auto mt-3 font-korean">
+            열차는 5개의 정거장을 거치며 달립니다. 각 정거장을 선택하여 선율과 팀의 이야기를 확인하세요.
+          </p>
+
+          {/* Train Route Map Timeline (Interactive Stations) */}
+          <div className="mt-12 relative">
+            {/* Track Line */}
+            <div className="hidden md:block absolute top-1/2 left-6 right-6 h-1 -translate-y-1/2 bg-gradient-to-r from-train-gold/30 via-train-gold to-train-gold/30 z-0" />
+
+            {/* Station Nodes Grid */}
+            <div className="relative z-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+              {setlistData.stations.map((station) => {
+                const isSelected = selectedStationId === station.id;
+                return (
+                  <button
+                    key={station.id}
+                    onClick={() => setSelectedStationId(station.id)}
+                    className={`group relative text-center p-3.5 rounded-xl border transition-all duration-300 flex flex-col items-center justify-between min-h-[115px] ${
                       isSelected
-                        ? 'bg-train-champagne text-train-bg shadow-sm'
-                        : 'border border-train-gold/50 text-train-gold group-hover:border-train-gold'
+                        ? 'bg-[#781818] border-train-champagne shadow-brass scale-105'
+                        : 'bg-[#5d1212] border-train-gold/40 hover:border-train-gold hover:bg-[#6e1515]'
                     }`}
                   >
-                    {station.number}
-                  </span>
-
-                  {/* Station Name */}
-                  <div className="space-y-0.5">
+                    {/* Station Number Indicator */}
                     <span
-                      className={`block font-serif text-[11px] uppercase tracking-wider font-semibold transition-colors ${
-                        isSelected ? 'text-train-champagne' : 'text-train-ivory/80'
+                      className={`w-7 h-7 rounded-full flex items-center justify-center font-serif text-xs font-bold mb-2 transition-all ${
+                        isSelected
+                          ? 'bg-train-champagne text-black shadow-sm'
+                          : 'border border-train-gold/50 text-train-gold group-hover:border-train-gold'
                       }`}
                     >
-                      STATION {station.number}
+                      {station.number}
                     </span>
-                    <span className="block text-[11px] text-train-ivory/60 truncate max-w-[120px]">
-                      {station.stationName.split('—')[0]}
+
+                    {/* Station Name */}
+                    <div className="space-y-0.5">
+                      <span
+                        className={`block font-serif text-[11px] uppercase tracking-wider font-semibold transition-colors ${
+                          isSelected ? 'text-train-champagne' : 'text-train-ivory/80'
+                        }`}
+                      >
+                        STATION {station.number}
+                      </span>
+                      <span className="block text-xs font-serif font-bold text-train-ivory truncate max-w-[130px]">
+                        {station.stationName}
+                      </span>
+                    </div>
+
+                    {/* Song Count Badge */}
+                    <span className="text-[10px] font-serif uppercase tracking-wider text-train-gold/80 mt-1">
+                      {station.songs.length}곡 운행
                     </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Selected Station Expanded Songs Card */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selectedStation.id}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.3 }}
+              className="mt-8"
+            >
+              <BrassBorder innerClassName="space-y-6">
+                {/* Station Header */}
+                <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-train-gold/30">
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2">
+                      <span className="font-serif text-xs font-bold px-2 py-0.5 rounded bg-train-gold/20 text-train-champagne border border-train-gold/40">
+                        {selectedStation.stationNameEn}
+                      </span>
+                      <span className="text-xs text-train-gold font-medium">
+                        정거장 테마
+                      </span>
+                    </div>
+                    <h3 className="font-serif text-2xl sm:text-3xl text-train-ivory font-bold">
+                      {selectedStation.stationName}
+                    </h3>
                   </div>
 
-                  {/* Status Indicator */}
-                  <span className="text-[9px] font-serif uppercase tracking-widest text-train-gold/60 mt-1">
-                    {station.status === 'TBA' ? '추후 공개' : 'CONFIRMED'}
+                  <span className="px-3 py-1 rounded bg-black/60 text-train-champagne text-xs font-serif border border-train-gold/40">
+                    총 {selectedStation.songs.length}개의 수록곡
                   </span>
+                </div>
+
+                <p className="font-korean text-xs sm:text-sm text-train-ivory/80 leading-relaxed italic">
+                  "{selectedStation.themeDescription}"
+                </p>
+
+                {/* Songs Grid in this Station */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
+                  {selectedStation.songs.map((song, idx) => (
+                    <div
+                      key={idx}
+                      className="p-4 sm:p-5 rounded-xl border border-train-gold/40 bg-[#450d0d] space-y-3 flex flex-col justify-between shadow-sm hover:border-train-gold transition-colors"
+                    >
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="font-serif text-[10px] tracking-widest text-train-gold uppercase">
+                            TRACK 0{idx + 1}
+                          </span>
+                          <span
+                            className={`text-[9px] font-serif uppercase tracking-widest px-2 py-0.5 rounded ${
+                              song.status === 'CONFIRMED'
+                                ? 'bg-emerald-950/80 text-emerald-400 border border-emerald-500/40'
+                                : 'bg-amber-950/80 text-amber-300 border border-amber-500/40'
+                            }`}
+                          >
+                            {song.status === 'CONFIRMED' ? '선곡 확정' : '추후 공개'}
+                          </span>
+                        </div>
+
+                        <div>
+                          <h4 className="font-serif text-lg sm:text-xl text-train-champagne font-bold leading-snug">
+                            {song.title}
+                          </h4>
+                          <p className="text-xs text-train-ivory/70 mt-0.5">
+                            원곡: <span className="text-train-ivory font-medium">{song.originalArtist}</span>
+                          </p>
+                        </div>
+
+                        <div className="inline-block px-2 py-0.5 rounded bg-black/50 border border-train-gold/30 text-[11px] text-train-gold font-medium">
+                          세션: {song.team}
+                        </div>
+                      </div>
+
+                      <p className="font-korean text-xs text-train-ivory/85 leading-relaxed border-t border-train-gold/20 pt-3">
+                        {song.interpretation}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </BrassBorder>
+            </motion.div>
+          </AnimatePresence>
+        </section>
+
+        {/* ========================================================================= */}
+        {/* 4. MEMBER: 단원 명부 (Member)                                              */}
+        {/* ========================================================================= */}
+        <section>
+          <ScriptHeading
+            subtitle="MEMBER"
+            title="단원 명부 (Member)"
+            titleEn="People on Board"
+          />
+
+          <p className="text-center text-xs sm:text-sm text-train-ivory/70 max-w-xl mx-auto mt-3 font-korean">
+            Train 1225의 여정을 함께 만드는 디렉터, 실기수, 아기기수, 자랑스러운 OB 선배 단원들입니다.
+          </p>
+
+          {/* Tab Navigation */}
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+            {castGroups.map((group) => {
+              const isActive = activeCastTab === group.id;
+              return (
+                <button
+                  key={group.id}
+                  onClick={() => setActiveCastTab(group.id)}
+                  className={`px-4 sm:px-6 py-2.5 rounded-lg border font-serif text-xs sm:text-sm tracking-wider uppercase transition-all duration-200 ${
+                    isActive
+                      ? 'border-train-gold bg-[#781818] text-train-champagne shadow-brass font-bold'
+                      : 'border-train-gold/40 bg-[#5d1212] text-train-ivory/80 hover:border-train-gold hover:text-train-champagne'
+                  }`}
+                >
+                  <span>{group.label}</span>
                 </button>
               );
             })}
           </div>
-        </div>
 
-        {/* Selected Station Expanded Card */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={selectedStation.id}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.3 }}
-            className="mt-8"
-          >
-            <BrassBorder innerClassName="space-y-6">
-              {/* Card Header: Station Label & Status */}
-              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-train-gold/30">
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <span className="font-serif text-xs font-bold px-2 py-0.5 rounded bg-train-gold/20 text-train-champagne border border-train-gold/40">
-                      {selectedStation.stationNameEn}
-                    </span>
-                    <span className="text-xs text-train-gold">
-                      {selectedStation.stationName}
-                    </span>
-                  </div>
-                  <h3 className="font-serif text-2xl sm:text-3xl text-train-ivory font-bold">
-                    {selectedStation.title}{' '}
-                    <span className="text-sm font-normal text-train-ivory/60 font-sans">
-                      ({selectedStation.titleEn})
-                    </span>
-                  </h3>
-                </div>
+          {/* Group Description */}
+          <div className="text-center my-6">
+            <p className="text-xs text-train-gold font-serif tracking-widest uppercase">
+              {currentCastGroup.labelEn}
+            </p>
+            <p className="text-xs text-train-ivory/60 mt-1 font-korean">
+              {currentCastGroup.description}
+            </p>
+          </div>
 
-                <div className="flex items-center gap-3">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded border border-train-gold/40 bg-train-bg text-train-champagne text-xs font-serif">
-                    <Clock className="w-3.5 h-3.5 text-train-gold" />
-                    <span>{selectedStation.duration}</span>
-                  </span>
-                  <span className="px-3 py-1 rounded bg-amber-900/40 text-train-champagne text-xs font-serif border border-train-gold/40">
-                    선곡 정보: {selectedStation.status === 'TBA' ? '추후 공개' : '확정'}
-                  </span>
-                </div>
-              </div>
-
-              {/* Station Details Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm">
-                {/* Column 1: Performance Team & Members */}
-                <div className="space-y-4 p-4 rounded-lg bg-[#450d0d] border border-train-gold/30">
-                  <div className="flex items-center gap-2 text-train-champagne font-serif font-semibold">
-                    <Users className="w-4 h-4 text-train-gold" />
-                    <span>공연 팀 및 아티스트</span>
-                  </div>
-
-                  <div className="space-y-2 text-train-ivory/80">
-                    <div>
-                      <span className="text-train-gold/70 block text-[11px] font-serif">원곡 아티스트</span>
-                      <p className="font-medium">{selectedStation.originalArtist}</p>
-                    </div>
-                    <div>
-                      <span className="text-train-gold/70 block text-[11px] font-serif">공연 세션 팀</span>
-                      <p className="font-medium text-train-champagne">{selectedStation.team}</p>
-                    </div>
-                    <div>
-                      <span className="text-train-gold/70 block text-[11px] font-serif">팀 소개</span>
-                      <p className="font-korean text-xs leading-relaxed">{selectedStation.teamIntro}</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Column 2: Song Interpretation & Message */}
-                <div className="space-y-4 p-4 rounded-lg bg-[#450d0d] border border-train-gold/30">
-                  <div className="flex items-center gap-2 text-train-champagne font-serif font-semibold">
-                    <Disc className="w-4 h-4 text-train-gold" />
-                    <span>곡 해석 및 무대 메시지</span>
-                  </div>
-
-                  <p className="font-korean text-xs leading-relaxed text-train-ivory/85">
-                    {selectedStation.interpretation}
-                  </p>
-
-                  <div className="pt-2 border-t border-train-gold/20">
-                    <span className="text-train-gold/70 block text-[11px] font-serif mb-1.5">
-                      출연 멤버 (LINEUP)
-                    </span>
-                    <div className="flex flex-wrap gap-2">
-                      {selectedStation.members.map((mem, idx) => (
-                        <span
-                          key={idx}
-                          className="px-2.5 py-1 rounded border border-train-gold/30 bg-[#5d1212] text-[11px] text-train-ivory/90"
-                        >
-                          {mem}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </BrassBorder>
-          </motion.div>
-        </AnimatePresence>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 3. CAST: People on Board (Passenger & Crew Manifest)                      */}
-      {/* ========================================================================= */}
-      <section>
-        <ScriptHeading
-          subtitle="CREW & PASSENGER MANIFEST"
-          title="열차 탑승객 명부 (CAST)"
-          titleEn="People on Board"
-        />
-
-        <p className="text-center text-xs sm:text-sm text-train-ivory/70 max-w-xl mx-auto mt-3 font-korean">
-          Train 1225의 여정을 함께 만드는 디렉, 실기수, 아기기수, OB, 그리고 보이지 않는 곳에서 섬겨주신 분들입니다.
-        </p>
-
-        {/* Tab Navigation */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-          {castGroups.map((group) => {
-            const isActive = activeCastTab === group.id;
-            return (
-              <button
-                key={group.id}
-                onClick={() => setActiveCastTab(group.id)}
-                className={`px-4 sm:px-6 py-2.5 rounded-lg border font-serif text-xs sm:text-sm tracking-wider uppercase transition-all duration-200 ${
-                  isActive
-                    ? 'border-train-gold bg-[#781818] text-train-champagne shadow-brass font-bold'
-                    : 'border-train-gold/40 bg-[#5d1212] text-train-ivory/80 hover:border-train-gold hover:text-train-champagne'
-                }`}
-              >
-                <span>{group.label}</span>
-                <span className="hidden sm:inline text-[10px] opacity-60 ml-1.5">
-                  ({group.labelEn.split(' ')[0]})
-                </span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Group Description */}
-        <div className="text-center my-6">
-          <p className="text-xs text-train-gold font-serif tracking-widest uppercase">
-            {currentCastGroup.labelEn}
-          </p>
-          <p className="text-xs text-train-ivory/60 mt-1 font-korean">
-            {currentCastGroup.description}
-          </p>
-        </div>
-
-        {/* Crew / Passenger Roster Cards */}
-        <motion.div
-          key={currentCastGroup.id}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-8"
-        >
-          {currentCastGroup.members.map((member) => (
-            <div
-              key={member.id}
-              className="relative p-5 rounded-xl border border-train-gold/40 bg-[#5d1212] shadow-md hover:border-train-gold transition-all duration-300 group flex flex-col justify-between"
+          {/* Tab Content Display */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentCastGroup.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
+              className="mt-8"
             >
-              {/* Header: Cohort badge & Role */}
-              <div>
-                <div className="flex items-center justify-between pb-3 border-b border-train-gold/20">
-                  <span className="font-serif text-[10px] tracking-widest uppercase px-2 py-0.5 rounded bg-train-gold/15 text-train-gold border border-train-gold/30">
-                    {member.cohort}
-                  </span>
-                  {member.isTba ? (
-                    <span className="text-[10px] font-serif text-train-ivory/40">라인업 준비 중</span>
-                  ) : (
-                    <span className="text-[10px] font-serif text-emerald-400/90 flex items-center gap-1">
-                      <UserCheck className="w-3 h-3" />
-                      탑승 확인
-                    </span>
-                  )}
-                </div>
+              {/* Type 1: ID Cards with Photo Slot (디렉터, 실기수, 아기기수) */}
+              {currentCastGroup.type === 'cards' && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                  {currentCastGroup.members.map((member) => (
+                    <div
+                      key={member.id}
+                      className="p-4 sm:p-5 rounded-xl border border-train-gold/40 bg-[#5d1212] shadow-brass hover:border-train-gold transition-all duration-300 flex flex-col justify-between"
+                    >
+                      <div className="flex gap-4">
+                        {/* ID Photo Slot (신분증처럼 사진 넣을 수 있는 구역) */}
+                        <div className="relative w-20 h-24 sm:w-22 sm:h-28 rounded border border-train-gold/60 bg-black/90 flex-shrink-0 overflow-hidden flex flex-col items-center justify-center p-1 shadow-inner">
+                          {member.photo ? (
+                            <img
+                              src={member.photo}
+                              alt={member.name}
+                              className="w-full h-full object-cover rounded"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex flex-col items-center justify-center text-center p-1 rounded bg-gradient-to-b from-[#2e1212] to-black">
+                              <User className="w-6 h-6 text-train-gold/50 mb-1" />
+                              <span className="text-[8px] font-serif tracking-widest text-train-gold/60 uppercase">
+                                PASS ID
+                              </span>
+                            </div>
+                          )}
+                          {/* Vintage Brass Corner Accents */}
+                          <div className="absolute top-0.5 left-0.5 w-1.5 h-1.5 border-t border-l border-train-champagne/80" />
+                          <div className="absolute top-0.5 right-0.5 w-1.5 h-1.5 border-t border-r border-train-champagne/80" />
+                          <div className="absolute bottom-0.5 left-0.5 w-1.5 h-1.5 border-b border-l border-train-champagne/80" />
+                          <div className="absolute bottom-0.5 right-0.5 w-1.5 h-1.5 border-b border-r border-train-champagne/80" />
+                        </div>
 
-                {/* Name & Role */}
-                <div className="mt-4 space-y-1">
-                  <h4 className="font-serif text-lg text-train-ivory font-bold group-hover:text-train-champagne transition-colors">
-                    {member.name}
-                  </h4>
-                  <p className="text-xs text-train-gold font-medium font-korean">
-                    {member.role}
-                  </p>
-                </div>
+                        {/* ID Details */}
+                        <div className="flex-1 min-w-0 space-y-1.5">
+                          <div className="flex items-center justify-between gap-1">
+                            <span className="font-serif text-[10px] tracking-wider uppercase px-2 py-0.5 rounded bg-black/60 text-train-champagne border border-train-gold/40">
+                              {member.cohort}
+                            </span>
+                            <span className="font-serif text-[10px] tracking-wider uppercase px-2 py-0.5 rounded bg-train-gold/20 text-train-gold border border-train-gold/30">
+                              {member.instrument}
+                            </span>
+                          </div>
 
-                {/* Message */}
-                <p className="mt-3 text-xs text-train-ivory/70 leading-relaxed font-korean line-clamp-3">
-                  "{member.message}"
-                </p>
-              </div>
+                          <div>
+                            <h4 className="font-serif text-lg sm:text-xl text-train-ivory font-bold truncate">
+                              {member.name}
+                            </h4>
+                            <p className="text-xs text-train-gold font-medium font-korean mt-0.5">
+                              {member.role}
+                            </p>
+                          </div>
 
-              {/* Footer Details */}
-              {member.contact && (
-                <div className="mt-4 pt-3 border-t border-train-gold/20 flex items-center justify-between text-[11px] text-train-ivory/60">
-                  <span>문의</span>
-                  <span className="font-serif text-train-champagne">{member.contact}</span>
+                          <p className="text-[11px] text-train-ivory/60 font-korean truncate">
+                            {member.instrumentKo}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Bottom Verified Strip */}
+                      <div className="mt-4 pt-2.5 border-t border-train-gold/20 flex items-center justify-between text-[10px] font-serif text-train-gold/70">
+                        <span>LIQUID CREW PASS</span>
+                        <span className="text-train-champagne font-semibold tracking-wider">
+                          VERIFIED
+                        </span>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               )}
-            </div>
-          ))}
-        </motion.div>
-      </section>
+
+              {/* Type 2: OB List (명단으로만 깔끔하게 표시) */}
+              {currentCastGroup.type === 'list' && (
+                <div className="max-w-4xl mx-auto">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                    {currentCastGroup.members.map((ob) => (
+                      <div
+                        key={ob.id}
+                        className="p-3 rounded-lg border border-train-gold/40 bg-[#5d1212] flex items-center justify-between text-xs hover:border-train-gold transition-colors"
+                      >
+                        <div className="flex items-center gap-2">
+                          <span className="font-serif text-[11px] text-train-gold font-semibold">
+                            {ob.cohort}
+                          </span>
+                          <span className="font-serif text-train-ivory font-bold">
+                            {ob.name}
+                          </span>
+                        </div>
+                        <span className="px-2 py-0.5 rounded bg-black/60 text-train-champagne text-[10px] font-serif border border-train-gold/30">
+                          {ob.instrument}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Type 3: Special Thanks Groups */}
+              {currentCastGroup.type === 'groups' && (
+                <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  {currentCastGroup.groups.map((grp, idx) => (
+                    <div
+                      key={idx}
+                      className="p-5 rounded-xl border border-train-gold/40 bg-[#5d1212] space-y-3 shadow-sm"
+                    >
+                      <div className="pb-2 border-b border-train-gold/20">
+                        <span className="font-serif text-xs text-train-champagne font-bold tracking-wider uppercase block">
+                          {grp.category}
+                        </span>
+                        <span className="text-[11px] text-train-ivory/60 font-korean">
+                          {grp.roleNote}
+                        </span>
+                      </div>
+                      <div className="space-y-1.5 pt-1">
+                        {grp.helpers.map((name, hIdx) => (
+                          <div
+                            key={hIdx}
+                            className="flex items-center gap-2 text-sm text-train-ivory font-serif font-bold"
+                          >
+                            <Sparkles className="w-3 h-3 text-train-gold flex-shrink-0" />
+                            <span>{name}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </section>
+      </div>
 
       {/* Poster Fullscreen Modal */}
       <AnimatePresence>
