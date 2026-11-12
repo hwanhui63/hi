@@ -1,27 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   Calendar,
   MapPin,
-  Clock,
   Sparkles,
   ArrowRight,
   ExternalLink,
   Instagram,
-  Music,
-  Maximize2,
-  X,
-  Heart,
-  Volume2,
 } from 'lucide-react';
 import { concertData } from '../data/concert';
 import { clubData } from '../data/club';
-import { BrassBorder, VintageDivider, ScriptHeading } from '../components/common/BrassBorder';
+import { BrassBorder, ScriptHeading } from '../components/common/BrassBorder';
 
 export default function Home() {
-  const [isPosterModalOpen, setIsPosterModalOpen] = useState(false);
-
   return (
     <div className="relative min-h-screen bg-black text-train-ivory overflow-hidden">
       {/* ========================================================================= */}
@@ -244,135 +236,6 @@ export default function Home() {
           </BrassBorder>
         </div>
       </section>
-
-      {/* ========================================================================= */}
-      {/* 3. CONCERT PREVIEW: Official Poster & Invitation                          */}
-      {/* ========================================================================= */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-black border-t border-b border-train-gold/30">
-        <div className="max-w-5xl mx-auto">
-          <ScriptHeading
-            subtitle="OFFICIAL CONCERT POSTER"
-            title="자체공연 「Train 1225」 포스터 안내"
-            titleEn="The Journey Unfolds"
-          />
-
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-            {/* Poster Card */}
-            <div className="md:col-span-5 flex justify-center">
-              <div className="relative group max-w-sm w-full rounded-xl p-2 bg-[#5d1212] border border-train-gold/60 shadow-brass-lg">
-                <div className="relative rounded-lg overflow-hidden bg-black aspect-[1414/2000]">
-                  <img
-                    src={concertData.assets.poster}
-                    alt="Train 1225 Official Concert Poster"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
-                    <button
-                      onClick={() => setIsPosterModalOpen(true)}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-black/90 border border-train-gold text-train-champagne text-xs font-serif tracking-wider shadow"
-                    >
-                      <Maximize2 className="w-3.5 h-3.5" />
-                      <span>포스터 크게 보기</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Poster Info & Introduction */}
-            <div className="md:col-span-7 space-y-6">
-              <div className="space-y-3">
-                <span className="font-serif text-xs tracking-widest text-train-gold uppercase">
-                  WINTER CONCERT 2026
-                </span>
-                <h3 className="font-serif text-2xl sm:text-3xl text-train-ivory font-bold">
-                  기차 창가에서 만나는 하나님의 사랑
-                </h3>
-                <p className="font-korean text-sm text-train-ivory/80 leading-relaxed">
-                  2026년 12월, 한동대학교 학생회관 104호가 유럽의 빈티지 야간열차 객실로 탈바꿈합니다. 
-                  창밖으로 쏟아지는 하얀 눈과 차가운 겨울바람 속에서, 우리를 구원하신 그리스도의 탄생과 그분의 변함없는 사랑을 노래합니다.
-                </p>
-              </div>
-
-              {/* Poster Highlight Points */}
-              <div className="space-y-3 pt-2">
-                <div className="flex items-start gap-3 p-3 rounded bg-[#5d1212] border border-train-gold/40">
-                  <Sparkles className="w-4 h-4 text-train-gold flex-shrink-0 mt-0.5" />
-                  <div>
-                    <h5 className="font-serif text-xs text-train-champagne font-semibold tracking-wide">
-                      로마서 8장 38-39절의 고백
-                    </h5>
-                    <p className="text-xs text-train-ivory/70 mt-0.5">
-                      사망이나 생명이나 천사들이나 어떤 피조물이라도 끊을 수 없는 하나님의 사랑.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 p-3 rounded bg-[#5d1212] border border-train-gold/40">
-                  <Clock className="w-4 h-4 text-train-gold flex-shrink-0 mt-0.5" />
-                  <div>
-                    <h5 className="font-serif text-xs text-train-champagne font-semibold tracking-wide">
-                      총 3회차의 정규 운행
-                    </h5>
-                    <p className="text-xs text-train-ivory/70 mt-0.5">
-                      12월 4일(금) 저녁 20:30, 12월 5일(토) 14:00 & 16:00
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-2 flex flex-wrap items-center gap-4">
-                <Link
-                  to="/concert"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded border border-train-gold bg-[#5d1212] hover:bg-[#781818] text-train-champagne font-serif text-xs tracking-widest uppercase font-semibold hover:shadow-brass transition-all"
-                >
-                  <span>노선도 및 곡 정보 보기</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-
-                <button
-                  onClick={() => setIsPosterModalOpen(true)}
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded border border-train-gold/40 text-train-ivory/80 text-xs font-serif tracking-wider hover:text-train-champagne hover:border-train-gold transition-colors"
-                >
-                  <Maximize2 className="w-3.5 h-3.5" />
-                  <span>원본 포스터 확대</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Poster Fullscreen Modal */}
-      <AnimatePresence>
-        {isPosterModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4"
-            onClick={() => setIsPosterModalOpen(false)}
-          >
-            <div
-              className="relative max-w-2xl w-full max-h-[90vh] flex flex-col items-center"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setIsPosterModalOpen(false)}
-                className="absolute -top-12 right-0 p-2 text-train-champagne hover:text-white"
-                aria-label="닫기"
-              >
-                <X className="w-6 h-6" />
-              </button>
-              <img
-                src={concertData.assets.poster}
-                alt="Train 1225 Poster Fullscreen"
-                className="max-h-[85vh] w-auto rounded-lg border-2 border-train-gold shadow-2xl object-contain"
-              />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
