@@ -49,14 +49,14 @@ export default function Home() {
             <Sparkles className="w-3.5 h-3.5 text-train-gold animate-pulse" />
           </motion.div>
 
-          {/* Main Title: "Train 1225" (1225 폰트로 통일) & Subtitle */}
+          {/* Main Title: "Train 1225" (Amoresa 폰트 적용) & Subtitle */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 1 }}
             className="space-y-3 sm:space-y-4"
           >
-            <h1 className="font-script text-7xl sm:text-9xl md:text-[10.5rem] text-transparent bg-clip-text bg-gradient-to-b from-[#FFF5D6] via-[#EBD39A] to-[#B88B4A] drop-shadow-[0_12px_28px_rgba(0,0,0,0.95)] leading-tight select-none px-2">
+            <h1 className="font-amoresa text-7xl sm:text-9xl md:text-[10.5rem] text-transparent bg-clip-text bg-gradient-to-b from-[#FFF5D6] via-[#EBD39A] to-[#B88B4A] drop-shadow-[0_12px_28px_rgba(0,0,0,0.95)] leading-tight select-none px-2">
               Train 1225
             </h1>
             <p className="font-korean text-base sm:text-xl md:text-2xl text-train-ivory drop-shadow-md font-medium tracking-wide">

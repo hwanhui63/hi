@@ -66,7 +66,7 @@ export default function Concert() {
             transition={{ delay: 0.2, duration: 1 }}
             className="space-y-3 sm:space-y-4"
           >
-            <h1 className="font-script text-7xl sm:text-9xl md:text-[10rem] text-transparent bg-clip-text bg-gradient-to-b from-[#FFF5D6] via-[#EBD39A] to-[#B88B4A] drop-shadow-[0_12px_28px_rgba(0,0,0,0.95)] leading-tight select-none">
+            <h1 className="font-amoresa text-7xl sm:text-9xl md:text-[10rem] text-transparent bg-clip-text bg-gradient-to-b from-[#FFF5D6] via-[#EBD39A] to-[#B88B4A] drop-shadow-[0_12px_28px_rgba(0,0,0,0.95)] leading-tight select-none">
               Train 1225
             </h1>
             <p className="font-serif text-sm sm:text-base md:text-xl text-train-champagne tracking-[0.2em] uppercase font-semibold drop-shadow-md">
