@@ -334,7 +334,7 @@ export default function Concert() {
         {/* ========================================================================= */}
         {/* 4. MEMBER: 단원 명부 (Member)                                              */}
         {/* ========================================================================= */}
-        <section>
+        <section id="members" className="scroll-mt-28">
           <ScriptHeading
             subtitle="MEMBER"
             title="단원 명부 (Member)"

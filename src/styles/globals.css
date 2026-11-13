@@ -13,6 +13,10 @@
   --color-ivory: #F5E8D0;
 }
 
+body, button, input, textarea, select {
+  font-family: 'Lora', 'Gowun Batang', 'Noto Serif KR', serif;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

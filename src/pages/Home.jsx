@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-  Calendar,
-  MapPin,
   Sparkles,
   ArrowRight,
 } from 'lucide-react';
@@ -66,55 +64,28 @@ export default function Home() {
             </p>
           </motion.div>
 
-          {/* Schedule Plaque: 14:00 and 16:00 separated as distinct schedules */}
+          {/* Action Buttons (공연 일정 넣은 박스 제거 완료) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.65, duration: 0.8 }}
-            className="w-full max-w-2xl space-y-4 pt-1"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-3"
           >
-            <div className="p-4 sm:p-5 rounded-2xl border border-train-gold/50 bg-[#5d1212]/90 backdrop-blur-md shadow-brass">
-              {/* Separate Time Slots */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs sm:text-sm">
-                <div className="flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg bg-black/60 border border-train-gold/40 text-train-champagne font-serif font-semibold shadow-sm">
-                  <Calendar className="w-3.5 h-3.5 text-train-gold flex-shrink-0" />
-                  <span>12/04 (FRI) 20:30</span>
-                </div>
-                <div className="flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg bg-black/60 border border-train-gold/40 text-train-champagne font-serif font-semibold shadow-sm">
-                  <Calendar className="w-3.5 h-3.5 text-train-gold flex-shrink-0" />
-                  <span>12/05 (SAT) 14:00</span>
-                </div>
-                <div className="flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg bg-black/60 border border-train-gold/40 text-train-champagne font-serif font-semibold shadow-sm">
-                  <Calendar className="w-3.5 h-3.5 text-train-gold flex-shrink-0" />
-                  <span>12/05 (SAT) 16:00</span>
-                </div>
-              </div>
+            <Link
+              to="/concert"
+              className="group relative inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-3.5 rounded-md border border-train-champagne bg-[#5d1212] hover:bg-[#781818] text-train-champagne font-serif text-sm tracking-[0.2em] uppercase font-bold shadow-brass hover:shadow-brass-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <Sparkles className="w-4 h-4 text-train-champagne group-hover:rotate-45 transition-transform" />
+              <span>BOARD THE TRAIN</span>
+              <ArrowRight className="w-4 h-4 text-train-champagne group-hover:translate-x-1 transition-transform" />
+            </Link>
 
-              {/* Venue */}
-              <div className="flex items-center justify-center gap-1.5 mt-3 pt-2.5 border-t border-train-gold/25 text-xs sm:text-sm text-train-ivory/85">
-                <MapPin className="w-3.5 h-3.5 text-train-gold flex-shrink-0" />
-                <span>한동대학교 학생회관(학관) 104호 (SU 104)</span>
-              </div>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-1">
-              <Link
-                to="/concert"
-                className="group relative inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-3.5 rounded-md border border-train-champagne bg-[#5d1212] hover:bg-[#781818] text-train-champagne font-serif text-sm tracking-[0.2em] uppercase font-bold shadow-brass hover:shadow-brass-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
-              >
-                <Sparkles className="w-4 h-4 text-train-champagne group-hover:rotate-45 transition-transform" />
-                <span>BOARD THE TRAIN</span>
-                <ArrowRight className="w-4 h-4 text-train-champagne group-hover:translate-x-1 transition-transform" />
-              </Link>
-
-              <Link
-                to="/info"
-                className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 rounded-md border border-train-gold/60 bg-black/80 hover:bg-[#5d1212] text-train-ivory/90 font-serif text-xs tracking-wider uppercase hover:text-train-champagne hover:border-train-gold transition-colors backdrop-blur-sm"
-              >
-                승차권 확인
-              </Link>
-            </div>
+            <Link
+              to="/info"
+              className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 rounded-md border border-train-gold/60 bg-black/80 hover:bg-[#5d1212] text-train-ivory/90 font-serif text-xs tracking-wider uppercase hover:text-train-champagne hover:border-train-gold transition-colors backdrop-blur-sm"
+            >
+              승차권 확인
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -157,9 +128,9 @@ export default function Home() {
             </div>
 
             <div className="pt-4 border-t border-train-gold/20 flex flex-wrap items-center gap-4">
-              {/* Train 1225 승무원 명부 => Train 1225 멤버 로 변경 */}
+              {/* Train 1225 멤버 누르면 단원 명부(#members)로 바로 이동 */}
               <Link
-                to="/concert"
+                to="/concert#members"
                 className="inline-flex items-center gap-1.5 px-4 py-2 rounded border border-train-gold/60 bg-black/60 text-train-champagne text-xs font-serif tracking-wider hover:bg-[#781818] hover:border-train-champagne transition-all"
               >
                 <span>Train 1225 멤버</span>

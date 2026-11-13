@@ -26,8 +26,8 @@ export default {
         script: ['"Pinyon Script"', 'cursive'],
         serif: ['"Cinzel"', 'Georgia', 'serif'],
         cormorant: ['"Cormorant Garamond"', 'serif'],
-        korean: ['"Gowun Batang"', '"Noto Serif KR"', 'serif'],
-        sans: ['"Noto Sans KR"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        korean: ['"Lora"', '"Gowun Batang"', '"Noto Serif KR"', 'serif'],
+        sans: ['"Lora"', '"Noto Sans KR"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       boxShadow: {
         'brass': '0 0 15px rgba(184, 139, 74, 0.35), inset 0 0 15px rgba(184, 139, 74, 0.15)',

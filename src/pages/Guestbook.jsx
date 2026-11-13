@@ -218,57 +218,13 @@ export default function Guestbook() {
             {/* Distant Stars & Glow */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(235,211,154,0.15),transparent_70%)] pointer-events-none" />
 
-            {/* Christmas Tree SVG Silhouette & Illumination */}
-            <div className="relative w-full max-w-lg h-[540px] sm:h-[620px] flex items-center justify-center">
-              <svg
-                viewBox="0 0 500 650"
-                className="w-full h-full drop-shadow-[0_0_35px_rgba(235,211,154,0.3)]"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <defs>
-                  <linearGradient id="treeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#1e3a24" />
-                    <stop offset="50%" stopColor="#0f2615" />
-                    <stop offset="100%" stopColor="#08170c" />
-                  </linearGradient>
-                  <linearGradient id="trunkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#2e1a12" />
-                    <stop offset="50%" stopColor="#4a2818" />
-                    <stop offset="100%" stopColor="#2e1a12" />
-                  </linearGradient>
-                </defs>
-
-                {/* Trunk */}
-                <rect x="230" y="550" width="40" height="70" rx="3" fill="url(#trunkGrad)" />
-
-                {/* Tree Tiers (Pine Layers) */}
-                {/* Bottom Tier */}
-                <path d="M70 560 L250 380 L430 560 Q 250 585 70 560 Z" fill="url(#treeGrad)" stroke="#22482c" strokeWidth="2" />
-                {/* Middle Tier 2 */}
-                <path d="M100 440 L250 280 L400 440 Q 250 465 100 440 Z" fill="url(#treeGrad)" stroke="#285634" strokeWidth="2" />
-                {/* Middle Tier 1 */}
-                <path d="M135 320 L250 180 L365 320 Q 250 340 135 320 Z" fill="url(#treeGrad)" stroke="#326b41" strokeWidth="2" />
-                {/* Top Tier */}
-                <path d="M175 200 L250 85 L325 200 Q 250 215 175 200 Z" fill="url(#treeGrad)" stroke="#3c804e" strokeWidth="2" />
-
-                {/* Fairy Lights Swags */}
-                <path d="M185 190 Q 250 230 315 190" stroke="#FFF2BF" strokeWidth="1.5" strokeDasharray="3 14" opacity="0.8" />
-                <path d="M145 310 Q 250 360 355 310" stroke="#FFF2BF" strokeWidth="1.5" strokeDasharray="3 16" opacity="0.8" />
-                <path d="M110 430 Q 250 490 390 430" stroke="#FFF2BF" strokeWidth="1.5" strokeDasharray="3 18" opacity="0.8" />
-                <path d="M80 545 Q 250 620 420 545" stroke="#FFF2BF" strokeWidth="1.5" strokeDasharray="3 20" opacity="0.8" />
-
-                {/* Star on Top */}
-                <g transform="translate(225, 45)">
-                  <polygon
-                    points="25,2 31,18 48,18 34,28 39,45 25,35 11,45 16,28 2,18 19,18"
-                    fill="#FFF6CC"
-                    stroke="#D4AF37"
-                    strokeWidth="1.5"
-                    className="drop-shadow-[0_0_15px_#FFE082]"
-                  />
-                </g>
-              </svg>
+            {/* Christmas Tree Cut-out Image & Atmospheric Lighting */}
+            <div className="relative w-full max-w-sm sm:max-w-md h-[540px] sm:h-[620px] flex items-center justify-center py-4">
+              <img
+                src="/assets/christmas-tree.png"
+                alt="Christmas Tree"
+                className="w-full h-full object-contain filter drop-shadow-[0_12px_40px_rgba(0,0,0,0.95)] drop-shadow-[0_0_30px_rgba(184,139,74,0.25)] select-none pointer-events-none"
+              />
 
               {/* Hanging Ornaments Overlay */}
               <div className="absolute inset-0 pointer-events-auto">
@@ -306,7 +262,9 @@ export default function Guestbook() {
             <div className="absolute bottom-4 inset-x-4 text-center pointer-events-none">
               <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-train-gold/40 bg-train-bg/85 backdrop-blur-md text-[11px] text-train-champagne font-serif shadow">
                 <Sparkles className="w-3.5 h-3.5 text-train-gold" />
-                트리에 매달린 오너먼트를 클릭하면 승객들의 메시지를 읽을 수 있습니다.
+                {wishes.length > 0
+                  ? '트리에 매달린 오너먼트를 클릭하면 승객들의 메시지를 읽을 수 있습니다.'
+                  : '상단의 [오너먼트 달기]를 눌러 첫 번째 오너먼트를 달아주세요!'}
               </span>
             </div>
           </div>
@@ -315,30 +273,38 @@ export default function Guestbook() {
         /* ========================================================================= */
         /* VIEW 2: Passenger Wishes List View                                        */
         /* ========================================================================= */
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {wishes.map((wish) => (
-            <div
-              key={wish.id}
-              onClick={() => setSelectedWish(wish)}
-              className="p-5 rounded-xl border border-train-gold/40 bg-[#5d1212] hover:border-train-gold cursor-pointer transition-all hover:-translate-y-1 shadow-md space-y-3"
-            >
-              <div className="flex items-center justify-between pb-2 border-b border-train-gold/20">
-                <div className="flex items-center gap-2">
-                  <OrnamentIcon type={wish.ornament_type} size={24} />
-                  <span className="font-serif text-xs text-train-champagne font-bold">
-                    {wish.nickname}
+        wishes.length === 0 ? (
+          <div className="p-12 text-center text-xs sm:text-sm text-train-ivory/70 font-korean rounded-2xl border border-train-gold/30 bg-[#5d1212]/80 space-y-3">
+            <Sparkles className="w-8 h-8 text-train-gold mx-auto animate-pulse" />
+            <p className="text-train-champagne font-serif text-sm">아직 매달린 오너먼트가 없습니다.</p>
+            <p className="text-xs text-train-ivory/80">상단의 [오너먼트 달기] 버튼을 눌러 첫 번째 축복과 기도의 메시지를 남겨보세요!</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {wishes.map((wish) => (
+              <div
+                key={wish.id}
+                onClick={() => setSelectedWish(wish)}
+                className="p-5 rounded-xl border border-train-gold/40 bg-[#5d1212] hover:border-train-gold cursor-pointer transition-all hover:-translate-y-1 shadow-md space-y-3"
+              >
+                <div className="flex items-center justify-between pb-2 border-b border-train-gold/20">
+                  <div className="flex items-center gap-2">
+                    <OrnamentIcon type={wish.ornament_type} size={24} />
+                    <span className="font-serif text-xs text-train-champagne font-bold">
+                      {wish.nickname}
+                    </span>
+                  </div>
+                  <span className="text-[10px] text-train-ivory/50 font-serif">
+                    {new Date(wish.created_at).toLocaleDateString('ko-KR')}
                   </span>
                 </div>
-                <span className="text-[10px] text-train-ivory/50 font-serif">
-                  {new Date(wish.created_at).toLocaleDateString('ko-KR')}
-                </span>
+                <p className="font-korean text-xs text-train-ivory/85 leading-relaxed line-clamp-3">
+                  "{wish.message}"
+                </p>
               </div>
-              <p className="font-korean text-xs text-train-ivory/85 leading-relaxed line-clamp-3">
-                "{wish.message}"
-              </p>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )
       )}
 
       {/* ========================================================================= */}
