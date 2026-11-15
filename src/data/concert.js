@@ -8,15 +8,15 @@ export const concertData = {
   dates: [
     {
       id: "day-1",
-      day: "DAY 1",
+      day: "1공",
       date: "2026. 12. 04 (FRI)",
       time: "20:30",
-      doorsOpen: "18:30",
+      doorsOpen: "20:00",
       description: "첫 번째 출발 — 밤의 서막과 빛을 향한 여정",
     },
     {
       id: "day-2-1",
-      day: "DAY 2 (1차)",
+      day: "2공",
       date: "2026. 12. 05 (SAT)",
       time: "14:00",
       doorsOpen: "13:30",
@@ -24,7 +24,7 @@ export const concertData = {
     },
     {
       id: "day-2-2",
-      day: "DAY 2 (2차)",
+      day: "3공",
       date: "2026. 12. 05 (SAT)",
       time: "16:00",
       doorsOpen: "15:30",

@@ -5,7 +5,7 @@ import { Menu, X, Ticket, Volume2, VolumeX, Sparkles } from 'lucide-react';
 
 const NAV_ITEMS = [
   { path: '/', label: 'HOME', labelKo: '홈' },
-  { path: '/concert', label: 'THE JOURNEY', labelKo: '이번 자공' },
+  { path: '/concert', label: 'TRAIN 1225', labelKo: 'Train 1225' },
   { path: '/guestbook', label: 'WISH TREE', labelKo: '방명록' },
   { path: '/info', label: 'INFORMATION', labelKo: '공연 안내' },
   { path: '/reviews', label: 'MEMORIES', labelKo: '공연 후기' },

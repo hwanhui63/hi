@@ -43,9 +43,6 @@ export default function Info() {
         <h1 className="font-serif text-3xl sm:text-5xl text-train-ivory font-bold tracking-wide">
           공연 안내 및 승차권 (INFORMATION)
         </h1>
-        <p className="font-script text-3xl sm:text-4xl text-train-champagne">
-          Your Boarding Pass to Train 1225
-        </p>
       </div>
 
       {/* ========================================================================= */}
@@ -146,7 +143,7 @@ export default function Info() {
                       : 'border-train-gold/30 bg-black/60 text-train-ivory/70 hover:border-train-gold/60'
                   }`}
                 >
-                  {d.day.split(' ')[0]}
+                  {d.day}
                 </button>
               ))}
             </div>
@@ -192,14 +189,13 @@ export default function Info() {
         <ScriptHeading
           subtitle="TIMETABLE & DEPARTURES"
           title="공연 일정 및 회차 안내"
-          titleEn="Train Timetable"
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
           {concertData.dates.map((dateItem) => (
             <BrassBorder key={dateItem.id} innerClassName="space-y-4">
               <div className="flex items-center justify-between pb-3 border-b border-train-gold/30">
-                <span className="font-serif text-xs font-bold px-2 py-0.5 rounded bg-train-burgundy border border-train-gold text-train-champagne">
+                <span className="font-serif text-xs font-bold px-2.5 py-1 rounded bg-[#781818] border border-train-gold text-train-champagne shadow-sm">
                   {dateItem.day}
                 </span>
                 <span className="text-xs text-train-gold font-serif">
@@ -236,13 +232,12 @@ export default function Info() {
         <ScriptHeading
           subtitle="VENUE & DIRECTIONS"
           title="공연 장소 및 찾아오시는 길"
-          titleEn="Arrival Station"
         />
 
         <div className="mt-10 p-6 sm:p-8 rounded-2xl border border-train-gold/50 bg-[#5d1212] shadow-brass">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
             {/* Address Details */}
-            <div className="md:col-span-7 space-y-4">
+            <div className="md:col-span-5 space-y-4">
               <div className="flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-train-gold" />
                 <h3 className="font-serif text-xl text-train-champagne font-bold">
@@ -277,53 +272,42 @@ export default function Info() {
                 {concertData.venue.directions}
               </p>
 
-              <div className="flex flex-wrap items-center gap-3 pt-2">
+              <div className="pt-2">
                 <a
                   href={concertData.venue.mapUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-train-gold/60 bg-black text-train-champagne text-xs font-serif hover:border-train-gold transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-train-gold/60 bg-black hover:bg-[#781818] text-train-champagne text-xs font-serif tracking-wider transition-colors shadow-sm"
                 >
-                  <span>네이버 지도 바로가기</span>
-                  <ExternalLink className="w-3 h-3 text-train-gold/60" />
-                </a>
-
-                <a
-                  href={concertData.venue.kakaoMapUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-train-gold/60 bg-black text-train-champagne text-xs font-serif hover:border-train-gold transition-colors"
-                >
-                  <span>카카오맵 바로가기</span>
-                  <ExternalLink className="w-3 h-3 text-train-gold/60" />
+                  <MapPin className="w-3.5 h-3.5 text-train-gold" />
+                  <span>네이버 지도에서 크게 보기</span>
+                  <ExternalLink className="w-3 h-3 text-train-gold/70" />
                 </a>
               </div>
             </div>
 
-            {/* QR Code & Inquiries Box */}
-            <div className="md:col-span-5 flex flex-col items-center justify-center p-6 rounded-xl bg-[#450d0d] border border-train-gold/40 text-center space-y-3">
-              <span className="font-serif text-[11px] tracking-widest text-train-gold uppercase">
-                OFFICIAL QR CODE
-              </span>
-              <div className="p-2 rounded-lg bg-white border border-train-gold shadow-md">
-                <img
-                  src={concertData.assets.qrcode}
-                  alt="Concert Official Kakao QR Code"
-                  className="w-36 h-36 object-contain"
+            {/* Embedded Live Map Screen (QR코드 대신 바로 지도 화면 임베드) */}
+            <div className="md:col-span-7 rounded-xl overflow-hidden border border-train-gold/50 shadow-inner bg-black flex flex-col">
+              <div className="px-4 py-2 bg-black/90 border-b border-train-gold/30 flex items-center justify-between text-xs font-serif text-train-gold">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="font-bold text-train-champagne">한동대학교 학생회관 (SU 104호)</span>
+                </div>
+                <span className="text-[11px] text-train-ivory/60">포항시 북구 흥해읍</span>
+              </div>
+              <div className="relative w-full h-[280px] sm:h-[320px]">
+                <iframe
+                  title="한동대학교 학생회관 지도"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  scrolling="no"
+                  marginHeight="0"
+                  marginWidth="0"
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=129.3820%2C36.0985%2C129.3950%2C36.1080&amp;layer=mapnik&amp;marker=36.1033%2C129.3885"
+                  className="w-full h-full filter contrast-105"
                 />
               </div>
-              <p className="text-[11px] text-train-ivory/70 font-korean max-w-xs">
-                포스터 공식 QR 코드. 스캔하시면 카카오톡 오픈채팅방으로 바로 연결됩니다.
-              </p>
-              <a
-                href={concertData.contact.bookingUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded bg-[#5d1212] hover:bg-[#781818] border border-train-gold text-train-champagne text-xs font-serif tracking-wider shadow-brass hover:shadow-brass-lg transition-all"
-              >
-                <span>카카오 오픈채팅 입장하기</span>
-                <ExternalLink className="w-3 h-3" />
-              </a>
             </div>
           </div>
         </div>
@@ -336,7 +320,6 @@ export default function Info() {
         <ScriptHeading
           subtitle="PASSENGER GUIDELINES"
           title="관람 및 탑승 유의사항"
-          titleEn="Etiquette on Board"
         />
 
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

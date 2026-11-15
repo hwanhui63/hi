@@ -134,9 +134,6 @@ export default function Guestbook() {
         <h1 className="font-serif text-3xl sm:text-5xl text-train-ivory font-bold tracking-wide">
           창밖의 크리스마스트리 (WISH TREE)
         </h1>
-        <p className="font-script text-3xl sm:text-4xl text-train-champagne">
-          Leave Your Wish on Train 1225
-        </p>
         <p className="font-korean text-xs sm:text-sm text-train-ivory/70 max-w-lg mx-auto">
           달리는 열차의 창밖, 하얀 눈 덮인 설원에 우뚝 선 크리스마스트리에 
           공연을 향한 응원과 기도의 오너먼트를 달아주세요.
@@ -214,12 +211,12 @@ export default function Guestbook() {
           <div className="absolute bottom-3 right-4 w-2 h-2 rounded-full bg-train-champagne" />
 
           {/* Window Glass Pane Container */}
-          <div className="relative rounded-2xl overflow-hidden min-h-[580px] sm:min-h-[660px] border border-train-gold/40 bg-gradient-to-b from-[#09111c] via-[#0d1624] to-[#140b0a] shadow-inner flex items-center justify-center">
+          <div className="relative rounded-2xl overflow-hidden min-h-[460px] sm:min-h-[520px] border border-train-gold/40 bg-gradient-to-b from-[#09111c] via-[#0d1624] to-[#140b0a] shadow-inner flex items-center justify-center">
             {/* Distant Stars & Glow */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(235,211,154,0.15),transparent_70%)] pointer-events-none" />
 
-            {/* Christmas Tree Cut-out Image & Atmospheric Lighting */}
-            <div className="relative w-full max-w-sm sm:max-w-md h-[540px] sm:h-[620px] flex items-center justify-center py-4">
+            {/* Christmas Tree Cut-out Image & Atmospheric Lighting (사이즈 최적화) */}
+            <div className="relative w-full max-w-[270px] sm:max-w-[320px] h-[400px] sm:h-[460px] flex items-center justify-center py-4">
               <img
                 src="/assets/christmas-tree.png"
                 alt="Christmas Tree"

@@ -23,8 +23,8 @@ export default {
         }
       },
       fontFamily: {
-        amoresa: ['"Amoresa"', '"Pinyon Script"', 'cursive'],
-        script: ['"Amoresa"', '"Pinyon Script"', 'cursive'],
+        script: ['"Pinyon Script"', 'cursive'],
+        amoresa: ['"Pinyon Script"', '"Amoresa"', 'cursive'],
         serif: ['"Cinzel"', 'Georgia', 'serif'],
         cormorant: ['"Cormorant Garamond"', 'serif'],
         korean: ['"Lora"', '"Gowun Batang"', '"Noto Serif KR"', 'serif'],

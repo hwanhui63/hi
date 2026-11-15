@@ -38,7 +38,7 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="relative min-h-screen bg-train-bg text-train-ivory selection:bg-train-gold selection:text-train-bg overflow-x-hidden">
+      <div className="relative min-h-screen carriage-theme-bg text-train-ivory selection:bg-train-gold selection:text-train-bg overflow-x-hidden">
         {/* Vintage Grain Texture Overlay */}
         <div className="vintage-grain pointer-events-none fixed inset-0 z-30 opacity-40" />
 

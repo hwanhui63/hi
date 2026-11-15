@@ -82,9 +82,6 @@ export default function Reviews() {
         <h1 className="font-serif text-3xl sm:text-5xl text-train-ivory font-bold tracking-wide">
           공연 후기 및 여행일지 (MEMORIES)
         </h1>
-        <p className="font-script text-3xl sm:text-4xl text-train-champagne">
-          Memories from the Journey
-        </p>
       </div>
 
       {/* Test Mode / Preview Notice Pill */}
@@ -263,7 +260,6 @@ export default function Reviews() {
         <ScriptHeading
           subtitle="PASSENGER REVIEWS"
           title="승객들의 여행일지 목록"
-          titleEn="Letters & Memories"
         />
 
         <div className="mt-10 space-y-5">

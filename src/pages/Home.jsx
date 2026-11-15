@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="relative min-h-screen bg-black text-train-ivory overflow-hidden">
       {/* ========================================================================= */}
-      {/* 1. HERO SECTION: Fullscreen Passing Train Video (요청하신 시점의 화면 복원)   */}
+      {/* 1. HERO SECTION: Fullscreen Passing Train Video                           */}
       {/* ========================================================================= */}
       <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 py-24 sm:py-28 overflow-hidden">
         {/* Fullscreen Background Video (지나가는 영상 풀 화면) */}
@@ -22,15 +22,22 @@ export default function Home() {
             loop
             muted
             playsInline
-            className="w-full h-full object-cover scale-105 filter brightness-75 contrast-115"
+            className="w-full h-full object-cover scale-105 filter brightness-95 contrast-110"
           >
             <source src={concertData.assets.journeyVideo} type="video/mp4" />
           </video>
-          {/* Cinematic Vignette & Atmospheric Gradients */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/35 to-black/90 pointer-events-none" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_30%,_rgba(0,0,0,0.85)_100%)] pointer-events-none" />
-          {/* Subtle Warm Center Glow */}
-          <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-amber-500/15 blur-3xl pointer-events-none" />
+          {/* Gentle cinematic gradient so navbar and text are legible, while passing train window is vivid */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/75 pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_50%,_rgba(0,0,0,0.6)_100%)] pointer-events-none" />
+
+          {/* Passing Lantern Glow Streaks */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            <motion.div
+              animate={{ x: ['120%', '-120%'], opacity: [0, 0.35, 0] }}
+              transition={{ duration: 4.5, repeat: Infinity, ease: 'linear', repeatDelay: 1.5 }}
+              className="absolute top-1/3 w-72 h-32 bg-amber-400/15 blur-3xl transform -skew-x-12"
+            />
+          </div>
         </div>
 
         {/* Central Content (Floating seamlessly over the fullscreen passing train) */}
@@ -49,14 +56,14 @@ export default function Home() {
             <Sparkles className="w-3.5 h-3.5 text-train-gold animate-pulse" />
           </motion.div>
 
-          {/* Main Title: "Train 1225" (Amoresa 폰트 적용) & Subtitle */}
+          {/* Main Title: "Train 1225" (Pinyon Script 안깨지는 폰트 적용) & Subtitle */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 1 }}
+            transition={{ delay: 0.35, duration: 0.8 }}
             className="space-y-3 sm:space-y-4"
           >
-            <h1 className="font-amoresa text-7xl sm:text-9xl md:text-[10.5rem] text-transparent bg-clip-text bg-gradient-to-b from-[#FFF5D6] via-[#EBD39A] to-[#B88B4A] drop-shadow-[0_12px_28px_rgba(0,0,0,0.95)] leading-tight select-none px-2">
+            <h1 className="font-script text-7xl sm:text-9xl md:text-[10.5rem] text-transparent bg-clip-text bg-gradient-to-b from-[#FFF5D6] via-[#EBD39A] to-[#B88B4A] drop-shadow-[0_12px_28px_rgba(0,0,0,0.95)] select-none px-4 py-2 leading-normal">
               Train 1225
             </h1>
             <p className="font-korean text-base sm:text-xl md:text-2xl text-train-ivory drop-shadow-md font-medium tracking-wide">
