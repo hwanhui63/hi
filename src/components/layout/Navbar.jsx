@@ -6,9 +6,8 @@ import { Menu, X, Ticket, Volume2, VolumeX, Sparkles } from 'lucide-react';
 const NAV_ITEMS = [
   { path: '/', label: 'HOME', labelKo: '홈' },
   { path: '/concert', label: 'TRAIN 1225', labelKo: 'Train 1225' },
-  { path: '/guestbook', label: 'WISH TREE', labelKo: '방명록' },
+  { path: '/guestbook', label: 'WISH TREE', labelKo: '트리 꾸미기' },
   { path: '/info', label: 'INFORMATION', labelKo: '공연 안내' },
-  { path: '/reviews', label: 'MEMORIES', labelKo: '공연 후기' },
 ];
 
 export default function Navbar() {
@@ -173,7 +172,7 @@ export default function Navbar() {
             {/* Boarding Pass CTA */}
             <Link
               to="/info"
-              className="flex items-center gap-2 px-4 py-2 rounded border border-train-gold bg-[#5d1212] hover:bg-[#781818] text-train-champagne text-xs font-serif tracking-widest uppercase hover:shadow-brass transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl border border-train-gold bg-[#5d1212] hover:bg-[#781818] text-train-champagne text-xs font-serif tracking-widest uppercase hover:shadow-brass transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
             >
               <Ticket className="w-3.5 h-3.5 text-train-gold" />
               <span>승차권 확인</span>
@@ -184,14 +183,14 @@ export default function Navbar() {
           <div className="flex sm:hidden items-center gap-2">
             <button
               onClick={toggleAmbientSound}
-              className="p-2 rounded border border-train-gold/40 text-train-champagne"
+              className="p-2 rounded-xl border border-train-gold/40 text-train-champagne"
               aria-label="소리 토글"
             >
               {isPlayingSound ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded border border-train-gold/50 bg-train-burgundy/60 text-train-champagne focus:outline-none"
+              className="p-2 rounded-xl border border-train-gold/50 bg-train-burgundy/60 text-train-champagne focus:outline-none"
               aria-label="메뉴 열기"
             >
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -227,7 +226,7 @@ export default function Navbar() {
                     <Link
                       key={item.path}
                       to={item.path}
-                      className={`flex items-center justify-between px-3 py-2.5 rounded border transition-colors ${
+                      className={`flex items-center justify-between px-3 py-2.5 rounded-xl border transition-colors ${
                         isActive
                           ? 'border-train-gold bg-train-burgundy/80 text-train-champagne font-bold'
                           : 'border-transparent text-train-ivory/80 hover:bg-train-bg/60'
@@ -243,7 +242,7 @@ export default function Navbar() {
               <div className="pt-2">
                 <Link
                   to="/info"
-                  className="flex items-center justify-center gap-2 w-full py-3 rounded border border-train-gold bg-train-burgundy text-train-champagne font-serif text-xs tracking-widest uppercase shadow-brass"
+                  className="flex items-center justify-center gap-2 w-full py-3 rounded-2xl border border-train-gold bg-train-burgundy text-train-champagne font-serif text-xs tracking-widest uppercase shadow-brass"
                 >
                   <Ticket className="w-4 h-4 text-train-gold" />
                   <span>승차권(BOARDING PASS) 확인하기</span>

@@ -282,7 +282,7 @@ export default function Guestbook() {
               <div
                 key={wish.id}
                 onClick={() => setSelectedWish(wish)}
-                className="p-5 rounded-xl border border-train-gold/40 bg-[#5d1212] hover:border-train-gold cursor-pointer transition-all hover:-translate-y-1 shadow-md space-y-3"
+                className="p-5 rounded-2xl border border-train-gold/40 bg-[#5d1212] hover:border-train-gold cursor-pointer transition-all hover:-translate-y-1 shadow-md space-y-3"
               >
                 <div className="flex items-center justify-between pb-2 border-b border-train-gold/20">
                   <div className="flex items-center gap-2">

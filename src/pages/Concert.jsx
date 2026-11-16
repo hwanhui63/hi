@@ -30,9 +30,9 @@ export default function Concert() {
   return (
     <div className="relative min-h-screen bg-black text-train-ivory pb-24 overflow-hidden">
       {/* ========================================================================= */}
-      {/* 1. HERO SECTION: Poster as Full Background (첫 화면 아예 포스터를 배경으로 하기) */}
+      {/* 1. HERO SECTION: Poster as Full Background                                */}
       {/* ========================================================================= */}
-      <section className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden px-4 sm:px-6 pt-24 pb-16">
+      <section className="relative min-h-[85vh] max-h-[850px] flex items-center justify-center overflow-hidden px-4 sm:px-6 pt-24 pb-16">
         {/* Full Background Poster with Cinematic Lighting */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
@@ -79,7 +79,7 @@ export default function Concert() {
           >
             <button
               onClick={() => setIsPosterModalOpen(true)}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-train-champagne bg-[#5d1212]/90 hover:bg-[#781818] text-train-champagne font-serif text-xs sm:text-sm tracking-widest uppercase font-semibold shadow-brass hover:shadow-brass-lg transition-all backdrop-blur-sm hover:scale-[1.02]"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl border border-train-champagne bg-[#5d1212]/90 hover:bg-[#781818] text-train-champagne font-serif text-xs sm:text-sm tracking-widest uppercase font-semibold shadow-brass hover:shadow-brass-lg transition-all backdrop-blur-sm hover:scale-[1.02]"
             >
               <Maximize2 className="w-4 h-4 text-train-gold" />
               <span>포스터 원본 크게 보기</span>
@@ -94,10 +94,10 @@ export default function Concert() {
         {/* 2. CONCERT STORY: “당신은 지금 어디로 가고 계십니까 ?”                      */}
         {/* ========================================================================= */}
         <section>
-          <div className="p-6 sm:p-10 rounded-2xl bg-[#5d1212] border border-train-gold/50 shadow-brass">
+          <div className="p-6 sm:p-10 rounded-3xl bg-[#5d1212] border border-train-gold/50 shadow-brass">
             <div className="space-y-6">
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-train-gold/40 bg-black/60 text-train-champagne text-xs font-serif tracking-widest uppercase">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-train-gold/40 bg-black/60 text-train-champagne text-xs font-serif tracking-widest uppercase">
                 <Compass className="w-3.5 h-3.5 text-train-gold" />
                 <span>CONCERT STORY</span>
               </div>
@@ -120,7 +120,7 @@ export default function Concert() {
               </div>
 
               {/* Romans 8:38-39 Scripture Quote Box */}
-              <div className="p-4 sm:p-6 rounded-xl border border-train-gold/40 bg-black/60 text-center space-y-2">
+              <div className="p-5 sm:p-6 rounded-2xl border border-train-gold/40 bg-black/60 text-center space-y-2">
                 <p className="font-serif text-[11px] text-train-champagne tracking-[0.25em] uppercase font-semibold">
                   ROMANS 8:38-39
                 </p>
@@ -136,20 +136,20 @@ export default function Concert() {
               {/* Schedule & Duration Information 3-Column Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
                 {/* Schedule Box */}
-                <div className="p-4 rounded-xl border border-train-gold/30 bg-black/60 space-y-2">
+                <div className="p-4 rounded-2xl border border-train-gold/30 bg-black/60 space-y-2">
                   <div className="flex items-center gap-2 text-train-champagne font-serif text-xs font-semibold">
                     <Calendar className="w-3.5 h-3.5 text-train-gold flex-shrink-0" />
                     <span>총 3회차 운행</span>
                   </div>
                   <div className="space-y-1 text-xs text-train-ivory/80 font-serif">
-                    <div>12월 4일 (금) 20:30</div>
-                    <div>12월 5일 (토) 14:00</div>
-                    <div>12월 5일 (토) 16:00</div>
+                    <div>1공: 12월 4일 (금) 20:30</div>
+                    <div>2공: 12월 5일 (토) 14:00</div>
+                    <div>3공: 12월 5일 (토) 16:00</div>
                   </div>
                 </div>
 
                 {/* Duration Box */}
-                <div className="p-4 rounded-xl border border-train-gold/30 bg-black/60 space-y-2">
+                <div className="p-4 rounded-2xl border border-train-gold/30 bg-black/60 space-y-2">
                   <div className="flex items-center gap-2 text-train-champagne font-serif text-xs font-semibold">
                     <Clock className="w-3.5 h-3.5 text-train-gold flex-shrink-0" />
                     <span>예상 소요 시간</span>
@@ -161,7 +161,7 @@ export default function Concert() {
                 </div>
 
                 {/* Venue Box */}
-                <div className="p-4 rounded-xl border border-train-gold/30 bg-black/60 space-y-2">
+                <div className="p-4 rounded-2xl border border-train-gold/30 bg-black/60 space-y-2">
                   <div className="flex items-center gap-2 text-train-champagne font-serif text-xs font-semibold">
                     <Train className="w-3.5 h-3.5 text-train-gold flex-shrink-0" />
                     <span>탑승 장소</span>
@@ -186,23 +186,23 @@ export default function Concert() {
           />
 
           <p className="text-center text-xs sm:text-sm text-train-ivory/70 max-w-xl mx-auto mt-3 font-korean">
-            열차는 5개의 정거장을 거치며 달립니다. 각 정거장을 선택하여 선율과 팀의 이야기를 확인하세요.
+            열차는 6개의 정거장을 거치며 달립니다. 각 정거장을 선택하여 선율과 팀의 이야기를 확인하세요.
           </p>
 
-          {/* Train Route Map Timeline (Interactive Stations) */}
+          {/* Train Route Map Timeline (Interactive Stations - 6 Stations) */}
           <div className="mt-12 relative">
             {/* Track Line */}
             <div className="hidden md:block absolute top-1/2 left-6 right-6 h-1 -translate-y-1/2 bg-gradient-to-r from-train-gold/30 via-train-gold to-train-gold/30 z-0" />
 
-            {/* Station Nodes Grid */}
-            <div className="relative z-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            {/* Station Nodes Grid (6 Stations: Station 00 ~ 05) */}
+            <div className="relative z-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 sm:gap-4">
               {setlistData.stations.map((station) => {
                 const isSelected = selectedStationId === station.id;
                 return (
                   <button
                     key={station.id}
                     onClick={() => setSelectedStationId(station.id)}
-                    className={`group relative text-center p-3.5 rounded-xl border transition-all duration-300 flex flex-col items-center justify-between min-h-[115px] ${
+                    className={`group relative text-center p-3.5 rounded-2xl border transition-all duration-300 flex flex-col items-center justify-between min-h-[115px] ${
                       isSelected
                         ? 'bg-[#781818] border-train-champagne shadow-brass scale-105'
                         : 'bg-[#5d1212] border-train-gold/40 hover:border-train-gold hover:bg-[#6e1515]'
@@ -253,70 +253,59 @@ export default function Concert() {
               transition={{ duration: 0.3 }}
               className="mt-8"
             >
-              <BrassBorder innerClassName="space-y-6">
+              <BrassBorder rounded="rounded-3xl" innerRounded="rounded-[22px]" innerClassName="space-y-6">
                 {/* Station Header */}
                 <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-train-gold/30">
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="font-serif text-xs font-bold px-2 py-0.5 rounded bg-train-gold/20 text-train-champagne border border-train-gold/40">
-                        {selectedStation.stationNameEn}
+                      <span className="font-serif text-xs font-bold px-2.5 py-0.5 rounded-full bg-train-champagne text-black">
+                        STATION {selectedStation.number}
                       </span>
-                      <span className="text-xs text-train-gold font-medium">
-                        정거장 테마
-                      </span>
+                      <h3 className="font-serif text-2xl text-train-champagne font-bold">
+                        {selectedStation.stationName}
+                      </h3>
                     </div>
-                    <h3 className="font-serif text-2xl sm:text-3xl text-train-ivory font-bold">
-                      {selectedStation.stationName}
-                    </h3>
+                    <p className="text-xs text-train-ivory/80 font-korean">
+                      {selectedStation.themeDescription}
+                    </p>
                   </div>
 
-                  <span className="px-3 py-1 rounded bg-black/60 text-train-champagne text-xs font-serif border border-train-gold/40">
-                    총 {selectedStation.songs.length}개의 수록곡
+                  <span className="font-serif text-xs tracking-widest text-train-gold uppercase px-3 py-1 rounded-full border border-train-gold/30 bg-black/40">
+                    {selectedStation.songs.length} TRACKS IN SERVICE
                   </span>
                 </div>
 
-                <p className="font-korean text-xs sm:text-sm text-train-ivory/80 leading-relaxed italic">
-                  "{selectedStation.themeDescription}"
-                </p>
-
-                {/* Songs Grid in this Station */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
+                {/* Song Cards List */}
+                <div className="space-y-4">
                   {selectedStation.songs.map((song, idx) => (
                     <div
                       key={idx}
-                      className="p-4 sm:p-5 rounded-xl border border-train-gold/40 bg-[#450d0d] space-y-3 flex flex-col justify-between shadow-sm hover:border-train-gold transition-colors"
+                      className="p-4 sm:p-5 rounded-2xl border border-train-gold/30 bg-[#450d0d] space-y-3 hover:border-train-gold transition-colors shadow-sm"
                     >
-                      <div className="space-y-2">
-                        <div className="flex items-center justify-between">
-                          <span className="font-serif text-[10px] tracking-widest text-train-gold uppercase">
-                            TRACK 0{idx + 1}
-                          </span>
-                          <span
-                            className={`text-[9px] font-serif uppercase tracking-widest px-2 py-0.5 rounded ${
-                              song.status === 'CONFIRMED'
-                                ? 'bg-emerald-950/80 text-emerald-400 border border-emerald-500/40'
-                                : 'bg-amber-950/80 text-amber-300 border border-amber-500/40'
-                            }`}
-                          >
-                            {song.status === 'CONFIRMED' ? '선곡 확정' : '추후 공개'}
-                          </span>
-                        </div>
-
-                        <div>
-                          <h4 className="font-serif text-lg sm:text-xl text-train-champagne font-bold leading-snug">
-                            {song.title}
-                          </h4>
-                          <p className="text-xs text-train-ivory/70 mt-0.5">
-                            원곡: <span className="text-train-ivory font-medium">{song.originalArtist}</span>
+                      <div className="flex flex-wrap items-start justify-between gap-2">
+                        <div className="space-y-1">
+                          <div className="flex items-center gap-2">
+                            <Disc className="w-4 h-4 text-train-gold animate-spin-slow flex-shrink-0" />
+                            <h4 className="font-serif text-base sm:text-lg text-train-champagne font-bold">
+                              {song.title}
+                            </h4>
+                          </div>
+                          <p className="text-xs text-train-ivory/70 font-serif">
+                            원곡: <span className="text-train-gold font-medium">{song.originalArtist}</span>
                           </p>
                         </div>
 
-                        <div className="inline-block px-2 py-0.5 rounded bg-black/50 border border-train-gold/30 text-[11px] text-train-gold font-medium">
-                          세션: {song.team}
+                        <div className="flex items-center gap-2">
+                          <span className="font-serif text-[11px] px-2.5 py-1 rounded-full border border-train-gold/40 bg-black/50 text-train-ivory/90">
+                            {song.team}
+                          </span>
+                          <span className="font-serif text-[10px] tracking-wider uppercase px-2 py-0.5 rounded-full bg-emerald-950/80 border border-emerald-500/60 text-emerald-300">
+                            CONFIRMED
+                          </span>
                         </div>
                       </div>
 
-                      <p className="font-korean text-xs text-train-ivory/85 leading-relaxed border-t border-train-gold/20 pt-3">
+                      <p className="text-xs text-train-ivory/85 font-korean leading-relaxed pl-6 border-l-2 border-train-gold/40">
                         {song.interpretation}
                       </p>
                     </div>
@@ -328,16 +317,16 @@ export default function Concert() {
         </section>
 
         {/* ========================================================================= */}
-        {/* 4. MEMBER: 단원 명부 (Member)                                              */}
+        {/* 4. MEMBER: Train 1225 승무원                                              */}
         {/* ========================================================================= */}
         <section id="members" className="scroll-mt-28">
           <ScriptHeading
-            subtitle="MEMBER"
-            title="단원 명부 (Member)"
+            subtitle="CREW"
+            title="Train 1225 승무원"
           />
 
           <p className="text-center text-xs sm:text-sm text-train-ivory/70 max-w-xl mx-auto mt-3 font-korean">
-            Train 1225의 여정을 함께 만드는 디렉터, 실기수, 아기기수, 자랑스러운 OB 선배 단원들입니다.
+            Train 1225의 여정을 준비한 승무원들 입니다.
           </p>
 
           {/* Tab Navigation */}
@@ -348,7 +337,7 @@ export default function Concert() {
                 <button
                   key={group.id}
                   onClick={() => setActiveCastTab(group.id)}
-                  className={`px-4 sm:px-6 py-2.5 rounded-lg border font-serif text-xs sm:text-sm tracking-wider uppercase transition-all duration-200 ${
+                  className={`px-4 sm:px-6 py-2.5 rounded-2xl border font-serif text-xs sm:text-sm tracking-wider uppercase transition-all duration-200 ${
                     isActive
                       ? 'border-train-gold bg-[#781818] text-train-champagne shadow-brass font-bold'
                       : 'border-train-gold/40 bg-[#5d1212] text-train-ivory/80 hover:border-train-gold hover:text-train-champagne'
@@ -380,25 +369,25 @@ export default function Concert() {
               transition={{ duration: 0.25 }}
               className="mt-8"
             >
-              {/* Type 1: ID Cards with Photo Slot (디렉터, 실기수, 아기기수) */}
+              {/* Type 1: ID Cards with Photo Slot (디렉터, 실기수 25, 아기기수 26) */}
               {currentCastGroup.type === 'cards' && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                   {currentCastGroup.members.map((member) => (
                     <div
                       key={member.id}
-                      className="p-4 sm:p-5 rounded-xl border border-train-gold/40 bg-[#5d1212] shadow-brass hover:border-train-gold transition-all duration-300 flex flex-col justify-between"
+                      className="p-4 sm:p-5 rounded-2xl border border-train-gold/40 bg-[#5d1212] shadow-brass hover:border-train-gold transition-all duration-300 flex flex-col justify-between"
                     >
                       <div className="flex gap-4">
-                        {/* ID Photo Slot (신분증처럼 사진 넣을 수 있는 구역) */}
-                        <div className="relative w-20 h-24 sm:w-22 sm:h-28 rounded border border-train-gold/60 bg-black/90 flex-shrink-0 overflow-hidden flex flex-col items-center justify-center p-1 shadow-inner">
+                        {/* ID Photo Slot */}
+                        <div className="relative w-20 h-24 sm:w-22 sm:h-28 rounded-xl border border-train-gold/60 bg-black/90 flex-shrink-0 overflow-hidden flex flex-col items-center justify-center p-1 shadow-inner">
                           {member.photo ? (
                             <img
                               src={member.photo}
                               alt={member.name}
-                              className="w-full h-full object-cover rounded"
+                              className="w-full h-full object-cover rounded-lg"
                             />
                           ) : (
-                            <div className="w-full h-full flex flex-col items-center justify-center text-center p-1 rounded bg-gradient-to-b from-[#2e1212] to-black">
+                            <div className="w-full h-full flex flex-col items-center justify-center text-center p-1 rounded-lg bg-gradient-to-b from-[#2e1212] to-black">
                               <User className="w-6 h-6 text-train-gold/50 mb-1" />
                               <span className="text-[8px] font-serif tracking-widest text-train-gold/60 uppercase">
                                 PASS ID
@@ -406,19 +395,20 @@ export default function Concert() {
                             </div>
                           )}
                           {/* Vintage Brass Corner Accents */}
-                          <div className="absolute top-0.5 left-0.5 w-1.5 h-1.5 border-t border-l border-train-champagne/80" />
-                          <div className="absolute top-0.5 right-0.5 w-1.5 h-1.5 border-t border-r border-train-champagne/80" />
-                          <div className="absolute bottom-0.5 left-0.5 w-1.5 h-1.5 border-b border-l border-train-champagne/80" />
-                          <div className="absolute bottom-0.5 right-0.5 w-1.5 h-1.5 border-b border-r border-train-champagne/80" />
+                          <div className="absolute top-1 left-1 w-1.5 h-1.5 border-t border-l border-train-champagne/80" />
+                          <div className="absolute top-1 right-1 w-1.5 h-1.5 border-t border-r border-train-champagne/80" />
+                          <div className="absolute bottom-1 left-1 w-1.5 h-1.5 border-b border-l border-train-champagne/80" />
+                          <div className="absolute bottom-1 right-1 w-1.5 h-1.5 border-b border-r border-train-champagne/80" />
                         </div>
 
                         {/* ID Details */}
                         <div className="flex-1 min-w-0 space-y-1.5">
                           <div className="flex items-center justify-between gap-1">
-                            <span className="font-serif text-[10px] tracking-wider uppercase px-2 py-0.5 rounded bg-black/60 text-train-champagne border border-train-gold/40">
+                            <span className="font-serif text-[10px] tracking-wider uppercase px-2 py-0.5 rounded-md bg-black/60 text-train-champagne border border-train-gold/40 font-semibold">
                               {member.cohort}
                             </span>
-                            <span className="font-serif text-[10px] tracking-wider uppercase px-2 py-0.5 rounded bg-train-gold/20 text-train-gold border border-train-gold/30">
+                            {/* 약어로 써있는 악기 블록 배지 유지 */}
+                            <span className="font-serif text-[10px] tracking-wider uppercase px-2 py-0.5 rounded-md bg-train-gold/20 text-train-champagne border border-train-gold/40 font-bold">
                               {member.instrument}
                             </span>
                           </div>
@@ -431,10 +421,6 @@ export default function Concert() {
                               {member.role}
                             </p>
                           </div>
-
-                          <p className="text-[11px] text-train-ivory/60 font-korean truncate">
-                            {member.instrumentKo}
-                          </p>
                         </div>
                       </div>
 
@@ -450,24 +436,24 @@ export default function Concert() {
                 </div>
               )}
 
-              {/* Type 2: OB List (명단으로만 깔끔하게 표시) */}
+              {/* Type 2: OB List (00 기수 표시) */}
               {currentCastGroup.type === 'list' && (
                 <div className="max-w-4xl mx-auto">
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                     {currentCastGroup.members.map((ob) => (
                       <div
                         key={ob.id}
-                        className="p-3 rounded-lg border border-train-gold/40 bg-[#5d1212] flex items-center justify-between text-xs hover:border-train-gold transition-colors"
+                        className="p-3 rounded-2xl border border-train-gold/40 bg-[#5d1212] flex items-center justify-between text-xs hover:border-train-gold transition-colors shadow-sm"
                       >
                         <div className="flex items-center gap-2">
-                          <span className="font-serif text-[11px] text-train-gold font-semibold">
+                          <span className="font-serif text-[11px] text-train-gold font-bold px-2 py-0.5 rounded-md bg-black/40">
                             {ob.cohort}
                           </span>
                           <span className="font-serif text-train-ivory font-bold">
                             {ob.name}
                           </span>
                         </div>
-                        <span className="px-2 py-0.5 rounded bg-black/60 text-train-champagne text-[10px] font-serif border border-train-gold/30">
+                        <span className="px-2 py-0.5 rounded-md bg-black/60 text-train-champagne text-[10px] font-serif border border-train-gold/30 font-bold">
                           {ob.instrument}
                         </span>
                       </div>
@@ -482,7 +468,7 @@ export default function Concert() {
                   {currentCastGroup.groups.map((grp, idx) => (
                     <div
                       key={idx}
-                      className="p-5 rounded-xl border border-train-gold/40 bg-[#5d1212] space-y-3 shadow-sm"
+                      className="p-5 rounded-2xl border border-train-gold/40 bg-[#5d1212] space-y-3 shadow-md"
                     >
                       <div className="pb-2 border-b border-train-gold/20">
                         <span className="font-serif text-xs text-train-champagne font-bold tracking-wider uppercase block">
@@ -523,20 +509,19 @@ export default function Concert() {
             onClick={() => setIsPosterModalOpen(false)}
           >
             <div
-              className="relative max-w-2xl w-full max-h-[90vh] flex flex-col items-center"
+              className="relative max-w-xl max-h-[92vh] w-full p-2 rounded-3xl bg-[#5d1212] border-2 border-train-gold shadow-brass-lg flex flex-col items-center"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={() => setIsPosterModalOpen(false)}
-                className="absolute -top-12 right-0 p-2 text-train-champagne hover:text-white"
-                aria-label="닫기"
+                className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/80 text-train-champagne border border-train-gold hover:bg-[#781818] transition-colors"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5" />
               </button>
               <img
                 src={concertData.assets.poster}
-                alt="Train 1225 Poster Fullscreen"
-                className="max-h-[85vh] w-auto rounded-lg border-2 border-train-gold shadow-2xl object-contain"
+                alt="Train 1225 Concert Poster Full"
+                className="w-full h-auto max-h-[85vh] object-contain rounded-2xl"
               />
             </div>
           </motion.div>

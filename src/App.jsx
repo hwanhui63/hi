@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Snowfall from './components/layout/Snowfall';
@@ -7,7 +7,6 @@ import Home from './pages/Home';
 import Concert from './pages/Concert';
 import Guestbook from './pages/Guestbook';
 import Info from './pages/Info';
-import Reviews from './pages/Reviews';
 
 // Scroll to top or target hash on route change
 function ScrollToTop() {
@@ -55,7 +54,7 @@ export default function App() {
             <Route path="/concert" element={<Concert />} />
             <Route path="/guestbook" element={<Guestbook />} />
             <Route path="/info" element={<Info />} />
-            <Route path="/reviews" element={<Reviews />} />
+            <Route path="/reviews" element={<Navigate to="/" replace />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </main>

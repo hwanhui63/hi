@@ -26,15 +26,16 @@ export default function Footer() {
             </h3>
             <div className="space-y-1.5 text-xs text-train-ivory/80 font-serif">
               <div className="flex items-start gap-2">
-                <span className="text-train-gold font-semibold w-12 flex-shrink-0">Day 1:</span>
+                <span className="text-train-gold font-semibold w-10 flex-shrink-0">1공:</span>
                 <span>2026. 12. 04 (FRI) 20:30</span>
               </div>
               <div className="flex items-start gap-2">
-                <span className="text-train-gold font-semibold w-12 flex-shrink-0">Day 2:</span>
-                <div className="space-y-1">
-                  <div>2026. 12. 05 (SAT) 14:00</div>
-                  <div>2026. 12. 05 (SAT) 16:00</div>
-                </div>
+                <span className="text-train-gold font-semibold w-10 flex-shrink-0">2공:</span>
+                <span>2026. 12. 05 (SAT) 14:00</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-train-gold font-semibold w-10 flex-shrink-0">3공:</span>
+                <span>2026. 12. 05 (SAT) 16:00</span>
               </div>
             </div>
           </div>

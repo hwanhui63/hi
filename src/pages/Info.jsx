@@ -5,18 +5,14 @@ import {
   Calendar,
   Clock,
   MapPin,
-  Phone,
-  Instagram,
   Copy,
   Check,
   ExternalLink,
   RotateCw,
   Sparkles,
-  AlertCircle,
-  HelpCircle,
 } from 'lucide-react';
 import { concertData } from '../data/concert';
-import { BrassBorder, VintageDivider, ScriptHeading } from '../components/common/BrassBorder';
+import { BrassBorder, ScriptHeading } from '../components/common/BrassBorder';
 
 export default function Info() {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -41,7 +37,7 @@ export default function Info() {
           OFFICIAL BOARDING PASS & SCHEDULE
         </span>
         <h1 className="font-serif text-3xl sm:text-5xl text-train-ivory font-bold tracking-wide">
-          공연 안내 및 승차권 (INFORMATION)
+          공연 안내 및 승차권
         </h1>
       </div>
 
@@ -71,17 +67,17 @@ export default function Info() {
               animate={{ rotateY: isFlipped ? 180 : 0 }}
               transition={{ duration: 0.7, ease: 'easeInOut' }}
               style={{ transformStyle: 'preserve-3d' }}
-              className="relative w-full rounded-2xl p-2 sm:p-3 bg-gradient-to-b from-train-gold/50 via-[#40201a] to-train-bg border-2 border-train-gold shadow-brass-lg aspect-[2000/804]"
+              className="relative w-full rounded-3xl p-2.5 sm:p-3.5 bg-gradient-to-b from-train-gold/50 via-[#40201a] to-train-bg border-2 border-train-gold shadow-brass-lg aspect-[2000/804]"
             >
               {/* Front of Ticket */}
               <div
                 style={{ backfaceVisibility: 'hidden' }}
-                className="absolute inset-2 sm:inset-3 rounded-xl overflow-hidden bg-train-darkwood flex items-center justify-center"
+                className="absolute inset-2 sm:inset-3 rounded-2xl overflow-hidden bg-train-darkwood flex items-center justify-center"
               >
                 <img
                   src={concertData.assets.ticketFront}
                   alt="Liquid Express Ticket Front"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-2xl"
                 />
               </div>
 
@@ -91,12 +87,12 @@ export default function Info() {
                   backfaceVisibility: 'hidden',
                   transform: 'rotateY(180deg)',
                 }}
-                className="absolute inset-2 sm:inset-3 rounded-xl overflow-hidden bg-train-darkwood flex items-center justify-center"
+                className="absolute inset-2 sm:inset-3 rounded-2xl overflow-hidden bg-train-darkwood flex items-center justify-center"
               >
                 <img
                   src={concertData.assets.ticketBack}
                   alt="Liquid Express Ticket Back"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-2xl"
                 />
               </div>
             </motion.div>
@@ -106,7 +102,7 @@ export default function Info() {
           <div className="mt-4 flex items-center justify-center gap-3">
             <button
               onClick={() => setIsFlipped(!isFlipped)}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-train-gold/60 bg-train-secondary text-train-champagne text-xs font-serif tracking-wider hover:shadow-brass transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl border border-train-gold/60 bg-train-secondary text-train-champagne text-xs font-serif tracking-wider hover:shadow-brass transition-all"
             >
               <RotateCw className="w-3.5 h-3.5 text-train-gold" />
               <span>승차권 {isFlipped ? '앞면 보기' : '뒷면 보기'}</span>
@@ -115,7 +111,7 @@ export default function Info() {
         </div>
 
         {/* Dynamic Personal Boarding Pass Generator */}
-        <div className="mt-12 max-w-2xl mx-auto p-6 rounded-2xl border border-train-gold/40 bg-[#5d1212] shadow-md">
+        <div className="mt-12 max-w-2xl mx-auto p-6 sm:p-7 rounded-3xl border border-train-gold/40 bg-[#5d1212] shadow-brass">
           <div className="flex items-center gap-2 pb-3 border-b border-train-gold/20 mb-4">
             <Ticket className="w-4 h-4 text-train-gold" />
             <h3 className="font-serif text-sm text-train-champagne font-bold tracking-wider uppercase">
@@ -130,14 +126,14 @@ export default function Info() {
               value={passengerName}
               onChange={(e) => setPassengerName(e.target.value)}
               placeholder="승객 성함을 입력하세요 (예: 김한동)"
-              className="flex-1 px-3 py-2 rounded-lg border border-train-gold/40 bg-black text-xs sm:text-sm text-train-ivory placeholder:text-train-ivory/40 focus:outline-none focus:border-train-gold"
+              className="flex-1 px-4 py-2.5 rounded-2xl border border-train-gold/40 bg-black text-xs sm:text-sm text-train-ivory placeholder:text-train-ivory/40 focus:outline-none focus:border-train-gold"
             />
             <div className="flex gap-2">
               {concertData.dates.map((d) => (
                 <button
                   key={d.id}
                   onClick={() => setSelectedDay(d.id)}
-                  className={`px-3 py-2 rounded-lg border text-xs font-serif transition-colors ${
+                  className={`px-4 py-2.5 rounded-2xl border text-xs font-serif transition-colors ${
                     selectedDay === d.id
                       ? 'border-train-gold bg-[#781818] text-train-champagne font-bold shadow'
                       : 'border-train-gold/30 bg-black/60 text-train-ivory/70 hover:border-train-gold/60'
@@ -150,7 +146,7 @@ export default function Info() {
           </div>
 
           {/* Generated Pass Preview */}
-          <div className="p-4 sm:p-5 rounded-xl border border-train-gold/50 bg-[#450d0d] shadow-inner relative overflow-hidden">
+          <div className="p-5 rounded-2xl border border-train-gold/50 bg-[#450d0d] shadow-inner relative overflow-hidden space-y-4">
             <div className="flex flex-wrap items-center justify-between gap-4 pb-3 border-b border-dashed border-train-gold/30 text-xs">
               <div>
                 <span className="block text-[10px] font-serif text-train-gold/70">PASSENGER NAME</span>
@@ -165,7 +161,7 @@ export default function Info() {
               <div>
                 <span className="block text-[10px] font-serif text-train-gold/70">DEPARTURE</span>
                 <span className="font-serif text-sm font-bold text-train-champagne">
-                  {selectedDateObj.date.split(' ')[0]} {selectedDateObj.time}
+                  {selectedDateObj.date} {selectedDateObj.time}
                 </span>
               </div>
               <div>
@@ -174,8 +170,8 @@ export default function Info() {
               </div>
             </div>
 
-            <div className="pt-3 flex items-center justify-between text-[11px] text-train-ivory/70">
-              <span className="font-serif text-train-gold/80">NO. 26-2-LIQUID</span>
+            <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-train-ivory/70">
+              <span className="font-serif text-train-gold font-bold tracking-wider">NO. 2621225</span>
               <span className="italic font-korean">"하나님의 사랑 안에서 안전한 여정 되시길 소망합니다."</span>
             </div>
           </div>
@@ -193,9 +189,9 @@ export default function Info() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
           {concertData.dates.map((dateItem) => (
-            <BrassBorder key={dateItem.id} innerClassName="space-y-4">
+            <BrassBorder key={dateItem.id} rounded="rounded-3xl" innerRounded="rounded-[22px]" innerClassName="space-y-4">
               <div className="flex items-center justify-between pb-3 border-b border-train-gold/30">
-                <span className="font-serif text-xs font-bold px-2.5 py-1 rounded bg-[#781818] border border-train-gold text-train-champagne shadow-sm">
+                <span className="font-serif text-xs font-bold px-3 py-1 rounded-full bg-[#781818] border border-train-gold text-train-champagne shadow-sm">
                   {dateItem.day}
                 </span>
                 <span className="text-xs text-train-gold font-serif">
@@ -212,7 +208,7 @@ export default function Info() {
                 </h4>
               </div>
 
-              <p className="text-xs text-train-ivory/70 font-korean leading-relaxed">
+              <p className="text-xs text-train-ivory/85 font-korean leading-relaxed min-h-[36px]">
                 {dateItem.description}
               </p>
 
@@ -234,24 +230,24 @@ export default function Info() {
           title="공연 장소 및 찾아오시는 길"
         />
 
-        <div className="mt-10 p-6 sm:p-8 rounded-2xl border border-train-gold/50 bg-[#5d1212] shadow-brass">
+        <div className="mt-10 p-6 sm:p-8 rounded-3xl border border-train-gold/50 bg-[#5d1212] shadow-brass">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
             {/* Address Details */}
             <div className="md:col-span-5 space-y-4">
               <div className="flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-train-gold" />
                 <h3 className="font-serif text-xl text-train-champagne font-bold">
-                  {concertData.venue.name} ({concertData.venue.code})
+                  {concertData.venue.name}
                 </h3>
               </div>
 
-              <div className="p-3.5 rounded-lg bg-[#450d0d] border border-train-gold/30 flex items-center justify-between gap-3 text-xs sm:text-sm">
+              <div className="p-3.5 rounded-2xl bg-[#450d0d] border border-train-gold/30 flex items-center justify-between gap-3 text-xs sm:text-sm">
                 <span className="text-train-ivory/90 font-mono">
                   {concertData.venue.address}
                 </span>
                 <button
                   onClick={handleCopyAddress}
-                  className="flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-train-gold/50 bg-[#5d1212] hover:bg-[#781818] text-train-champagne text-xs font-serif hover:shadow transition-all"
+                  className="flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-train-gold/50 bg-[#5d1212] hover:bg-[#781818] text-train-champagne text-xs font-serif hover:shadow transition-all"
                   title="주소 복사"
                 >
                   {copiedAddress ? (
@@ -268,7 +264,7 @@ export default function Info() {
                 </button>
               </div>
 
-              <p className="font-korean text-xs sm:text-sm text-train-ivory/80 leading-relaxed">
+              <p className="font-korean text-xs sm:text-sm text-train-ivory/90 leading-relaxed">
                 {concertData.venue.directions}
               </p>
 
@@ -277,7 +273,7 @@ export default function Info() {
                   href={concertData.venue.mapUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-train-gold/60 bg-black hover:bg-[#781818] text-train-champagne text-xs font-serif tracking-wider transition-colors shadow-sm"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl border border-train-gold/60 bg-black hover:bg-[#781818] text-train-champagne text-xs font-serif tracking-wider transition-colors shadow-sm"
                 >
                   <MapPin className="w-3.5 h-3.5 text-train-gold" />
                   <span>네이버 지도에서 크게 보기</span>
@@ -286,9 +282,9 @@ export default function Info() {
               </div>
             </div>
 
-            {/* Embedded Live Map Screen (QR코드 대신 바로 지도 화면 임베드) */}
-            <div className="md:col-span-7 rounded-xl overflow-hidden border border-train-gold/50 shadow-inner bg-black flex flex-col">
-              <div className="px-4 py-2 bg-black/90 border-b border-train-gold/30 flex items-center justify-between text-xs font-serif text-train-gold">
+            {/* Embedded Live Map Screen */}
+            <div className="md:col-span-7 rounded-2xl overflow-hidden border border-train-gold/50 shadow-inner bg-black flex flex-col">
+              <div className="px-4 py-2.5 bg-black/90 border-b border-train-gold/30 flex items-center justify-between text-xs font-serif text-train-gold">
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   <span className="font-bold text-train-champagne">한동대학교 학생회관 (SU 104호)</span>
@@ -314,7 +310,7 @@ export default function Info() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. PASSENGER GUIDELINES (관람 유의사항)                                   */}
+      {/* 4. PASSENGER GUIDELINES (관람 및 탑승 유의사항)                            */}
       {/* ========================================================================= */}
       <section>
         <ScriptHeading
@@ -322,23 +318,29 @@ export default function Info() {
           title="관람 및 탑승 유의사항"
         />
 
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-5">
           {concertData.guidelines.map((rule, idx) => (
             <div
               key={idx}
-              className="p-5 rounded-xl border border-train-gold/40 bg-[#5d1212] space-y-2 hover:border-train-gold transition-colors shadow-sm"
+              className="p-6 rounded-3xl border border-train-gold/40 bg-[#5d1212] space-y-3 hover:border-train-gold transition-colors shadow-brass"
             >
-              <div className="flex items-center gap-2">
-                <span className="font-serif text-xs font-bold text-train-gold">
-                  RULE 0{idx + 1}
+              <div className="flex items-center gap-2 pb-2 border-b border-train-gold/20">
+                <span className="font-serif text-xs font-bold text-train-gold px-2.5 py-0.5 rounded-full bg-black/50 border border-train-gold/30">
+                  Rule {rule.ruleNumber}
                 </span>
-                <h4 className="font-serif text-sm text-train-champagne font-bold">
+                <h4 className="font-serif text-sm sm:text-base text-train-champagne font-bold">
                   {rule.title}
                 </h4>
               </div>
-              <p className="text-xs text-train-ivory/80 font-korean leading-relaxed">
-                {rule.description}
-              </p>
+
+              <div className="space-y-2 text-xs sm:text-sm text-train-ivory/85 font-korean leading-relaxed pt-1">
+                {rule.items && rule.items.map((item, iIdx) => (
+                  <p key={iIdx} className="flex items-start gap-2">
+                    <span className="text-train-gold font-bold mt-1 text-[10px]">•</span>
+                    <span className="flex-1">{item}</span>
+                  </p>
+                ))}
+              </div>
             </div>
           ))}
         </div>
