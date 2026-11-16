@@ -30,7 +30,7 @@ export default function Info() {
   };
 
   return (
-    <div className="relative min-h-screen bg-train-bg text-train-ivory pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto overflow-hidden">
+    <div className="relative min-h-screen text-train-ivory pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto overflow-hidden">
       {/* Page Header */}
       <div className="text-center space-y-3 mb-16">
         <span className="font-serif text-xs tracking-[0.3em] uppercase text-train-gold">
@@ -67,7 +67,7 @@ export default function Info() {
               animate={{ rotateY: isFlipped ? 180 : 0 }}
               transition={{ duration: 0.7, ease: 'easeInOut' }}
               style={{ transformStyle: 'preserve-3d' }}
-              className="relative w-full rounded-3xl p-2.5 sm:p-3.5 bg-gradient-to-b from-train-gold/50 via-[#40201a] to-train-bg border-2 border-train-gold shadow-brass-lg aspect-[2000/804]"
+              className="relative w-full rounded-3xl p-2.5 sm:p-3.5 bg-gradient-to-b from-train-gold/50 via-[#40201a] to-[#3d0b0b] border-2 border-train-gold shadow-brass-lg aspect-[2000/804]"
             >
               {/* Front of Ticket */}
               <div
@@ -126,7 +126,7 @@ export default function Info() {
               value={passengerName}
               onChange={(e) => setPassengerName(e.target.value)}
               placeholder="승객 성함을 입력하세요 (예: 김한동)"
-              className="flex-1 px-4 py-2.5 rounded-2xl border border-train-gold/40 bg-black text-xs sm:text-sm text-train-ivory placeholder:text-train-ivory/40 focus:outline-none focus:border-train-gold"
+              className="flex-1 px-4 py-2.5 rounded-2xl border border-train-gold/40 bg-[#2d0707]/90 text-xs sm:text-sm text-train-ivory placeholder:text-train-ivory/40 focus:outline-none focus:border-train-gold"
             />
             <div className="flex gap-2">
               {concertData.dates.map((d) => (
@@ -136,7 +136,7 @@ export default function Info() {
                   className={`px-4 py-2.5 rounded-2xl border text-xs font-serif transition-colors ${
                     selectedDay === d.id
                       ? 'border-train-gold bg-[#781818] text-train-champagne font-bold shadow'
-                      : 'border-train-gold/30 bg-black/60 text-train-ivory/70 hover:border-train-gold/60'
+                      : 'border-train-gold/30 bg-[#3d0b0b]/80 text-train-ivory/70 hover:border-train-gold/60'
                   }`}
                 >
                   {d.day}
@@ -273,7 +273,7 @@ export default function Info() {
                   href={concertData.venue.mapUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl border border-train-gold/60 bg-black hover:bg-[#781818] text-train-champagne text-xs font-serif tracking-wider transition-colors shadow-sm"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl border border-train-gold/60 bg-[#3d0b0b] hover:bg-[#781818] text-train-champagne text-xs font-serif tracking-wider transition-colors shadow-sm"
                 >
                   <MapPin className="w-3.5 h-3.5 text-train-gold" />
                   <span>네이버 지도에서 크게 보기</span>
@@ -283,8 +283,8 @@ export default function Info() {
             </div>
 
             {/* Embedded Live Map Screen */}
-            <div className="md:col-span-7 rounded-2xl overflow-hidden border border-train-gold/50 shadow-inner bg-black flex flex-col">
-              <div className="px-4 py-2.5 bg-black/90 border-b border-train-gold/30 flex items-center justify-between text-xs font-serif text-train-gold">
+            <div className="md:col-span-7 rounded-2xl overflow-hidden border border-train-gold/50 shadow-inner bg-[#2d0707] flex flex-col">
+              <div className="px-4 py-2.5 bg-[#450d0d]/90 border-b border-train-gold/30 flex items-center justify-between text-xs font-serif text-train-gold">
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   <span className="font-bold text-train-champagne">한동대학교 학생회관 (SU 104호)</span>
@@ -325,7 +325,7 @@ export default function Info() {
               className="p-6 rounded-3xl border border-train-gold/40 bg-[#5d1212] space-y-3 hover:border-train-gold transition-colors shadow-brass"
             >
               <div className="flex items-center gap-2 pb-2 border-b border-train-gold/20">
-                <span className="font-serif text-xs font-bold text-train-gold px-2.5 py-0.5 rounded-full bg-black/50 border border-train-gold/30">
+                <span className="font-serif text-xs font-bold text-train-gold px-2.5 py-0.5 rounded-full bg-[#3d0b0b]/80 border border-train-gold/30">
                   Rule {rule.ruleNumber}
                 </span>
                 <h4 className="font-serif text-sm sm:text-base text-train-champagne font-bold">

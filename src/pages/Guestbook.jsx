@@ -204,12 +204,6 @@ export default function Guestbook() {
       {/* ========================================================================= */}
       {viewMode === 'tree' ? (
         <div className="relative rounded-3xl p-3 sm:p-6 bg-[#5d1212] border-2 border-train-gold/70 shadow-brass-lg overflow-hidden">
-          {/* Rivets */}
-          <div className="absolute top-3 left-4 w-2 h-2 rounded-full bg-train-champagne" />
-          <div className="absolute top-3 right-4 w-2 h-2 rounded-full bg-train-champagne" />
-          <div className="absolute bottom-3 left-4 w-2 h-2 rounded-full bg-train-champagne" />
-          <div className="absolute bottom-3 right-4 w-2 h-2 rounded-full bg-train-champagne" />
-
           {/* Window Glass Pane Container */}
           <div className="relative rounded-2xl overflow-hidden min-h-[460px] sm:min-h-[520px] border border-train-gold/40 bg-gradient-to-b from-[#09111c] via-[#0d1624] to-[#140b0a] shadow-inner flex items-center justify-center">
             {/* Distant Stars & Glow */}

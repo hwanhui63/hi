@@ -3,12 +3,6 @@ import React from 'react';
 export function BrassBorder({ children, className = "", innerClassName = "", rounded = "rounded-2xl", innerRounded = "rounded-[14px]" }) {
   return (
     <div className={`relative p-[2px] ${rounded} bg-gradient-to-b from-[#EBD39A] via-[#B88B4A] to-[#6C4A1A] shadow-brass ${className}`}>
-      {/* Corner Rivet Screws (Vintage Carriage Corner Brass Screws) */}
-      <span className="absolute top-2.5 left-2.5 w-2 h-2 rounded-full bg-[#EBD39A] border border-[#6C4A1A] shadow-sm z-10 pointer-events-none" />
-      <span className="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-[#EBD39A] border border-[#6C4A1A] shadow-sm z-10 pointer-events-none" />
-      <span className="absolute bottom-2.5 left-2.5 w-2 h-2 rounded-full bg-[#EBD39A] border border-[#6C4A1A] shadow-sm z-10 pointer-events-none" />
-      <span className="absolute bottom-2.5 right-2.5 w-2 h-2 rounded-full bg-[#EBD39A] border border-[#6C4A1A] shadow-sm z-10 pointer-events-none" />
-
       <div className={`${innerRounded} bg-[#5d1212] p-5 sm:p-6 ${innerClassName}`}>
         {children}
       </div>

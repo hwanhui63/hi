@@ -112,7 +112,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left Column: Transparent Cut-out Logo (누끼 딴 로고) */}
+            {/* Left Column: Transparent Cut-out Logo (누끼 딴 로고 - 네온 효과 제거) */}
             <div className="lg:col-span-5 flex items-center justify-center p-2 sm:p-4">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -121,12 +121,10 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="relative flex items-center justify-center"
               >
-                {/* Subtle ambient red/warm backlight glow */}
-                <div className="absolute inset-0 w-full h-full bg-red-600/15 blur-3xl rounded-full pointer-events-none" />
                 <img
                   src="/assets/liquid-logo-cutout.png"
                   alt="LIQUID — The Blood of Christ Logo"
-                  className="relative z-10 w-full max-w-[270px] sm:max-w-[330px] md:max-w-[360px] h-auto object-contain filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.95)] drop-shadow-[0_0_25px_rgba(255,27,0,0.3)] select-none pointer-events-none hover:scale-105 transition-transform duration-500"
+                  className="relative z-10 w-full max-w-[270px] sm:max-w-[330px] md:max-w-[360px] h-auto object-contain filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.9)] select-none pointer-events-none hover:scale-105 transition-transform duration-500"
                 />
               </motion.div>
             </div>
