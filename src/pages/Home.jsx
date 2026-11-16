@@ -6,15 +6,14 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import { concertData } from '../data/concert';
-import { BrassBorder, ScriptHeading } from '../components/common/BrassBorder';
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-black text-train-ivory overflow-hidden">
+    <div className="relative min-h-screen text-train-ivory overflow-hidden">
       {/* ========================================================================= */}
       {/* 1. HERO SECTION: Fullscreen Passing Train Video                           */}
       {/* ========================================================================= */}
-      <section className="relative min-h-screen max-h-[920px] flex items-center justify-center px-4 sm:px-6 py-24 sm:py-28 overflow-hidden">
+      <section className="relative h-screen max-h-[900px] min-h-[620px] bg-black flex items-center justify-center px-4 sm:px-6 py-20 sm:py-24 overflow-hidden">
         {/* Fullscreen Background Video (지나가는 영상 풀 화면) */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <video
@@ -100,110 +99,131 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 2. ABOUT LIQUID: The Blood of Christ                                      */}
       {/* ========================================================================= */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-        <ScriptHeading
-          subtitle="The Blood of Christ"
-          title="LIQUID"
-        />
-
-        <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Left Column: 로고 사진 (둥글게 깎은 블록 카드) */}
-          <div className="lg:col-span-5 flex flex-col">
-            <BrassBorder
-              rounded="rounded-3xl"
-              innerRounded="rounded-[22px]"
-              className="h-full flex-1"
-              innerClassName="h-full flex flex-col justify-center items-center p-6 sm:p-8 bg-black/95 text-center shadow-inner"
-            >
-              <div className="w-full flex-1 flex flex-col items-center justify-center space-y-4">
-                <div className="overflow-hidden rounded-2xl border border-train-gold/40 shadow-lg bg-black p-2 w-full max-w-[340px] sm:max-w-[400px]">
-                  <img
-                    src={concertData.assets.logoBanner}
-                    alt="LIQUID Band Logo"
-                    className="w-full h-auto object-contain rounded-xl"
-                  />
-                </div>
-                <div className="pt-3 border-t border-train-gold/30 w-full flex items-center justify-between text-xs font-serif text-train-champagne px-1">
-                  <span className="tracking-widest uppercase text-train-gold text-[11px]">HANDONG CHRISTIAN BAND</span>
-                  <span className="font-semibold text-train-champagne text-[11px]">SINCE 2000</span>
-                </div>
-              </div>
-            </BrassBorder>
+      <section id="about" className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 carriage-wall-section overflow-hidden border-t border-train-gold/30 scroll-mt-10">
+        <div className="relative max-w-6xl mx-auto">
+          {/* Top Heading: THE BLOOD OF CHRIST / LIQUID (첨부 이미지 레이아웃 반영) */}
+          <div className="text-center space-y-1.5 mb-12 sm:mb-16">
+            <p className="font-serif text-xs sm:text-sm tracking-[0.35em] text-train-gold uppercase font-semibold">
+              THE BLOOD OF CHRIST
+            </p>
+            <h2 className="font-serif text-3xl sm:text-5xl text-train-champagne font-bold tracking-wider drop-shadow-md">
+              LIQUID
+            </h2>
           </div>
 
-          {/* Right Column: 박스들 (리퀴드 소개 박스 + 찬양과 고백 박스) */}
-          <div className="lg:col-span-7 flex flex-col gap-6 justify-between">
-            {/* Box 1: 리퀴드 소개 (모서리 둥글게 깎은 블록) */}
-            <BrassBorder
-              rounded="rounded-3xl"
-              innerRounded="rounded-[22px]"
-              innerClassName="space-y-4"
-            >
-              <div className="pb-3 border-b border-train-gold/30 flex items-center justify-between">
-                <span className="font-serif text-xs tracking-widest text-train-gold uppercase">
-                  리퀴드 소개
-                </span>
-                <span className="font-serif text-xs text-train-champagne/80 font-semibold">
-                  ABOUT LIQUID
-                </span>
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Column: Transparent Cut-out Logo (누끼 딴 로고) */}
+            <div className="lg:col-span-5 flex items-center justify-center p-2 sm:p-4">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="relative flex items-center justify-center"
+              >
+                {/* Subtle ambient red/warm backlight glow */}
+                <div className="absolute inset-0 w-full h-full bg-red-600/15 blur-3xl rounded-full pointer-events-none" />
+                <img
+                  src="/assets/liquid-logo-cutout.png"
+                  alt="LIQUID — The Blood of Christ Logo"
+                  className="relative z-10 w-full max-w-[270px] sm:max-w-[330px] md:max-w-[360px] h-auto object-contain filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.95)] drop-shadow-[0_0_25px_rgba(255,27,0,0.3)] select-none pointer-events-none hover:scale-105 transition-transform duration-500"
+                />
+              </motion.div>
+            </div>
 
-              <h3 className="font-serif text-lg sm:text-xl text-train-champagne font-bold leading-snug">
-                “예수님의 보혈을 가슴에 품고 음악하는 동아리”
-              </h3>
+            {/* Right Column: Stacked Rounded Burgundy Cards */}
+            <div className="lg:col-span-7 flex flex-col gap-6">
+              {/* Box 1: 리퀴드 소개 (모서리 둥글게 깎은 블록) */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="relative p-6 sm:p-7 rounded-2xl sm:rounded-3xl bg-[#5d1212]/95 border border-train-gold/50 shadow-brass overflow-hidden"
+              >
+                {/* Faint ambient stars */}
+                <div className="absolute top-3 right-8 w-1 h-1 rounded-full bg-train-champagne/40 animate-pulse pointer-events-none" />
+                <div className="absolute bottom-6 left-12 w-1.5 h-1.5 rounded-full bg-train-gold/30 pointer-events-none" />
+                <div className="absolute top-1/2 right-1/4 w-1 h-1 rounded-full bg-train-champagne/30 pointer-events-none" />
 
-              <div className="space-y-2.5 font-korean text-xs sm:text-sm text-train-ivory/85 leading-relaxed">
-                <p>
-                  Liquid는 한동대학교 창립 비전에 부합하는 한동 유일 크리스천 밴드로서 십자가에서 피 흘리신 예수님을 기억하며, 다양한 장르의 밴드 공연을 통한 하나님 나라의 확장을 목적으로 합니다.
-                </p>
-                <p>
-                  정모의 시작을 예배로 드리고 있으며, 1학기는 길거리 공연, 2학기 자체공연, 그리고 매주 과제곡을 통해 연습하고 있습니다.
-                </p>
-                <p>
-                  국내 문화공연사역단체인 MNT에 속해 있어, 매주 정기예배와 셀 모임, 기도회, 그리고 여름사역과 겨울 태국 선교에 참여하고 있습니다.
-                </p>
-              </div>
+                {/* Card Header */}
+                <div className="flex items-center justify-between pb-3 border-b border-train-gold/30">
+                  <span className="font-serif text-xs sm:text-sm tracking-wider text-train-gold font-medium">
+                    리퀴드 소개
+                  </span>
+                  <span className="font-serif text-[11px] sm:text-xs tracking-[0.2em] text-train-champagne/80 font-semibold uppercase">
+                    ABOUT LIQUID
+                  </span>
+                </div>
 
-              <div className="pt-3 border-t border-train-gold/20 flex flex-wrap items-center gap-4">
-                {/* Train 1225 멤버 누르면 단원 명부(#members)로 바로 이동 */}
-                <Link
-                  to="/concert#members"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-train-gold/60 bg-black/60 text-train-champagne text-xs font-serif tracking-wider hover:bg-[#781818] hover:border-train-champagne transition-all shadow-sm"
-                >
-                  <span>Train 1225 멤버</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </BrassBorder>
+                {/* Card Title */}
+                <h3 className="font-serif text-base sm:text-lg text-train-champagne font-bold mt-3.5 mb-3 leading-snug">
+                  “예수님의 보혈을 가슴에 품고 음악하는 동아리”
+                </h3>
 
-            {/* Box 2: 찬양과 고백 (시편 33:3) (모서리 둥글게 깎은 블록) */}
-            <BrassBorder
-              rounded="rounded-3xl"
-              innerRounded="rounded-[22px]"
-              innerClassName="space-y-4 text-center py-5 sm:py-6"
-            >
-              <div className="flex items-center justify-between pb-3 border-b border-train-gold/30 text-left">
-                <span className="font-serif text-xs tracking-widest text-train-gold uppercase">
-                  찬양과 고백
-                </span>
-                <span className="font-serif text-xs text-train-champagne/80 font-semibold">
-                  PSALM 33:3
-                </span>
-              </div>
+                {/* Card Content */}
+                <div className="space-y-2.5 font-korean text-xs sm:text-[13px] text-train-ivory/90 leading-relaxed">
+                  <p>
+                    Liquid는 한동대학교 창립 비전에 부합하는 한동 유일 크리스천 밴드로서 십자가에서 피 흘리신 예수님을 기억하며, 다양한 장르의 밴드 공연을 통한 하나님 나라의 확장을 목적으로 합니다.
+                  </p>
+                  <p>
+                    정모의 시작을 예배로 드리고 있으며, 1학기는 길거리 공연, 2학기 자체공연, 그리고 매주 과제곡을 통해 연습하고 있습니다.
+                  </p>
+                  <p>
+                    국내 문화공연사역단체인 MNT에 속해 있어, 매주 정기예배와 셀 모임, 기도회, 그리고 여름사역과 겨울 태국 선교에 참여하고 있습니다.
+                  </p>
+                </div>
 
-              <h3 className="font-serif text-xl sm:text-2xl text-train-champagne font-bold leading-snug pt-2">
-                “새 노래로 그를 노래하며<br />즐거운 소리로 아름답게 연주할지어다”
-              </h3>
+                {/* Card Button: Pill Button matching user mockup */}
+                <div className="pt-4 mt-1">
+                  <Link
+                    to="/concert#members"
+                    className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-train-gold/60 bg-[#3d0b0b]/80 hover:bg-[#781818] text-train-champagne text-xs font-serif tracking-wider uppercase transition-all duration-200 hover:shadow-brass hover:border-train-champagne"
+                  >
+                    <span>TRAIN 1225 멤버</span>
+                    <span className="text-sm font-sans">→</span>
+                  </Link>
+                </div>
+              </motion.div>
 
-              <p className="font-serif text-xs text-train-gold tracking-widest uppercase">
-                — 시편 33:3 —
-              </p>
+              {/* Box 2: 찬양과 고백 (시편 33:3) (모서리 둥글게 깎은 블록) */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.15 }}
+                className="relative p-6 sm:p-7 rounded-2xl sm:rounded-3xl bg-[#5d1212]/95 border border-train-gold/50 shadow-brass overflow-hidden"
+              >
+                {/* Faint ambient stars */}
+                <div className="absolute top-4 left-8 w-1.5 h-1.5 rounded-full bg-train-champagne/35 animate-pulse pointer-events-none" />
+                <div className="absolute bottom-5 right-10 w-1 h-1 rounded-full bg-train-gold/40 pointer-events-none" />
 
-              <p className="font-korean text-xs sm:text-sm text-train-ivory/85 leading-relaxed max-w-lg mx-auto">
-                십자가의 보혈과 한결같은 그리스도의 은혜를 기억하며,
-                우리의 손과 목소리에 담긴 선율로 하나님 나라를 아름답게 선포합니다.
-              </p>
-            </BrassBorder>
+                {/* Card Header */}
+                <div className="flex items-center justify-between pb-3 border-b border-train-gold/30">
+                  <span className="font-serif text-xs sm:text-sm tracking-wider text-train-gold font-medium">
+                    찬양과 고백
+                  </span>
+                  <span className="font-serif text-[11px] sm:text-xs tracking-[0.2em] text-train-champagne/80 font-semibold uppercase">
+                    PSALM 33:3
+                  </span>
+                </div>
+
+                {/* Centered Main Verse */}
+                <div className="text-center pt-4 pb-2 space-y-2">
+                  <h3 className="font-serif text-lg sm:text-2xl text-train-champagne font-bold leading-snug">
+                    “새 노래로 그를 노래하며<br />즐거운 소리로 아름답게 연주할지어다”
+                  </h3>
+
+                  <p className="font-serif text-xs text-train-gold/85 tracking-widest uppercase">
+                    — 시편 33:3 —
+                  </p>
+
+                  <p className="font-korean text-xs sm:text-sm text-train-ivory/90 leading-relaxed max-w-lg mx-auto pt-1">
+                    십자가의 보혈과 한결같은 그리스도의 은혜를 기억하며, 우리의 손과 목소리에 담긴 선율로 하나님 나라를 아름답게 선포합니다.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
