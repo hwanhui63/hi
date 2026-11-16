@@ -5,7 +5,7 @@ import { VintageDivider } from '../common/BrassBorder';
 
 export default function Footer() {
   return (
-    <footer className="relative bg-black border-t border-train-gold/30 pt-10 pb-10 overflow-hidden text-train-ivory/80">
+    <footer className="relative border-t border-train-gold/30 pt-10 pb-10 overflow-hidden text-train-ivory/80">
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* 3-Column Footer Information */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-4 text-sm">

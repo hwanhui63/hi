@@ -36,16 +36,11 @@ export default function Concert() {
           transition={{ duration: 0.8 }}
           className="relative max-w-lg sm:max-w-xl md:max-w-2xl w-full flex flex-col items-center"
         >
-          {/* Elegant Vintage Carriage Frame */}
-          <div className="relative w-full rounded-3xl p-2 sm:p-3 bg-gradient-to-b from-[#EBD39A]/30 via-[#B88B4A]/10 to-[#6C4A1A]/30 border border-train-gold/50 shadow-2xl backdrop-blur-sm">
-            <div className="overflow-hidden rounded-2xl bg-black/90 flex items-center justify-center">
-              <img
-                src={concertData.assets.poster}
-                alt="Train 1225 Official Concert Poster"
-                className="w-full h-auto max-h-[82vh] sm:max-h-[85vh] object-contain mx-auto shadow-2xl"
-              />
-            </div>
-          </div>
+          <img
+            src={concertData.assets.poster}
+            alt="Train 1225 Official Concert Poster"
+            className="w-full h-auto max-h-[85vh] object-contain mx-auto rounded-2xl shadow-2xl"
+          />
         </motion.div>
       </section>
 

@@ -40,33 +40,33 @@ export default function Info() {
       });
 
       const canvas = document.createElement('canvas');
-      canvas.width = 2000;
-      canvas.height = 804;
+      canvas.width = 1024;
+      canvas.height = 411;
       const ctx = canvas.getContext('2d');
 
       // 1. Draw base ticket front image
-      ctx.drawImage(img, 0, 0, 2000, 804);
+      ctx.drawImage(img, 0, 0, 1024, 411);
 
-      // 2. Draw Checkmark on Selected Day Checkbox
-      // Box center: x=908; day-1 (1공): 485, day-2-1 (2공): 550, day-2-2 (3공): 615
-      const checkY = selectedDay === 'day-1' ? 485 : selectedDay === 'day-2-1' ? 550 : 615;
-      ctx.font = 'bold 36px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple SD Gothic Neo", sans-serif';
+      // 2. Draw Checkmark Dead-center on Selected Day Checkbox (네모 박스 중앙)
+      // Center coordinates in 1024x411: x = 463.5; day-1 (1공): 246.5, day-2-1 (2공): 279.5, day-2-2 (3공): 312.5
+      const checkY = selectedDay === 'day-1' ? 246.5 : selectedDay === 'day-2-1' ? 279.5 : 312.5;
+      ctx.font = 'bold 18px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple SD Gothic Neo", sans-serif';
       ctx.fillStyle = '#EBD39A';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.shadowColor = 'rgba(0, 0, 0, 0.75)';
-      ctx.shadowBlur = 4;
-      ctx.fillText('✓', 908, checkY);
+      ctx.shadowBlur = 3;
+      ctx.fillText('✓', 463.5, checkY);
 
-      // 3. Draw Passenger Name next to NAME: on stub
+      // 3. Draw Passenger Name next to NAME: on stub: x = 840, y = 246.5
       const displayName = passengerName.trim() || 'PASSENGER GUEST';
-      ctx.font = 'bold 28px "Lora", "Times New Roman", -apple-system, serif';
+      ctx.font = 'bold 15px "Lora", "Times New Roman", -apple-system, serif';
       ctx.fillStyle = '#F5E8D0';
       ctx.textAlign = 'left';
       ctx.textBaseline = 'middle';
       ctx.shadowColor = 'rgba(0, 0, 0, 0.9)';
-      ctx.shadowBlur = 5;
-      ctx.fillText(displayName, 1635, 478);
+      ctx.shadowBlur = 4;
+      ctx.fillText(displayName, 840, 246.5);
 
       // 4. Download file as PNG
       const dataUrl = canvas.toDataURL('image/png');
@@ -114,36 +114,36 @@ export default function Info() {
 
           {/* 3D Flip Ticket Container */}
           <div
-            className="relative cursor-pointer perspective-1000 group mx-auto"
+            className="relative cursor-pointer perspective-1000 group mx-auto max-w-2xl"
             onClick={() => setIsFlipped(!isFlipped)}
           >
             <motion.div
               animate={{ rotateY: isFlipped ? 180 : 0 }}
               transition={{ duration: 0.7, ease: 'easeInOut' }}
               style={{ transformStyle: 'preserve-3d' }}
-              className="relative w-full rounded-3xl p-2.5 sm:p-3.5 bg-gradient-to-b from-train-gold/50 via-[#40201a] to-[#3d0b0b] border-2 border-train-gold shadow-brass-lg aspect-[2000/804]"
+              className="relative w-full aspect-[1024/411] rounded-2xl shadow-2xl overflow-hidden flex items-center justify-center border border-train-gold/40"
             >
               {/* Front of Ticket */}
               <div
                 style={{ backfaceVisibility: 'hidden' }}
-                className="absolute inset-2 sm:inset-3 rounded-2xl overflow-hidden bg-train-darkwood flex items-center justify-center relative select-none"
+                className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden flex items-center justify-center select-none"
               >
                 <img
                   src={concertData.assets.ticketFront}
                   alt="Liquid Express Ticket Front"
-                  className="w-full h-full object-cover rounded-2xl"
+                  className="w-full h-full object-contain rounded-2xl"
                 />
 
-                {/* Live Checkmark on Departure Box */}
+                {/* Dead-center Checkmark on Selected Square Box (네모 박스 중앙) */}
                 <div
-                  className="absolute pointer-events-none text-train-champagne font-bold select-none"
+                  className="absolute pointer-events-none text-train-champagne font-bold select-none flex items-center justify-center"
                   style={{
-                    left: '45.4%',
-                    top: selectedDay === 'day-1' ? '60.3%' : selectedDay === 'day-2-1' ? '68.4%' : '76.5%',
+                    left: '45.26%',
+                    top: selectedDay === 'day-1' ? '60.0%' : selectedDay === 'day-2-1' ? '68.0%' : '76.0%',
                     transform: 'translate(-50%, -50%)',
-                    fontSize: 'clamp(10px, 1.8vw, 22px)',
+                    fontSize: 'clamp(10px, 1.8vw, 19px)',
                     lineHeight: 1,
-                    textShadow: '0 2px 4px rgba(0,0,0,0.8)',
+                    textShadow: '0 1px 3px rgba(0,0,0,0.85)',
                   }}
                 >
                   ✓
@@ -153,11 +153,11 @@ export default function Info() {
                 <div
                   className="absolute pointer-events-none font-korean font-bold select-none text-train-champagne"
                   style={{
-                    left: '81.8%',
-                    top: '59.0%',
+                    left: '82.0%',
+                    top: '59.6%',
                     transform: 'translateY(-50%)',
                     maxWidth: '16.5%',
-                    fontSize: 'clamp(8px, 1.4vw, 17px)',
+                    fontSize: 'clamp(8px, 1.4vw, 16px)',
                     whiteSpace: 'nowrap',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
@@ -176,33 +176,25 @@ export default function Info() {
                   backfaceVisibility: 'hidden',
                   transform: 'rotateY(180deg)',
                 }}
-                className="absolute inset-2 sm:inset-3 rounded-2xl overflow-hidden bg-train-darkwood flex items-center justify-center"
+                className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden flex items-center justify-center select-none"
               >
                 <img
                   src={concertData.assets.ticketBack}
                   alt="Liquid Express Ticket Back"
-                  className="w-full h-full object-cover rounded-2xl"
+                  className="w-full h-full object-contain rounded-2xl"
                 />
               </div>
             </motion.div>
           </div>
 
-          {/* Action Buttons: Flip Toggle & Download Image */}
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+          {/* Action Button: Flip Toggle Only */}
+          <div className="mt-5 flex items-center justify-center">
             <button
               onClick={() => setIsFlipped(!isFlipped)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl border border-train-gold/60 bg-[#5d1212] hover:bg-[#781818] text-train-champagne text-xs font-serif tracking-wider shadow transition-all"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-2xl border border-train-gold/60 bg-[#5d1212] hover:bg-[#781818] text-train-champagne text-xs font-serif tracking-wider shadow transition-all font-semibold hover:scale-[1.02] active:scale-[0.98]"
             >
               <RotateCw className="w-3.5 h-3.5 text-train-gold" />
               <span>승차권 {isFlipped ? '앞면 보기' : '뒷면 보기'}</span>
-            </button>
-
-            <button
-              onClick={handleDownloadTicket}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl border border-train-champagne bg-[#781818] hover:bg-[#8e1c1c] text-train-champagne text-xs font-serif tracking-wider shadow hover:scale-[1.02] active:scale-[0.98] transition-all font-semibold"
-            >
-              <Download className="w-3.5 h-3.5 text-train-gold" />
-              <span>실물 승차권 이미지 다운로드</span>
             </button>
           </div>
         </div>
