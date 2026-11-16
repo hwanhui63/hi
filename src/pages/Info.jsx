@@ -10,6 +10,7 @@ import {
   ExternalLink,
   RotateCw,
   Sparkles,
+  Download,
 } from 'lucide-react';
 import { concertData } from '../data/concert';
 import { BrassBorder, ScriptHeading } from '../components/common/BrassBorder';
@@ -27,6 +28,59 @@ export default function Info() {
     navigator.clipboard.writeText(concertData.venue.address);
     setCopiedAddress(true);
     setTimeout(() => setCopiedAddress(false), 2000);
+  };
+
+  const handleDownloadTicket = async () => {
+    try {
+      const img = new Image();
+      img.src = concertData.assets.ticketFront;
+      await new Promise((resolve, reject) => {
+        img.onload = resolve;
+        img.onerror = reject;
+      });
+
+      const canvas = document.createElement('canvas');
+      canvas.width = 2000;
+      canvas.height = 804;
+      const ctx = canvas.getContext('2d');
+
+      // 1. Draw base ticket front image
+      ctx.drawImage(img, 0, 0, 2000, 804);
+
+      // 2. Draw Checkmark on Selected Day Checkbox
+      // Box center: x=908; day-1 (1공): 485, day-2-1 (2공): 550, day-2-2 (3공): 615
+      const checkY = selectedDay === 'day-1' ? 485 : selectedDay === 'day-2-1' ? 550 : 615;
+      ctx.font = 'bold 36px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple SD Gothic Neo", sans-serif';
+      ctx.fillStyle = '#EBD39A';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.75)';
+      ctx.shadowBlur = 4;
+      ctx.fillText('✓', 908, checkY);
+
+      // 3. Draw Passenger Name next to NAME: on stub
+      const displayName = passengerName.trim() || 'PASSENGER GUEST';
+      ctx.font = 'bold 28px "Lora", "Times New Roman", -apple-system, serif';
+      ctx.fillStyle = '#F5E8D0';
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.9)';
+      ctx.shadowBlur = 5;
+      ctx.fillText(displayName, 1635, 478);
+
+      // 4. Download file as PNG
+      const dataUrl = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      const cleanName = passengerName.trim() ? `_${passengerName.trim()}` : '';
+      link.download = `Train1225_승차권${cleanName}.png`;
+      link.href = dataUrl;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error('Failed to generate ticket image:', error);
+      alert('승차권 이미지를 생성하지 못했습니다.');
+    }
   };
 
   return (
@@ -72,13 +126,48 @@ export default function Info() {
               {/* Front of Ticket */}
               <div
                 style={{ backfaceVisibility: 'hidden' }}
-                className="absolute inset-2 sm:inset-3 rounded-2xl overflow-hidden bg-train-darkwood flex items-center justify-center"
+                className="absolute inset-2 sm:inset-3 rounded-2xl overflow-hidden bg-train-darkwood flex items-center justify-center relative select-none"
               >
                 <img
                   src={concertData.assets.ticketFront}
                   alt="Liquid Express Ticket Front"
                   className="w-full h-full object-cover rounded-2xl"
                 />
+
+                {/* Live Checkmark on Departure Box */}
+                <div
+                  className="absolute pointer-events-none text-train-champagne font-bold select-none"
+                  style={{
+                    left: '45.4%',
+                    top: selectedDay === 'day-1' ? '60.3%' : selectedDay === 'day-2-1' ? '68.4%' : '76.5%',
+                    transform: 'translate(-50%, -50%)',
+                    fontSize: 'clamp(10px, 1.8vw, 22px)',
+                    lineHeight: 1,
+                    textShadow: '0 2px 4px rgba(0,0,0,0.8)',
+                  }}
+                >
+                  ✓
+                </div>
+
+                {/* Live Passenger Name next to NAME: */}
+                <div
+                  className="absolute pointer-events-none font-korean font-bold select-none text-train-champagne"
+                  style={{
+                    left: '81.8%',
+                    top: '59.0%',
+                    transform: 'translateY(-50%)',
+                    maxWidth: '16.5%',
+                    fontSize: 'clamp(8px, 1.4vw, 17px)',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    letterSpacing: '0.04em',
+                    textShadow: '0 1px 3px rgba(0,0,0,0.9)',
+                  }}
+                  title={passengerName.trim() || 'PASSENGER GUEST'}
+                >
+                  {passengerName.trim() || 'PASSENGER GUEST'}
+                </div>
               </div>
 
               {/* Back of Ticket */}
@@ -98,14 +187,22 @@ export default function Info() {
             </motion.div>
           </div>
 
-          {/* Flip Toggle Button */}
-          <div className="mt-4 flex items-center justify-center gap-3">
+          {/* Action Buttons: Flip Toggle & Download Image */}
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
             <button
               onClick={() => setIsFlipped(!isFlipped)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl border border-train-gold/60 bg-train-secondary text-train-champagne text-xs font-serif tracking-wider hover:shadow-brass transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl border border-train-gold/60 bg-[#5d1212] hover:bg-[#781818] text-train-champagne text-xs font-serif tracking-wider shadow transition-all"
             >
               <RotateCw className="w-3.5 h-3.5 text-train-gold" />
               <span>승차권 {isFlipped ? '앞면 보기' : '뒷면 보기'}</span>
+            </button>
+
+            <button
+              onClick={handleDownloadTicket}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl border border-train-champagne bg-[#781818] hover:bg-[#8e1c1c] text-train-champagne text-xs font-serif tracking-wider shadow hover:scale-[1.02] active:scale-[0.98] transition-all font-semibold"
+            >
+              <Download className="w-3.5 h-3.5 text-train-gold" />
+              <span>실물 승차권 이미지 다운로드</span>
             </button>
           </div>
         </div>
@@ -170,9 +267,18 @@ export default function Info() {
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-train-ivory/70">
-              <span className="font-serif text-train-gold font-bold tracking-wider">NO. 2621225</span>
-              <span className="italic font-korean">"하나님의 사랑 안에서 안전한 여정 되시길 소망합니다."</span>
+            <div className="flex flex-wrap items-center justify-between gap-3 pt-1 border-t border-dashed border-train-gold/20 text-[11px] text-train-ivory/70">
+              <div className="space-y-0.5">
+                <span className="font-serif text-train-gold font-bold tracking-wider block">NO. 2621225</span>
+                <span className="italic font-korean">"하나님의 사랑 안에서 안전한 여정 되시길 소망합니다."</span>
+              </div>
+              <button
+                onClick={handleDownloadTicket}
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-train-champagne bg-[#781818] hover:bg-[#8e1c1c] text-train-champagne text-xs font-serif tracking-wider shadow transition-all font-semibold hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <Download className="w-3.5 h-3.5 text-train-gold" />
+                <span>승차권 이미지 저장</span>
+              </button>
             </div>
           </div>
         </div>

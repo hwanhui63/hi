@@ -31,9 +31,9 @@ export default {
         sans: ['"Lora"', '"Noto Sans KR"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       boxShadow: {
-        'brass': '0 0 15px rgba(184, 139, 74, 0.35), inset 0 0 15px rgba(184, 139, 74, 0.15)',
-        'brass-lg': '0 0 30px rgba(184, 139, 74, 0.45), 0 0 60px rgba(184, 139, 74, 0.2)',
-        'candle': '0 0 25px rgba(235, 211, 154, 0.4)',
+        'brass': '0 10px 25px -5px rgba(0, 0, 0, 0.75), 0 8px 10px -6px rgba(0, 0, 0, 0.75)',
+        'brass-lg': '0 20px 35px -5px rgba(0, 0, 0, 0.85), 0 10px 15px -5px rgba(0, 0, 0, 0.85)',
+        'candle': '0 8px 20px rgba(0, 0, 0, 0.7)',
         'window-inner': 'inset 0 0 40px rgba(0, 0, 0, 0.8), inset 0 0 100px rgba(0, 0, 0, 0.9)',
       },
       backgroundImage: {

@@ -125,7 +125,7 @@ export default function Guestbook() {
   };
 
   return (
-    <div className="relative min-h-screen bg-train-bg text-train-ivory pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto overflow-hidden">
+    <div className="relative min-h-screen text-train-ivory pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto overflow-hidden">
       {/* Header */}
       <div className="text-center space-y-3 mb-10">
         <span className="font-serif text-xs tracking-[0.3em] uppercase text-train-gold">
@@ -158,7 +158,7 @@ export default function Guestbook() {
             <strong className="text-train-champagne font-bold">{wishes.length}</strong>개
           </span>
 
-          <div className="flex items-center rounded-lg border border-train-gold/30 p-0.5 bg-train-bg">
+          <div className="flex items-center rounded-lg border border-train-gold/30 p-0.5 bg-black/60">
             <button
               onClick={() => setViewMode('tree')}
               className={`flex items-center gap-1.5 px-3 py-1 rounded text-xs font-serif transition-colors ${
@@ -214,7 +214,7 @@ export default function Guestbook() {
               <img
                 src="/assets/christmas-tree.png"
                 alt="Christmas Tree"
-                className="w-full h-full object-contain filter drop-shadow-[0_12px_40px_rgba(0,0,0,0.95)] drop-shadow-[0_0_30px_rgba(184,139,74,0.25)] select-none pointer-events-none"
+                className="w-full h-full object-contain filter drop-shadow-[0_16px_36px_rgba(0,0,0,0.85)] select-none pointer-events-none"
               />
 
               {/* Hanging Ornaments Overlay */}
@@ -369,7 +369,7 @@ export default function Guestbook() {
                           className={`p-2.5 rounded-xl border flex flex-col items-center gap-1.5 transition-all ${
                             isSelected
                               ? 'border-train-champagne bg-train-burgundy shadow-brass scale-105'
-                              : 'border-train-gold/30 bg-train-bg/60 hover:border-train-gold/60'
+                              : 'border-train-gold/30 bg-black/60 hover:border-train-gold/60'
                           }`}
                         >
                           <Icon size={28} />
@@ -396,7 +396,7 @@ export default function Guestbook() {
                       value={nickname}
                       onChange={(e) => setNickname(e.target.value)}
                       placeholder="탑승객 성함 또는 닉네임 (최대 20자)"
-                      className="w-full pl-9 pr-3 py-2.5 rounded-lg border border-train-gold/40 bg-train-bg text-xs sm:text-sm text-train-ivory placeholder:text-train-ivory/40 focus:outline-none focus:border-train-gold focus:ring-1 focus:ring-train-gold"
+                      className="w-full pl-9 pr-3 py-2.5 rounded-lg border border-train-gold/40 bg-[#2d0707]/90 text-xs sm:text-sm text-train-ivory placeholder:text-train-ivory/40 focus:outline-none focus:border-train-gold focus:ring-1 focus:ring-train-gold"
                     />
                   </div>
                 </div>
@@ -419,7 +419,7 @@ export default function Guestbook() {
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="Train 1225와 LIQUID 단원들을 향한 따뜻한 응원과 축복을 남겨주세요."
-                      className="w-full p-3 rounded-lg border border-train-gold/40 bg-train-bg text-xs sm:text-sm text-train-ivory placeholder:text-train-ivory/40 focus:outline-none focus:border-train-gold focus:ring-1 focus:ring-train-gold font-korean"
+                      className="w-full p-3 rounded-lg border border-train-gold/40 bg-[#2d0707]/90 text-xs sm:text-sm text-train-ivory placeholder:text-train-ivory/40 focus:outline-none focus:border-train-gold focus:ring-1 focus:ring-train-gold font-korean"
                     />
                   </div>
                 </div>

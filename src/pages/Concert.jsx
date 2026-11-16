@@ -8,8 +8,6 @@ import {
   Calendar,
   User,
   Disc,
-  Maximize2,
-  X,
 } from 'lucide-react';
 import { concertData } from '../data/concert';
 import { setlistData } from '../data/setlist';
@@ -19,7 +17,6 @@ import { BrassBorder, ScriptHeading } from '../components/common/BrassBorder';
 export default function Concert() {
   const [selectedStationId, setSelectedStationId] = useState(setlistData.stations[0].id);
   const [activeCastTab, setActiveCastTab] = useState(castGroups[0].id);
-  const [isPosterModalOpen, setIsPosterModalOpen] = useState(false);
 
   const selectedStation =
     setlistData.stations.find((s) => s.id === selectedStationId) || setlistData.stations[0];
@@ -28,64 +25,28 @@ export default function Concert() {
     castGroups.find((g) => g.id === activeCastTab) || castGroups[0];
 
   return (
-    <div className="relative min-h-screen bg-black text-train-ivory pb-24 overflow-hidden">
+    <div className="relative min-h-screen text-train-ivory pb-24 overflow-hidden">
       {/* ========================================================================= */}
-      {/* 1. HERO SECTION: Poster as Full Background                                */}
+      {/* 1. HERO SECTION: Official Poster Large Showcase                           */}
       {/* ========================================================================= */}
-      <section className="relative min-h-[85vh] max-h-[850px] flex items-center justify-center overflow-hidden px-4 sm:px-6 pt-24 pb-16">
-        {/* Full Background Poster with Cinematic Lighting */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <img
-            src={concertData.assets.poster}
-            alt="Train 1225 Official Concert Poster Background"
-            className="w-full h-full object-cover object-center filter brightness-[0.42] contrast-115 scale-105"
-          />
-          {/* Atmospheric Gradients & Vignette for Perfect Legibility */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-black/75" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_15%,_rgba(0,0,0,0.85)_85%)]" />
-        </div>
-
-        {/* Hero Title & Actions Floating on Poster */}
-        <div className="relative z-10 w-full max-w-4xl mx-auto text-center space-y-6 sm:space-y-8 px-4">
-          <motion.div
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-train-gold/60 bg-black/80 backdrop-blur-md shadow-brass"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-train-gold animate-pulse" />
-            <span className="font-serif text-xs sm:text-sm tracking-[0.3em] uppercase text-train-champagne font-semibold">
-              THE JOURNEY ON BOARD
-            </span>
-            <Sparkles className="w-3.5 h-3.5 text-train-gold animate-pulse" />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 1 }}
-            className="space-y-3 sm:space-y-4"
-          >
-            <h1 className="font-script text-7xl sm:text-9xl md:text-[10rem] text-transparent bg-clip-text bg-gradient-to-b from-[#FFF5D6] via-[#EBD39A] to-[#B88B4A] drop-shadow-[0_12px_28px_rgba(0,0,0,0.95)] select-none px-4 py-2 leading-normal">
-              Train 1225
-            </h1>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="pt-2 flex flex-wrap items-center justify-center gap-3"
-          >
-            <button
-              onClick={() => setIsPosterModalOpen(true)}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl border border-train-champagne bg-[#5d1212]/90 hover:bg-[#781818] text-train-champagne font-serif text-xs sm:text-sm tracking-widest uppercase font-semibold shadow-brass hover:shadow-brass-lg transition-all backdrop-blur-sm hover:scale-[1.02]"
-            >
-              <Maximize2 className="w-4 h-4 text-train-gold" />
-              <span>포스터 원본 크게 보기</span>
-            </button>
-          </motion.div>
-        </div>
+      <section className="relative pt-24 sm:pt-28 pb-10 sm:pb-14 px-4 sm:px-6 flex flex-col items-center justify-center">
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative max-w-lg sm:max-w-xl md:max-w-2xl w-full flex flex-col items-center"
+        >
+          {/* Elegant Vintage Carriage Frame */}
+          <div className="relative w-full rounded-3xl p-2 sm:p-3 bg-gradient-to-b from-[#EBD39A]/30 via-[#B88B4A]/10 to-[#6C4A1A]/30 border border-train-gold/50 shadow-2xl backdrop-blur-sm">
+            <div className="overflow-hidden rounded-2xl bg-black/90 flex items-center justify-center">
+              <img
+                src={concertData.assets.poster}
+                alt="Train 1225 Official Concert Poster"
+                className="w-full h-auto max-h-[82vh] sm:max-h-[85vh] object-contain mx-auto shadow-2xl"
+              />
+            </div>
+          </div>
+        </motion.div>
       </section>
 
       {/* Main Content Container */}
@@ -497,36 +458,6 @@ export default function Concert() {
           </AnimatePresence>
         </section>
       </div>
-
-      {/* Poster Fullscreen Modal */}
-      <AnimatePresence>
-        {isPosterModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4"
-            onClick={() => setIsPosterModalOpen(false)}
-          >
-            <div
-              className="relative max-w-xl max-h-[92vh] w-full p-2 rounded-3xl bg-[#5d1212] border-2 border-train-gold shadow-brass-lg flex flex-col items-center"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setIsPosterModalOpen(false)}
-                className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/80 text-train-champagne border border-train-gold hover:bg-[#781818] transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
-              <img
-                src={concertData.assets.poster}
-                alt="Train 1225 Concert Poster Full"
-                className="w-full h-auto max-h-[85vh] object-contain rounded-2xl"
-              />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }

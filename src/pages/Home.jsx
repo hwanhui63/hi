@@ -28,15 +28,6 @@ export default function Home() {
           {/* Gentle cinematic gradient so navbar and text are legible, while passing train window is vivid */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/75 pointer-events-none" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_50%,_rgba(0,0,0,0.6)_100%)] pointer-events-none" />
-
-          {/* Passing Lantern Glow Streaks */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <motion.div
-              animate={{ x: ['120%', '-120%'], opacity: [0, 0.35, 0] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: 'linear', repeatDelay: 1.5 }}
-              className="absolute top-1/3 w-72 h-32 bg-amber-400/15 blur-3xl transform -skew-x-12"
-            />
-          </div>
         </div>
 
         {/* Central Content (Floating seamlessly over the fullscreen passing train) */}
