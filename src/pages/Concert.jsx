@@ -151,47 +151,46 @@ export default function Concert() {
             <div className="hidden md:block absolute top-1/2 left-6 right-6 h-1 -translate-y-1/2 bg-gradient-to-r from-train-gold/30 via-train-gold to-train-gold/30 z-0" />
 
             {/* Station Nodes Grid (6 Stations: Station 00 ~ 05) */}
-            <div className="relative z-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 sm:gap-4">
+            <div className="relative z-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5 sm:gap-3">
               {setlistData.stations.map((station) => {
                 const isSelected = selectedStationId === station.id;
                 return (
                   <button
                     key={station.id}
                     onClick={() => setSelectedStationId(station.id)}
-                    className={`group relative text-center p-3.5 rounded-2xl border transition-all duration-300 flex flex-col items-center justify-between min-h-[115px] ${
+                    className={`group relative text-center py-2.5 px-2 sm:px-3 rounded-2xl border transition-all duration-300 flex flex-col items-center justify-center gap-1 min-h-[66px] sm:min-h-[70px] ${
                       isSelected
-                        ? 'bg-[#781818] border-train-champagne shadow-brass scale-105'
-                        : 'bg-[#5d1212] border-train-gold/40 hover:border-train-gold hover:bg-[#6e1515]'
+                        ? 'bg-black border-2 border-train-champagne shadow-brass scale-105 z-20'
+                        : 'bg-black/85 border border-train-gold/30 hover:border-train-gold/70 hover:bg-black/95 z-10'
                     }`}
                   >
-                    {/* Station Number Indicator */}
-                    <span
-                      className={`w-7 h-7 rounded-full flex items-center justify-center font-serif text-xs font-bold mb-2 transition-all ${
-                        isSelected
-                          ? 'bg-train-champagne text-black shadow-sm'
-                          : 'border border-train-gold/50 text-train-gold group-hover:border-train-gold'
-                      }`}
-                    >
-                      {station.number}
-                    </span>
-
-                    {/* Station Name */}
-                    <div className="space-y-0.5">
+                    {/* Station Number Indicator & Label */}
+                    <div className="flex items-center gap-1.5">
                       <span
-                        className={`block font-serif text-[11px] uppercase tracking-wider font-semibold transition-colors ${
-                          isSelected ? 'text-train-champagne' : 'text-train-ivory/80'
+                        className={`w-5 h-5 rounded-full flex items-center justify-center font-serif text-[10px] font-bold transition-all ${
+                          isSelected
+                            ? 'bg-train-champagne text-black shadow-sm'
+                            : 'border border-train-gold/50 text-train-gold group-hover:border-train-gold'
+                        }`}
+                      >
+                        {station.number}
+                      </span>
+                      <span
+                        className={`font-serif text-[10px] uppercase tracking-wider font-semibold ${
+                          isSelected ? 'text-train-champagne' : 'text-train-ivory/70'
                         }`}
                       >
                         STATION {station.number}
                       </span>
-                      <span className="block text-xs font-serif font-bold text-train-ivory truncate max-w-[130px]">
-                        {station.stationName}
-                      </span>
                     </div>
 
-                    {/* Song Count Badge */}
-                    <span className="text-[10px] font-serif uppercase tracking-wider text-train-gold/80 mt-1">
-                      {station.songs.length}곡 운행
+                    {/* Station Name */}
+                    <span
+                      className={`block text-xs sm:text-sm font-serif font-bold truncate max-w-[130px] ${
+                        isSelected ? 'text-train-champagne' : 'text-train-ivory'
+                      }`}
+                    >
+                      {station.stationName}
                     </span>
                   </button>
                 );

@@ -296,28 +296,33 @@ export default function Info() {
           title="공연 일정 및 회차 안내"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 mt-8">
           {concertData.dates.map((dateItem) => (
-            <BrassBorder key={dateItem.id} rounded="rounded-3xl" innerRounded="rounded-[22px]" innerClassName="space-y-4">
-              <div className="flex items-center justify-between pb-3 border-b border-train-gold/30">
-                <span className="font-serif text-xs font-bold px-3 py-1 rounded-full bg-[#781818] border border-train-gold text-train-champagne shadow-sm">
+            <BrassBorder
+              key={dateItem.id}
+              rounded="rounded-2xl"
+              innerRounded="rounded-[14px]"
+              innerClassName="!p-3.5 sm:!p-4 !space-y-2.5"
+            >
+              <div className="flex items-center justify-between pb-2 border-b border-train-gold/25">
+                <span className="font-serif text-xs font-bold px-2.5 py-0.5 rounded-full bg-[#781818] border border-train-gold text-train-champagne shadow-sm">
                   {dateItem.day}
                 </span>
-                <span className="text-xs text-train-gold font-serif">
+                <span className="text-[11px] text-train-gold font-serif">
                   입장 {dateItem.doorsOpen}
                 </span>
               </div>
 
-              <div>
-                <p className="font-serif text-sm text-train-ivory/80">
+              <div className="flex items-baseline justify-between pt-0.5">
+                <p className="font-serif text-xs text-train-ivory/80">
                   {dateItem.date}
                 </p>
-                <h4 className="font-serif text-2xl text-train-champagne font-bold mt-1">
+                <h4 className="font-serif text-base sm:text-lg text-train-champagne font-bold">
                   출발 {dateItem.time}
                 </h4>
               </div>
 
-              <p className="text-xs text-train-ivory/85 font-korean leading-relaxed min-h-[36px]">
+              <p className="text-[11px] sm:text-xs text-train-ivory/85 font-korean leading-snug">
                 {dateItem.description}
               </p>
 

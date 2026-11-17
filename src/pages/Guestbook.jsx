@@ -154,45 +154,6 @@ export default function Guestbook() {
         </p>
       </div>
 
-      {/* Concert Round Switcher Tabs */}
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-6">
-        <span className="text-xs font-serif text-train-gold tracking-widest uppercase mr-1">
-          공연 회차 선택:
-        </span>
-        <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-[#420d0d]/90 p-1.5 rounded-2xl border border-train-gold/40 shadow-inner">
-          {CONCERT_ROUNDS.map((r) => {
-            const count = wishes.filter((w) => (w.round || '1공') === r.id).length;
-            const isCurrent = selectedRound === r.id;
-            return (
-              <button
-                key={r.id}
-                type="button"
-                onClick={() => setSelectedRound(r.id)}
-                className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-serif transition-all ${
-                  isCurrent
-                    ? 'border border-train-champagne bg-[#781818] text-train-champagne shadow-brass font-bold scale-[1.03]'
-                    : 'text-train-ivory/70 hover:text-train-champagne hover:bg-white/5 border border-transparent'
-                }`}
-              >
-                <span>{r.label}</span>
-                <span className="hidden sm:inline text-[11px] text-train-ivory/60 font-sans">
-                  ({r.dateStr})
-                </span>
-                <span
-                  className={`px-1.5 py-0.5 rounded-full text-[10px] font-mono leading-none ${
-                    isCurrent
-                      ? 'bg-train-champagne text-train-burgundy font-bold'
-                      : 'bg-black/50 text-train-gold'
-                  }`}
-                >
-                  {count}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
       {/* Control Bar: Hang Button, View Mode Toggle, Storage Status */}
       <div className="flex flex-wrap items-center justify-between gap-4 mb-8 p-4 rounded-xl border border-train-gold/40 bg-[#5d1212] backdrop-blur-md shadow-sm">
         {/* Left: Hang Button */}
@@ -297,8 +258,47 @@ export default function Guestbook() {
             </div>
           </div>
 
+          {/* Concert Round Switcher Tabs under Tree */}
+          <div className="mt-6 mb-3 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
+            <span className="text-xs font-serif text-train-gold tracking-widest uppercase mr-1">
+              공연 회차 선택:
+            </span>
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-[#420d0d]/90 p-1.5 rounded-2xl border border-train-gold/40 shadow-inner">
+              {CONCERT_ROUNDS.map((r) => {
+                const count = wishes.filter((w) => (w.round || '1공') === r.id).length;
+                const isCurrent = selectedRound === r.id;
+                return (
+                  <button
+                    key={r.id}
+                    type="button"
+                    onClick={() => setSelectedRound(r.id)}
+                    className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-serif transition-all ${
+                      isCurrent
+                        ? 'border border-train-champagne bg-[#781818] text-train-champagne shadow-brass font-bold scale-[1.03]'
+                        : 'text-train-ivory/70 hover:text-train-champagne hover:bg-white/5 border border-transparent'
+                    }`}
+                  >
+                    <span>{r.label}</span>
+                    <span className="hidden sm:inline text-[11px] text-train-ivory/60 font-sans">
+                      ({r.dateStr})
+                    </span>
+                    <span
+                      className={`px-1.5 py-0.5 rounded-full text-[10px] font-mono leading-none ${
+                        isCurrent
+                          ? 'bg-train-champagne text-train-burgundy font-bold'
+                          : 'bg-black/50 text-train-gold'
+                      }`}
+                    >
+                      {count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           {/* Instruction Callout at bottom */}
-          <div className="mt-4 text-center">
+          <div className="mt-2 text-center">
             <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-train-gold/40 bg-black/60 backdrop-blur-md text-xs text-train-champagne font-serif shadow">
               <Sparkles className="w-3.5 h-3.5 text-train-gold" />
               {filteredWishes.length > 0
@@ -311,41 +311,82 @@ export default function Guestbook() {
         /* ========================================================================= */
         /* VIEW 2: Passenger Wishes List View                                        */
         /* ========================================================================= */
-        filteredWishes.length === 0 ? (
-          <div className="p-12 text-center text-xs sm:text-sm text-train-ivory/70 font-korean rounded-2xl border border-train-gold/30 bg-[#5d1212]/80 space-y-3">
-            <Sparkles className="w-8 h-8 text-train-gold mx-auto animate-pulse" />
-            <p className="text-train-champagne font-serif text-sm">아직 {selectedRound} 트리에 매달린 오너먼트가 없습니다.</p>
-            <p className="text-xs text-train-ivory/80">상단의 [오너먼트 달기] 버튼을 눌러 첫 번째 축복과 기도의 메시지를 남겨보세요!</p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredWishes.map((wish) => (
-              <div
-                key={wish.id}
-                onClick={() => setSelectedWish(wish)}
-                className="p-5 rounded-2xl border border-train-gold/40 bg-[#5d1212] hover:border-train-gold cursor-pointer transition-all hover:-translate-y-1 shadow-md space-y-3"
-              >
-                <div className="flex items-center justify-between pb-2 border-b border-train-gold/20">
-                  <div className="flex items-center gap-2">
-                    <OrnamentIcon type={wish.ornament_type} size={24} />
-                    <span className="font-serif text-xs text-train-champagne font-bold">
-                      {wish.nickname}
+        <div>
+          {/* Concert Round Switcher Tabs in List View */}
+          <div className="mb-6 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
+            <span className="text-xs font-serif text-train-gold tracking-widest uppercase mr-1">
+              공연 회차 선택:
+            </span>
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-[#420d0d]/90 p-1.5 rounded-2xl border border-train-gold/40 shadow-inner">
+              {CONCERT_ROUNDS.map((r) => {
+                const count = wishes.filter((w) => (w.round || '1공') === r.id).length;
+                const isCurrent = selectedRound === r.id;
+                return (
+                  <button
+                    key={r.id}
+                    type="button"
+                    onClick={() => setSelectedRound(r.id)}
+                    className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-serif transition-all ${
+                      isCurrent
+                        ? 'border border-train-champagne bg-[#781818] text-train-champagne shadow-brass font-bold scale-[1.03]'
+                        : 'text-train-ivory/70 hover:text-train-champagne hover:bg-white/5 border border-transparent'
+                    }`}
+                  >
+                    <span>{r.label}</span>
+                    <span className="hidden sm:inline text-[11px] text-train-ivory/60 font-sans">
+                      ({r.dateStr})
                     </span>
-                    <span className="px-1.5 py-0.5 rounded text-[10px] bg-black/40 border border-train-gold/30 text-train-champagne font-serif font-bold">
-                      {wish.round || '1공'}
+                    <span
+                      className={`px-1.5 py-0.5 rounded-full text-[10px] font-mono leading-none ${
+                        isCurrent
+                          ? 'bg-train-champagne text-train-burgundy font-bold'
+                          : 'bg-black/50 text-train-gold'
+                      }`}
+                    >
+                      {count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {filteredWishes.length === 0 ? (
+            <div className="p-12 text-center text-xs sm:text-sm text-train-ivory/70 font-korean rounded-2xl border border-train-gold/30 bg-[#5d1212]/80 space-y-3">
+              <Sparkles className="w-8 h-8 text-train-gold mx-auto animate-pulse" />
+              <p className="text-train-champagne font-serif text-sm">아직 {selectedRound} 트리에 매달린 오너먼트가 없습니다.</p>
+              <p className="text-xs text-train-ivory/80">상단의 [오너먼트 달기] 버튼을 눌러 첫 번째 축복과 기도의 메시지를 남겨보세요!</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {filteredWishes.map((wish) => (
+                <div
+                  key={wish.id}
+                  onClick={() => setSelectedWish(wish)}
+                  className="p-5 rounded-2xl border border-train-gold/40 bg-[#5d1212] hover:border-train-gold cursor-pointer transition-all hover:-translate-y-1 shadow-md space-y-3"
+                >
+                  <div className="flex items-center justify-between pb-2 border-b border-train-gold/20">
+                    <div className="flex items-center gap-2">
+                      <OrnamentIcon type={wish.ornament_type} size={24} />
+                      <span className="font-serif text-xs text-train-champagne font-bold">
+                        {wish.nickname}
+                      </span>
+                      <span className="px-1.5 py-0.5 rounded text-[10px] bg-black/40 border border-train-gold/30 text-train-champagne font-serif font-bold">
+                        {wish.round || '1공'}
+                      </span>
+                    </div>
+                    <span className="text-[10px] text-train-ivory/50 font-serif">
+                      {new Date(wish.created_at).toLocaleDateString('ko-KR')}
                     </span>
                   </div>
-                  <span className="text-[10px] text-train-ivory/50 font-serif">
-                    {new Date(wish.created_at).toLocaleDateString('ko-KR')}
-                  </span>
+                  <p className="font-korean text-xs text-train-ivory/85 leading-relaxed line-clamp-3">
+                    "{cleanMessageDisplay(wish.message)}"
+                  </p>
                 </div>
-                <p className="font-korean text-xs text-train-ivory/85 leading-relaxed line-clamp-3">
-                  "{cleanMessageDisplay(wish.message)}"
-                </p>
-              </div>
-            ))}
-          </div>
-        )
+              ))}
+            </div>
+          )}
+        </div>
       )}
 
       {/* ========================================================================= */}
