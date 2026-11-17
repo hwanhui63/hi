@@ -2,7 +2,7 @@ export const castGroups = [
   {
     id: "directors",
     label: "디렉터",
-    labelEn: "DIRECTOR",
+    labelEn: "",
     description: "",
     type: "cards",
     members: [
@@ -21,7 +21,7 @@ export const castGroups = [
   {
     id: "active",
     label: "실기수",
-    labelEn: "ACTIVE CREW (25)",
+    labelEn: "",
     description: "",
     type: "cards",
     members: [
@@ -90,7 +90,7 @@ export const castGroups = [
   {
     id: "junior",
     label: "아기기수",
-    labelEn: "JUNIOR CREW (26)",
+    labelEn: "",
     description: "",
     type: "cards",
     members: [
@@ -159,7 +159,7 @@ export const castGroups = [
   {
     id: "ob",
     label: "OB",
-    labelEn: "HONORARY ALUMNI",
+    labelEn: "",
     description: "",
     type: "list",
     members: [
@@ -180,7 +180,7 @@ export const castGroups = [
   {
     id: "thanks",
     label: "도움주신 분들",
-    labelEn: "SPECIAL THANKS",
+    labelEn: "",
     description: "",
     type: "groups",
     groups: [
