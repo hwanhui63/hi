@@ -105,7 +105,7 @@ export default function Info() {
               INTERACTIVE TICKET PASS
             </span>
             <h2 className="font-serif text-xl sm:text-2xl text-train-champagne font-bold">
-              공식 실물 승차권 (앞면 / 뒷면)
+              승차권 안내
             </h2>
             <p className="text-xs text-train-ivory/60 font-korean">
               클릭하거나 아래 버튼을 눌러 승차권을 3D로 회전해 보세요.

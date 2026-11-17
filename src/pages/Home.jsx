@@ -175,7 +175,7 @@ export default function Home() {
                 </div>
               </motion.div>
 
-              {/* Box 2: 찬양과 고백 (시편 33:3) (모서리 둥글게 깎은 블록) */}
+              {/* Box 2: 리퀴드 주제 말씀 (시편 33:3) (모서리 둥글게 깎은 블록) */}
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -190,7 +190,7 @@ export default function Home() {
                 {/* Card Header */}
                 <div className="flex items-center justify-between pb-3 border-b border-train-gold/30">
                   <span className="font-serif text-xs sm:text-sm tracking-wider text-train-gold font-medium">
-                    찬양과 고백
+                    리퀴드 주제 말씀
                   </span>
                   <span className="font-serif text-[11px] sm:text-xs tracking-[0.2em] text-train-champagne/80 font-semibold uppercase">
                     PSALM 33:3

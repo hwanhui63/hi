@@ -132,11 +132,10 @@ export default function Guestbook() {
           PASSENGER WISH TREE
         </span>
         <h1 className="font-serif text-3xl sm:text-5xl text-train-ivory font-bold tracking-wide">
-          창밖의 크리스마스트리 (WISH TREE)
+          창 밖의 크리스마스 트리
         </h1>
         <p className="font-korean text-xs sm:text-sm text-train-ivory/70 max-w-lg mx-auto">
-          달리는 열차의 창밖, 하얀 눈 덮인 설원에 우뚝 선 크리스마스트리에 
-          공연을 향한 응원과 기도의 오너먼트를 달아주세요.
+          크리스마스 트리에 여러분의 응원을 달아주세요!
         </p>
       </div>
 
@@ -200,64 +199,58 @@ export default function Guestbook() {
       </div>
 
       {/* ========================================================================= */}
-      {/* VIEW 1: Interactive Tree View through the Window                          */}
+      {/* VIEW 1: Interactive Tree View (누끼 트리 단독 배치)                         */}
       {/* ========================================================================= */}
       {viewMode === 'tree' ? (
-        <div className="relative rounded-3xl p-3 sm:p-6 bg-[#5d1212] border-2 border-train-gold/70 shadow-brass-lg overflow-hidden">
-          {/* Window Glass Pane Container */}
-          <div className="relative rounded-2xl overflow-hidden min-h-[460px] sm:min-h-[520px] border border-train-gold/40 bg-gradient-to-b from-[#09111c] via-[#0d1624] to-[#140b0a] shadow-inner flex items-center justify-center">
-            {/* Distant Stars & Glow */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(235,211,154,0.15),transparent_70%)] pointer-events-none" />
+        <div className="relative min-h-[460px] sm:min-h-[520px] flex flex-col items-center justify-center py-4 sm:py-6">
+          {/* Christmas Tree Cut-out Image & Hanging Ornaments */}
+          <div className="relative w-full max-w-[280px] sm:max-w-[340px] h-[420px] sm:h-[480px] flex items-center justify-center py-4">
+            <img
+              src="/assets/christmas-tree.png"
+              alt="Christmas Tree"
+              className="w-full h-full object-contain filter drop-shadow-[0_20px_45px_rgba(0,0,0,0.9)] select-none pointer-events-none"
+            />
 
-            {/* Christmas Tree Cut-out Image & Atmospheric Lighting (사이즈 최적화) */}
-            <div className="relative w-full max-w-[270px] sm:max-w-[320px] h-[400px] sm:h-[460px] flex items-center justify-center py-4">
-              <img
-                src="/assets/christmas-tree.png"
-                alt="Christmas Tree"
-                className="w-full h-full object-contain filter drop-shadow-[0_16px_36px_rgba(0,0,0,0.85)] select-none pointer-events-none"
-              />
-
-              {/* Hanging Ornaments Overlay */}
-              <div className="absolute inset-0 pointer-events-auto">
-                {wishes.map((wish, index) => {
-                  const left = wish.position_x ?? 50;
-                  const top = wish.position_y ?? 50;
-                  return (
-                    <motion.button
-                      key={wish.id || index}
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ delay: (index % 12) * 0.05, duration: 0.4 }}
-                      style={{
-                        position: 'absolute',
-                        left: `${left}%`,
-                        top: `${top}%`,
-                        transform: 'translate(-50%, -50%)',
-                      }}
-                      onClick={() => setSelectedWish(wish)}
-                      className="group cursor-pointer p-1 rounded-full hover:scale-125 focus:outline-none focus:ring-2 focus:ring-train-gold transition-transform duration-200"
-                      title={`${wish.nickname}: ${wish.message}`}
-                    >
-                      <div className="relative animate-sway origin-top">
-                        <OrnamentIcon type={wish.ornament_type} size={34} />
-                        {/* Glow halo on hover */}
-                        <span className="absolute -inset-1 rounded-full bg-train-champagne/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </div>
-                    </motion.button>
-                  );
-                })}
-              </div>
+            {/* Hanging Ornaments Overlay */}
+            <div className="absolute inset-0 pointer-events-auto">
+              {wishes.map((wish, index) => {
+                const left = wish.position_x ?? 50;
+                const top = wish.position_y ?? 50;
+                return (
+                  <motion.button
+                    key={wish.id || index}
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: (index % 12) * 0.05, duration: 0.4 }}
+                    style={{
+                      position: 'absolute',
+                      left: `${left}%`,
+                      top: `${top}%`,
+                      transform: 'translate(-50%, -50%)',
+                    }}
+                    onClick={() => setSelectedWish(wish)}
+                    className="group cursor-pointer p-1 rounded-full hover:scale-125 focus:outline-none focus:ring-2 focus:ring-train-gold transition-transform duration-200"
+                    title={`${wish.nickname}: ${wish.message}`}
+                  >
+                    <div className="relative animate-sway origin-top">
+                      <OrnamentIcon type={wish.ornament_type} size={34} />
+                      {/* Glow halo on hover */}
+                      <span className="absolute -inset-1 rounded-full bg-train-champagne/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </div>
+                  </motion.button>
+                );
+              })}
             </div>
+          </div>
 
-            {/* Instruction Callout at bottom */}
-            <div className="absolute bottom-4 inset-x-4 text-center pointer-events-none">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-train-gold/40 bg-train-bg/85 backdrop-blur-md text-[11px] text-train-champagne font-serif shadow">
-                <Sparkles className="w-3.5 h-3.5 text-train-gold" />
-                {wishes.length > 0
-                  ? '트리에 매달린 오너먼트를 클릭하면 승객들의 메시지를 읽을 수 있습니다.'
-                  : '상단의 [오너먼트 달기]를 눌러 첫 번째 오너먼트를 달아주세요!'}
-              </span>
-            </div>
+          {/* Instruction Callout at bottom */}
+          <div className="mt-4 text-center">
+            <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-train-gold/40 bg-black/60 backdrop-blur-md text-xs text-train-champagne font-serif shadow">
+              <Sparkles className="w-3.5 h-3.5 text-train-gold" />
+              {wishes.length > 0
+                ? '트리에 매달린 오너먼트를 클릭하면 승객들의 메시지를 읽을 수 있습니다.'
+                : '상단의 [오너먼트 달기]를 눌러 첫 번째 오너먼트를 달아주세요!'}
+            </span>
           </div>
         </div>
       ) : (
