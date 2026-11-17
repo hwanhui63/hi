@@ -3,7 +3,7 @@ export const castGroups = [
     id: "directors",
     label: "디렉터",
     labelEn: "DIRECTOR",
-    description: "Train 1225의 전체 여정과 무대를 기획하고 지휘하는 총괄 디렉터",
+    description: "",
     type: "cards",
     members: [
       {
@@ -22,7 +22,7 @@ export const castGroups = [
     id: "active",
     label: "실기수",
     labelEn: "ACTIVE CREW (25)",
-    description: "무대 위에서 생생한 연주와 찬양을 섬기는 25 현역 단원",
+    description: "",
     type: "cards",
     members: [
       {
@@ -91,7 +91,7 @@ export const castGroups = [
     id: "junior",
     label: "아기기수",
     labelEn: "JUNIOR CREW (26)",
-    description: "Train 1225 열차의 새로운 활력과 열정을 더하는 26 새내기 단원",
+    description: "",
     type: "cards",
     members: [
       {
@@ -160,7 +160,7 @@ export const castGroups = [
     id: "ob",
     label: "OB",
     labelEn: "HONORARY ALUMNI",
-    description: "LIQUID의 신앙과 음악의 맥을 이어준 자랑스러운 선배 단원 명단",
+    description: "",
     type: "list",
     members: [
       { id: "ob-1", name: "남수민", cohort: "16", instrument: "DR", instrumentKo: "드럼" },
@@ -181,7 +181,7 @@ export const castGroups = [
     id: "thanks",
     label: "도움주신 분들",
     labelEn: "SPECIAL THANKS",
-    description: "보이지 않는 곳에서 Train 1225의 여정을 함께 완성해주신 분들",
+    description: "",
     type: "groups",
     groups: [
       {

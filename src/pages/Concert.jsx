@@ -227,7 +227,7 @@ export default function Concert() {
                   </div>
 
                   <span className="font-serif text-xs tracking-widest text-train-gold uppercase px-3 py-1 rounded-full border border-train-gold/30 bg-black/40">
-                    {selectedStation.songs.length} TRACKS IN SERVICE
+                    {selectedStation.songs.length} {selectedStation.songs.length === 1 ? 'TRACK' : 'TRACKS'} IN SERVICE
                   </span>
                 </div>
 
@@ -252,9 +252,11 @@ export default function Concert() {
                         </div>
 
                         <div className="flex items-center gap-2">
-                          <span className="font-serif text-[11px] px-2.5 py-1 rounded-full border border-train-gold/40 bg-black/50 text-train-ivory/90">
-                            {song.team}
-                          </span>
+                          {song.team && (
+                            <span className="font-serif text-[11px] px-2.5 py-1 rounded-full border border-train-gold/40 bg-black/50 text-train-ivory/90">
+                              {song.team}
+                            </span>
+                          )}
                           <span className="font-serif text-[10px] tracking-wider uppercase px-2 py-0.5 rounded-full bg-emerald-950/80 border border-emerald-500/60 text-emerald-300">
                             CONFIRMED
                           </span>
@@ -310,9 +312,11 @@ export default function Concert() {
             <p className="text-xs text-train-gold font-serif tracking-widest uppercase">
               {currentCastGroup.labelEn}
             </p>
-            <p className="text-xs text-train-ivory/60 mt-1 font-korean">
-              {currentCastGroup.description}
-            </p>
+            {currentCastGroup.description && (
+              <p className="text-xs text-train-ivory/60 mt-1 font-korean">
+                {currentCastGroup.description}
+              </p>
+            )}
           </div>
 
           {/* Tab Content Display */}
