@@ -158,26 +158,26 @@ export default function Concert() {
                   <button
                     key={station.id}
                     onClick={() => setSelectedStationId(station.id)}
-                    className={`group relative text-center py-2.5 px-2 sm:px-3 rounded-2xl border transition-all duration-300 flex flex-col items-center justify-center gap-1 min-h-[66px] sm:min-h-[70px] ${
+                    className={`group relative text-center py-2.5 px-2 sm:px-3 rounded-2xl border-2 transition-colors duration-200 flex flex-col items-center justify-center gap-1 min-h-[66px] sm:min-h-[70px] bg-[#3a0808] ${
                       isSelected
-                        ? 'bg-train-champagne text-[#200404] border-2 border-train-champagne shadow-brass-lg scale-105 z-20 font-bold'
-                        : 'bg-[#3a0808] text-train-ivory border border-train-gold/40 hover:border-train-gold hover:bg-[#4a0a0a] z-10'
+                        ? 'border-train-champagne text-train-champagne'
+                        : 'border-train-gold/30 text-train-ivory hover:border-train-gold/60'
                     }`}
                   >
                     {/* Station Number Indicator & Label */}
                     <div className="flex items-center gap-1.5">
                       <span
-                        className={`w-5 h-5 rounded-full flex items-center justify-center font-serif text-[10px] font-bold transition-all ${
+                        className={`w-5 h-5 rounded-full flex items-center justify-center font-serif text-[10px] font-bold transition-colors ${
                           isSelected
-                            ? 'bg-[#200404] text-train-champagne shadow-sm'
-                            : 'border border-train-gold/60 text-train-gold group-hover:border-train-gold'
+                            ? 'bg-train-champagne text-black'
+                            : 'border border-train-gold/50 text-train-gold group-hover:border-train-gold'
                         }`}
                       >
                         {station.number}
                       </span>
                       <span
-                        className={`font-serif text-[10px] uppercase tracking-wider font-bold ${
-                          isSelected ? 'text-[#200404]/80' : 'text-train-gold/90'
+                        className={`font-serif text-[10px] uppercase tracking-wider font-semibold ${
+                          isSelected ? 'text-train-champagne' : 'text-train-ivory/70'
                         }`}
                       >
                         STATION {station.number}
@@ -186,8 +186,8 @@ export default function Concert() {
 
                     {/* Station Name */}
                     <span
-                      className={`block text-xs sm:text-sm font-serif font-black truncate max-w-[130px] ${
-                        isSelected ? 'text-[#200404]' : 'text-train-ivory'
+                      className={`block text-xs sm:text-sm font-serif font-bold truncate max-w-[130px] ${
+                        isSelected ? 'text-train-champagne' : 'text-train-ivory'
                       }`}
                     >
                       {station.stationName}
