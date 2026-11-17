@@ -61,7 +61,7 @@ export const concertData = {
     trainWindow: "/assets/train-window.png",
     qrcode: "/assets/qrcode.png",
     ticketFront: "/assets/liquid-express/ticket-front.png?v=2",
-    ticketBack: "/assets/liquid-express/ticket-back.png?v=3",
+    ticketBack: "/assets/liquid-express/ticket-back-v4.png",
     journeyVideo: "/assets/train-journey.mp4",
     logoBanner: "/assets/liquid-logo-banner.jpg",
   },
