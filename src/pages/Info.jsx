@@ -198,28 +198,14 @@ export default function Info() {
             </motion.div>
           </div>
 
-          {/* Action Tabs: Front / Back Explicit Switcher */}
-          <div className="mt-5 flex items-center justify-center gap-3">
+          {/* Action Button: Single Flip Toggle Button */}
+          <div className="mt-5 flex items-center justify-center">
             <button
-              onClick={() => setIsFlipped(false)}
-              className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-2xl border text-xs font-serif tracking-wider shadow transition-all font-semibold ${
-                !isFlipped
-                  ? 'border-train-champagne bg-[#781818] text-train-champagne shadow-brass scale-105'
-                  : 'border-train-gold/40 bg-[#5d1212]/80 text-train-ivory/70 hover:border-train-gold hover:text-train-champagne'
-              }`}
+              onClick={() => setIsFlipped(!isFlipped)}
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-2xl border border-train-champagne bg-[#781818] hover:bg-[#8e1c1c] text-train-champagne text-xs sm:text-sm font-serif tracking-wider shadow-brass hover:shadow-brass-lg transition-all font-semibold hover:scale-[1.02] active:scale-[0.98]"
             >
-              <span>승차권 앞면</span>
-            </button>
-            <button
-              onClick={() => setIsFlipped(true)}
-              className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-2xl border text-xs font-serif tracking-wider shadow transition-all font-semibold ${
-                isFlipped
-                  ? 'border-train-champagne bg-[#781818] text-train-champagne shadow-brass scale-105'
-                  : 'border-train-gold/40 bg-[#5d1212]/80 text-train-ivory/70 hover:border-train-gold hover:text-train-champagne'
-              }`}
-            >
-              <RotateCw className="w-3.5 h-3.5 text-train-gold" />
-              <span>승차권 뒷면</span>
+              <RotateCw className="w-4 h-4 text-train-champagne" />
+              <span>승차권 {isFlipped ? '앞면 보기' : '뒷면 보기'}</span>
             </button>
           </div>
         </div>

@@ -52,6 +52,14 @@ const INITIAL_DEMO_REVIEWS = [
 /* -------------------------------------------------------------------------- */
 
 export async function fetchWishes() {
+  const enrichWish = (w) => {
+    const match = w.message?.match(/^\[(1공|2공|3공)\]/);
+    return {
+      ...w,
+      round: w.round || (match ? match[1] : '1공'),
+    };
+  };
+
   if (isSupabaseConfigured && supabase) {
     try {
       const { data, error } = await supabase
@@ -61,7 +69,7 @@ export async function fetchWishes() {
         .limit(100);
 
       if (!error && data) {
-        return { data, isFallback: false };
+        return { data: data.map(enrichWish), isFallback: false };
       }
       console.warn('Supabase fetch failed, falling back to local storage:', error);
     } catch (err) {
@@ -78,7 +86,7 @@ export async function fetchWishes() {
     }
     const parsed = JSON.parse(raw);
     const cleanList = Array.isArray(parsed)
-      ? parsed.filter((w) => !w.id?.startsWith('demo-'))
+      ? parsed.filter((w) => !w.id?.startsWith('demo-')).map(enrichWish)
       : [];
     localStorage.setItem(STORAGE_KEY_WISHES, JSON.stringify(cleanList));
     return { data: cleanList, isFallback: true };
@@ -87,13 +95,15 @@ export async function fetchWishes() {
   }
 }
 
-export async function submitWish({ ornamentType, nickname, message, positionX, positionY }) {
+export async function submitWish({ ornamentType, nickname, message, round, positionX, positionY }) {
   // Input validation
   const cleanNickname = (nickname || '').trim().slice(0, 20);
-  const cleanMessage = (message || '').trim().slice(0, 200);
+  const selectedRound = round || '1공';
+  const baseMessage = (message || '').trim().replace(/^\[(1공|2공|3공)\]\s*/, '');
+  const cleanMessage = `[${selectedRound}] ${baseMessage}`.slice(0, 200);
 
   if (!cleanNickname) throw new Error('닉네임을 입력해 주세요.');
-  if (!cleanMessage) throw new Error('응원 메시지를 입력해 주세요.');
+  if (!baseMessage) throw new Error('응원 메시지를 입력해 주세요.');
 
   // Rate Limiting (1 message every 15 seconds)
   const lastTime = parseInt(localStorage.getItem(RATE_LIMIT_KEY_WISH) || '0', 10);
@@ -108,6 +118,7 @@ export async function submitWish({ ornamentType, nickname, message, positionX, p
     ornament_type: ornamentType || 'bauble',
     nickname: cleanNickname,
     message: cleanMessage,
+    round: selectedRound,
     position_x: positionX ?? Math.floor(25 + Math.random() * 50),
     position_y: positionY ?? Math.floor(20 + Math.random() * 60),
     created_at: new Date().toISOString(),
@@ -131,7 +142,7 @@ export async function submitWish({ ornamentType, nickname, message, positionX, p
 
       if (!error && data) {
         localStorage.setItem(RATE_LIMIT_KEY_WISH, String(now));
-        return { data, isFallback: false };
+        return { data: { ...data, round: selectedRound }, isFallback: false };
       }
       console.warn('Supabase insert failed, storing locally:', error);
     } catch (err) {
