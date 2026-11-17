@@ -14,6 +14,8 @@ import {
 } from 'lucide-react';
 import { concertData } from '../data/concert';
 import { BrassBorder, ScriptHeading } from '../components/common/BrassBorder';
+import ticketFrontImg from '../assets/ticket-front.png';
+import ticketBackImg from '../assets/ticket-back.png';
 
 export default function Info() {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -33,7 +35,7 @@ export default function Info() {
   const handleDownloadTicket = async () => {
     try {
       const img = new Image();
-      img.src = concertData.assets.ticketFront;
+      img.src = ticketFrontImg;
       await new Promise((resolve, reject) => {
         img.onload = resolve;
         img.onerror = reject;
@@ -119,17 +121,23 @@ export default function Info() {
           >
             <motion.div
               animate={{ rotateY: isFlipped ? 180 : 0 }}
-              transition={{ duration: 0.7, ease: 'easeInOut' }}
+              transition={{ duration: 0.6, ease: 'easeInOut' }}
               style={{ transformStyle: 'preserve-3d' }}
-              className="relative w-full aspect-[1024/411] rounded-2xl shadow-2xl overflow-hidden flex items-center justify-center border border-train-gold/40"
+              className="relative w-full aspect-[1024/411] rounded-2xl shadow-2xl flex items-center justify-center border border-train-gold/40 bg-[#3d0b0b]/60"
             >
               {/* Front of Ticket */}
               <div
-                style={{ backfaceVisibility: 'hidden' }}
-                className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden flex items-center justify-center select-none"
+                style={{
+                  backfaceVisibility: 'hidden',
+                  WebkitBackfaceVisibility: 'hidden',
+                  transform: 'rotateY(0deg)',
+                }}
+                className={`absolute inset-0 w-full h-full rounded-2xl flex items-center justify-center select-none transition-opacity duration-300 ${
+                  isFlipped ? 'opacity-0 pointer-events-none' : 'opacity-100 z-10'
+                }`}
               >
                 <img
-                  src={concertData.assets.ticketFront}
+                  src={ticketFrontImg}
                   alt="Liquid Express Ticket Front"
                   className="w-full h-full object-contain rounded-2xl"
                 />
@@ -174,12 +182,15 @@ export default function Info() {
               <div
                 style={{
                   backfaceVisibility: 'hidden',
+                  WebkitBackfaceVisibility: 'hidden',
                   transform: 'rotateY(180deg)',
                 }}
-                className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden flex items-center justify-center select-none"
+                className={`absolute inset-0 w-full h-full rounded-2xl flex items-center justify-center select-none transition-opacity duration-300 ${
+                  isFlipped ? 'opacity-100 z-10' : 'opacity-0 pointer-events-none'
+                }`}
               >
                 <img
-                  src={concertData.assets.ticketBack}
+                  src={ticketBackImg}
                   alt="Liquid Express Ticket Back"
                   className="w-full h-full object-contain rounded-2xl"
                 />
@@ -187,14 +198,28 @@ export default function Info() {
             </motion.div>
           </div>
 
-          {/* Action Button: Flip Toggle Only */}
-          <div className="mt-5 flex items-center justify-center">
+          {/* Action Tabs: Front / Back Explicit Switcher */}
+          <div className="mt-5 flex items-center justify-center gap-3">
             <button
-              onClick={() => setIsFlipped(!isFlipped)}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-2xl border border-train-gold/60 bg-[#5d1212] hover:bg-[#781818] text-train-champagne text-xs font-serif tracking-wider shadow transition-all font-semibold hover:scale-[1.02] active:scale-[0.98]"
+              onClick={() => setIsFlipped(false)}
+              className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-2xl border text-xs font-serif tracking-wider shadow transition-all font-semibold ${
+                !isFlipped
+                  ? 'border-train-champagne bg-[#781818] text-train-champagne shadow-brass scale-105'
+                  : 'border-train-gold/40 bg-[#5d1212]/80 text-train-ivory/70 hover:border-train-gold hover:text-train-champagne'
+              }`}
+            >
+              <span>승차권 앞면</span>
+            </button>
+            <button
+              onClick={() => setIsFlipped(true)}
+              className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-2xl border text-xs font-serif tracking-wider shadow transition-all font-semibold ${
+                isFlipped
+                  ? 'border-train-champagne bg-[#781818] text-train-champagne shadow-brass scale-105'
+                  : 'border-train-gold/40 bg-[#5d1212]/80 text-train-ivory/70 hover:border-train-gold hover:text-train-champagne'
+              }`}
             >
               <RotateCw className="w-3.5 h-3.5 text-train-gold" />
-              <span>승차권 {isFlipped ? '앞면 보기' : '뒷면 보기'}</span>
+              <span>승차권 뒷면</span>
             </button>
           </div>
         </div>
